@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-11-01T05:37:20.586Z",
+  "items": [
+    {
+      "slug": "lihanlin-site",
+      "title": "个人站点重建为正式工程",
+      "summary": "Astro + 设计体系 + 主动数据采集；CI 构建，静态产物部署。",
+      "status": "active",
+      "question": "把个人主页从手写 HTML 重建为正式工程：Astro + 设计体系 + 主动数据采集 + 科技日报，CI 构建、本机部署。",
+      "createdAt": "2026-11-01",
+      "updatedAt": "2026-11-01",
+      "handoffs": 0
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHead from "../../components/ui/SectionHead.astro";
+import Badge from "../../components/ui/Badge.astro";
+import progress from "../../data/progress.json";
+import activity from "../../data/activity.json";
+const statusLabel: Record<string, string> = { active: "进行中", blocked: "受阻", done: "已完成" };
+---
+<BaseLayout title="工作进展 · Hanlin Li" description="从任务记录与提交活动自动汇总的公开进展。">
+  <section class="section" style="padding-top:calc(56px + 64px)">
+    <div class="wrap">
+      <SectionHead index="P" title="工作进展" />
+      <p class="section-lead">
+        这一页由 <code>scripts/collect</code> 从任务记录和仓库提交里读取生成，只发布登记过的条目；
+        数据快照：<span class="mono">{progress.generatedAt.slice(0, 10)}</span>。
+      </p>
+
+      <div class="items">
+        {progress.items.map((it) => (
+          <article class="card">
+            <div class="card-head">
+              <div class="card-title" style="font-size:17px">{it.title}</div>
+              <Badge tone={it.status === "active" ? "accent" : "default"}>{statusLabel[it.status] || it.status}</Badge>
+            </div>
+            <p>{it.summary}</p>
+            {it.question && <p class="note">目标：{it.question}</p>}
+            <p class="note">
+              开始 {it.createdAt || "—"} · 最近更新 {it.updatedAt || "—"}
+              {it.handoffs ? ` · 交接记录 ${it.handoffs} 份` : ""}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <h3 style="margin-top:44px">提交活动</h3>
+      <dl class="stats">
+        <div><dt>{activity.commits}</dt><dd>近 {activity.windowDays} 天提交</dd></div>
+        <div><dt>{activity.nonMerge}</dt><dd>非合并提交</dd></div>
+        <div><dt>{activity.merges}</dt><dd>合并提交</dd></div>
+        <div><dt>{activity.activeDays}</dt><dd>活跃天数</dd></div>
+      </dl>
+      <p class="note">分支 {activity.branch}，快照 {activity.generatedAt.slice(0, 10)}；只统计数量，不含任何业务内容。</p>
+
+      <h3>作者分布</h3>
+      <ul class="authors">
+        {activity.authors.map((a) => (
+          <li>
+            <span class="mono">{a.name}</span>
+            <span class="bar" style={`width:${Math.round((a.n / activity.commits) * 100)}%`} />
+            <span class="mono">{a.n}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .items { display: grid; gap: 16px; }
+  .authors { list-style: none; display: grid; gap: 8px; max-width: 34em; }
+  .authors li { display: grid; grid-template-columns: 8em 1fr 4em; gap: 10px; align-items: center; font-size: 13px; color: var(--c-text-2); }
+  .bar { height: 6px; background: var(--c-accent); border-radius: 3px; display: block; min-width: 2px; }
+</style>

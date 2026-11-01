@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHead from "../../components/ui/SectionHead.astro";
+import digest from "../../data/digest.json";
+const days = digest.days;
+const stale = digest.latest ? (Date.now() - new Date(digest.latest).getTime()) / 86400000 : 999;
+---
+<BaseLayout title="科技日报 · Hanlin Li" description="每天汇总 AI builders 的公开动态。">
+  <section class="section" style="padding-top:calc(56px + 64px)">
+    <div class="wrap">
+      <SectionHead index="D" title="科技日报" />
+      <p class="section-lead">
+        每天汇总 AI builders 的公开动态（X / 播客 / 博客），数据来自 <code>digest-pipeline</code>，
+        本条链路与我维护的作品无关，只做信息收集与汇总。
+      </p>
+      {stale > 3 && (
+        <p class="warn">⚠ 最新一期是 {digest.latest}，已经 {Math.round(stale)} 天没有更新——上游采集或归档可能停了。</p>
+      )}
+      <p class="note">共 {days.length} 期 · 快照 {digest.generatedAt.slice(0, 10)} · <a href="/daily/feed.xml">RSS</a></p>
+
+      <ol class="days">
+        {days.map((d) => (
+          <li>
+            <a href={`/daily/${d.date}/`}>
+              <span class="date mono">{d.date}</span>
+              <span class="issue mono">#{d.issue}</span>
+              <span class="brief">{d.tldr[0] || `${d.topics.length} 个话题`}</span>
+              <span class="count mono">{d.topics.length} 话题</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .warn { border: 1px solid var(--c-human); color: var(--c-human); background: var(--c-human-soft); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14px; }
+  .days { list-style: none; margin-top: 28px; }
+  .days li { border-bottom: 1px solid var(--c-line); }
+  .days a { display: grid; grid-template-columns: 7em 4em 1fr 6em; gap: 16px; align-items: baseline; padding: 14px 0; font-size: 15px; color: var(--c-text-2); }
+  .days a:hover { color: var(--c-accent); }
+  .date { color: var(--c-text); }
+  .issue { color: var(--c-muted); font-size: 12px; }
+  .count { color: var(--c-muted); font-size: 12px; text-align: right; }
+  @media (max-width: 760px) {
+    .days a { grid-template-columns: 1fr auto; gap: 4px 10px; }
+    .brief { grid-column: 1 / -1; font-size: 14px; }
+  }
+</style>

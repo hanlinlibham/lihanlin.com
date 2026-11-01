@@ -1,0 +1,13 @@
+---
+interface Props { href?: string; variant?: "solid" | "ghost"; external?: boolean; }
+const { href = "#", variant = "ghost", external = false } = Astro.props;
+const cls = `btn btn-${variant}`;
+---
+<a class={cls} href={href} {...(external ? { target: "_blank", rel: "noopener" } : {})}><slot /></a>
+<style>
+  .btn { font-family: var(--font-mono); font-size: 13px; padding: 11px 18px; border: 1px solid var(--c-line-2);
+         border-radius: var(--radius-sm); display: inline-block; transition: background var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast), box-shadow var(--dur-fast); }
+  .btn-ghost:hover { border-color: var(--c-accent); color: var(--c-accent); box-shadow: 0 10px 26px -16px rgba(255,92,0,.5); }
+  .btn-solid { background: var(--c-accent); border-color: var(--c-accent); color: #0b0b0c; font-weight: 600; }
+  .btn-solid:hover { background: #ff7a2e; box-shadow: 0 10px 30px -12px rgba(255,92,0,.75); }
+</style>

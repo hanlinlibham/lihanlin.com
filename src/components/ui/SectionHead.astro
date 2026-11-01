@@ -1,0 +1,18 @@
+---
+interface Props { index: string; title: string; id?: string; }
+const { index, title, id } = Astro.props;
+---
+<div class="section-head" id={id}>
+  <span class="num" aria-hidden="true">{index}</span>
+  <h2>{title}</h2>
+  <i class="rule" aria-hidden="true"></i>
+</div>
+<style>
+  .section-head { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+  .num { font-family: var(--font-mono); font-size: var(--fs-num); font-weight: 700; line-height: .82;
+         letter-spacing: -.05em; color: var(--c-line-2); transition: color var(--dur-base); }
+  .section-head.in-view .num { color: var(--c-accent); }
+  h2 { font-size: var(--fs-h2); font-weight: 700; letter-spacing: .02em; }
+  .rule { flex: 1; height: 1px; background: var(--c-line); display: block; }
+  @media (max-width: 760px) { .section-head { gap: 12px; } }
+</style>

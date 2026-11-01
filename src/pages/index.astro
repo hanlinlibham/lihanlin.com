@@ -1,0 +1,252 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/ui/SectionHead.astro";
+import Button from "../components/ui/Button.astro";
+import Badge from "../components/ui/Badge.astro";
+import Stat from "../components/ui/Stat.astro";
+import Ticker from "../components/site/Ticker.astro";
+import ScrollCue from "../components/site/ScrollCue.astro";
+import { site } from "../site.config";
+import activity from "../data/activity.json";
+import progress from "../data/progress.json";
+import digest from "../data/digest.json";
+
+const projects = await getCollection("projects", ({ data }) => !data.draft);
+const open = projects.filter((p) => p.data.kind === "open").sort((a, b) => a.data.order - b.data.order);
+const priv = projects.filter((p) => p.data.kind === "private").sort((a, b) => a.data.order - b.data.order);
+const [major1, major2, ...restOpen] = open;
+const notes = (await getCollection("notes")).sort((a, b) => a.data.order - b.data.order);
+const latestDay = digest.days[0];
+const activeItems = progress.items.slice(0, 3);
+const fmt = (n: number) => n.toLocaleString("en-US");
+const excerpt = (md = "") =>
+  md.replace(/^#{1,6}\s.*$/gm, "").replace(/```[\s\S]*?```/g, "").replace(/[*`>|-]/g, "").replace(/\s+/g, " ").trim().slice(0, 140) + "…";
+---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow reveal-line"><span>&lt;agent-harness /&gt;</span></p>
+        <h1 class="hero-name reveal-line"><span>{site.name}</span></h1>
+        <p class="hero-role reveal-line"><span>{site.role}</span></p>
+        <p class="hero-lead reveal-line"><span>让 Agent 理解业务背景，并在持续工作中用好<em>知识</em>与<em>任务记录</em>。</span></p>
+        <p class="hero-sub reveal-line"><span>2024 年底起独立主导 Agent 产品：需求判断、交互、架构到核心开发，跑通后交工程团队稳定化。日常以 DeepSeek Harness、Claude Code 驱动开发，我负责设计、评审与合并。</span></p>
+        <div class="hero-cta">
+          <Button href="#open-source" variant="solid">开源项目</Button>
+          <Button href="#architecture">产品架构</Button>
+          <Button href={site.github} external>GitHub ↗</Button>
+        </div>
+        <dl class="stats">
+          {site.heroStats.map((s) => (
+            <Stat value={s.value} label={s.label} suffix={s.suffix || ""} countUp={typeof s.value === "number"} />
+          ))}
+        </dl>
+      </div>
+      <aside class="hero-panel">
+        <div class="panel-head"><span class="dot" /><span>focus.yml</span></div>
+        <dl class="kv">
+          {site.focus.map(([k, v]) => (<><dt>{k}</dt><dd>{v}</dd></>))}
+        </dl>
+      </aside>
+    </div>
+    <ScrollCue />
+  </section>
+
+  <Ticker />
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <SectionHead index="01" title="关于" />
+      <div class="about-grid">
+        <div class="prose">
+          <p>我关心的问题很具体：模型越来越强，为什么每次新任务还要重新交代背景？研究做完了，为什么下一次又要从头整理？</p>
+          <p>我的答案是把 <b>Harness</b> 当成产品来做——任务、上下文、工具、反馈和验证机制，决定了模型能把一件事做多远、下一次还要不要从零开始。具体落在三件事上：</p>
+          <ul class="ticks">
+            <li><b>工作连续性：</b>保存目标、进度与交接，新会话可以接着做。</li>
+            <li><b>领域记忆：</b>把材料编译成可追溯、可更新的知识，而不是每次重新检索。</li>
+            <li><b>经验改进：</b>把复盘变成候选，经过验证才影响下一次执行。</li>
+          </ul>
+          <p>背景是金融工程与应用数学，做过多年资产配置与投后分析，所以我做的 Agent 产品多从研究和数据场景出发。</p>
+          <ul class="pills">
+            {["DeepSeek Harness","Claude Code","LangChain / LangGraph","Python","TypeScript / React","MCP","Skills","PostgreSQL","知识编译"].map((t) => <li>{t}</li>)}
+          </ul>
+        </div>
+        <div class="facts">
+          <div class="fact"><span class="fact-k">起点</span><span class="fact-v">2024.12 起主导 Agent 产品</span></div>
+          <div class="fact"><span class="fact-k">方式</span><span class="fact-v">个人主导设计与核心开发，工程团队承接稳定化</span></div>
+          <div class="fact"><span class="fact-k">体量</span><span class="fact-v">两个主力私有项目约 42 万行工程源码</span></div>
+          <div class="fact"><span class="fact-k">节奏</span><span class="fact-v">近 {activity.windowDays} 天 {fmt(activity.nonMerge)} 次非合并提交</span></div>
+          <div class="fact"><span class="fact-k">社区</span><span class="fact-v">OpenClaw、deepagents 问题复现与方案讨论</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open source -->
+  <section class="section" id="open-source">
+    <div class="wrap">
+      <SectionHead index="02" title="开源" />
+      <p class="section-lead">从私有项目里拆出来、单独可用的部分。每个项目解决一个具体的 Agent 失败模式。</p>
+
+      {[major1, major2].filter(Boolean).map((p) => (
+        <article class="card card-reveal" style="margin-bottom:20px">
+          <div class="card-head">
+            <div>
+              <div class="card-title"><a href={`/projects/${p.id}/`}>{p.data.title}<span class="card-arrow">↗</span></a></div>
+              <p class="card-tag">{p.data.tagline}</p>
+            </div>
+            <div class="badges">{p.data.tags.map((t) => <Badge>{t}</Badge>)}</div>
+          </div>
+          <div class="card-body">
+            <div><p>{p.data.summary}</p></div>
+            <div>
+              <h4>关键做法</h4>
+              <p>{excerpt(p.body)}</p>
+              <p class="note"><a href={`/projects/${p.id}/`}>查看详情 →</a></p>
+            </div>
+          </div>
+        </article>
+      ))}
+
+      <div class="grid-3">
+        {restOpen.map((p) => (
+          <article class="card card-reveal">
+            <div class="card-head">
+              <div class="card-title"><a href={`/projects/${p.id}/`}>{p.data.title}<span class="card-arrow">↗</span></a></div>
+              <div class="badges">{p.data.tags.map((t) => <Badge>{t}</Badge>)}</div>
+            </div>
+            <p class="card-tag">{p.data.tagline}</p>
+            <p style="margin-top:10px">{p.data.summary}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="community" style="margin-top:36px;padding-top:22px;border-top:1px solid var(--c-line)">
+        <h4>社区参与</h4>
+        <ul>
+          <li><a href="https://github.com/openclaw/openclaw/issues/24499" target="_blank" rel="noopener">OpenClaw #24499 ↗</a> 复现并定位 reasoning 模型经 OpenAI 兼容适配器时的角色兼容问题，提供日志与临时处理方案，确认已在主线修复。</li>
+          <li><a href="https://github.com/langchain-ai/deepagents/issues/2121" target="_blank" rel="noopener">deepagents #2121 ↗</a> 提出按类别拆分上下文 token 的观测中间件方案，用于定位上下文被什么占满。</li>
+        </ul>
+      </div>
+
+      <div style="margin-top:34px;padding-top:22px;border-top:1px solid var(--c-line)">
+        <h4>写过的设计文档</h4>
+        <ul class="notes-list">
+          {notes.map((n) => (
+            <li>
+              <a href={n.data.href} target="_blank" rel="noopener">{n.data.title} ↗</a>
+              <span>{n.data.summary}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section" id="architecture">
+    <div class="wrap">
+      <SectionHead index="03" title="私有项目架构" />
+      <p class="section-lead">以下项目在内部使用，代码不公开。这里只介绍架构与设计取舍，不涉及客户与内部数据。</p>
+      {priv.map((p, i) => (
+        <article class="arch card-reveal">
+          <div class="arch-head">
+            <div>
+              <h3>{p.data.title}<span class="card-arrow">↗</span></h3>
+              <p class="card-tag">{p.data.tagline}</p>
+            </div>
+            <div class="badges">{p.data.tags.map((t) => <Badge>{t}</Badge>)}</div>
+          </div>
+          <p>{p.data.summary}</p>
+          {p.data.metrics.length > 0 && (
+            <ul class="metrics">
+              {p.data.metrics.map((m) => <li>{m}</li>)}
+            </ul>
+          )}
+          <p class="note"><a href={`/projects/${p.id}/`}>查看架构与取舍 →</a></p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- Progress -->
+  <section class="section" id="progress">
+    <div class="wrap">
+      <SectionHead index="04" title="工作进展" />
+      <p class="section-lead">从任务记录自动汇总：任务状态、最近交接与仓库提交活动。</p>
+      <div class="progress-grid">
+        {activeItems.map((it) => (
+          <article class="card card-reveal">
+            <div class="card-head">
+              <div class="card-title" style="font-size:16px">{it.title}</div>
+              <Badge tone={it.status === "active" ? "accent" : "default"}>{it.status}</Badge>
+            </div>
+            <p>{it.summary}</p>
+            <p class="note">更新于 {it.updatedAt}{it.handoffs ? ` · 交接记录 ${it.handoffs} 份` : ""}</p>
+          </article>
+        ))}
+      </div>
+      <dl class="stats" style="margin-top:28px">
+        <Stat value={activity.commits} label={`近 ${activity.windowDays} 天提交`} />
+        <Stat value={activity.nonMerge} label="其中非合并提交" />
+        <Stat value={activity.activeDays} label="活跃天数" />
+        <Stat value={progress.items.length} label="公开进行中任务" />
+      </dl>
+      <p class="note"><a href="/progress/">查看完整进展与数据来源 →</a></p>
+    </div>
+  </section>
+
+  <!-- Daily -->
+  <section class="section" id="daily">
+    <div class="wrap">
+      <SectionHead index="05" title="科技日报" />
+      {latestDay ? (
+        <>
+          <p class="section-lead">每天汇总 AI builders 的公开动态，来自 digest-pipeline。最新一期：{latestDay.date}（第 {latestDay.issue} 期）。</p>
+          <ul class="tldr">
+            {latestDay.tldr.map((line) => <li>{line}</li>)}
+          </ul>
+          <p class="note"><a href="/daily/">全部 {digest.days.length} 期 →</a></p>
+        </>
+      ) : (
+        <p class="section-lead">暂无数据。</p>
+      )}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" style="border-bottom:none">
+    <div class="wrap">
+      <SectionHead index="06" title="联系" />
+      <p class="section-lead">欢迎交流 Agent Harness、上下文工程与知识编译，也欢迎在开源仓库里提 issue。</p>
+      <div class="contact-row">
+        <Button href={`mailto:${site.email}`} variant="solid">{site.email}</Button>
+        <Button href={site.github} external>{site.github.replace("https://", "")} ↗</Button>
+        <Button href={site.githubAlt} external>{site.githubAlt.replace("https://", "")} ↗</Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .metrics { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .metrics li { font-family: var(--font-mono); font-size: 11.5px; color: var(--c-text-2); border: 1px solid var(--c-line-2); padding: 4px 9px; border-radius: var(--radius-sm); }
+  .progress-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .notes-list { list-style: none; display: grid; gap: 12px; }
+  .notes-list li { display: grid; grid-template-columns: minmax(0, 15em) 1fr; gap: 14px; align-items: baseline; }
+  .notes-list a { font-family: var(--font-mono); font-size: 14px; color: var(--c-accent); }
+  .notes-list a:hover { text-decoration: underline; }
+  .notes-list span { color: var(--c-text-2); font-size: 14.5px; }
+  .community ul { list-style: none; display: grid; gap: 10px; color: var(--c-text-2); font-size: 15px; }
+  .community a { font-family: var(--font-mono); color: var(--c-accent); margin-right: 8px; white-space: nowrap; }
+  .tldr { list-style: none; display: grid; gap: 10px; }
+  .tldr li { position: relative; padding-left: 20px; color: var(--c-text-2); font-size: 15.5px; }
+  .tldr li::before { content: "→"; position: absolute; left: 0; color: var(--c-accent); font-family: var(--font-mono); }
+  @media (max-width: 760px) {
+    .progress-grid { grid-template-columns: 1fr; }
+    .notes-list li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>

@@ -1,0 +1,10 @@
+{
+  "published": [
+    {
+      "slug": "lihanlin-site",
+      "title": "个人站点重建为正式工程",
+      "summary": "Astro + 设计体系 + 主动数据采集；CI 构建，静态产物部署。",
+      "status": "active"
+    }
+  ]
+}

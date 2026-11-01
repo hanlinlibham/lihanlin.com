@@ -1,0 +1,20 @@
+{
+  "name": "lihanlin-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "collect": "node scripts/collect/all.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.0",
+    "@astrojs/mdx": "^4.3.0",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.18",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.6.0"
+  }
+}

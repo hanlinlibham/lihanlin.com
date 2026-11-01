@@ -1,0 +1,25 @@
+---
+import { site } from "../../site.config";
+const path = Astro.url.pathname;
+const isActive = (href: string) => href !== "/" && path.startsWith(href.replace(/\/$/, ""));
+---
+<header class="nav">
+  <a class="brand" href="/">HLB_</a>
+  <nav class="links" aria-label="主导航">
+    {site.nav.map((item) => (
+      <a href={item.href} class:list={{ active: isActive(item.href) }}>{item.label}</a>
+    ))}
+    <a href={site.github} target="_blank" rel="noopener" class="ext">GITHUB ↗</a>
+  </nav>
+</header>
+<style>
+  .nav { position: fixed; inset: 0 0 auto 0; height: 56px; z-index: 100; display: flex; align-items: center;
+         justify-content: space-between; padding: 0 24px; background: rgba(9,9,10,.93);
+         backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-line); }
+  .brand { font-family: var(--font-mono); font-weight: 700; letter-spacing: .04em; color: var(--c-accent); }
+  .links { display: flex; gap: 22px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .07em; color: var(--c-text-2); }
+  .links a { transition: color var(--dur-fast); }
+  .links a:hover, .links a.active { color: var(--c-accent); }
+  @media (max-width: 900px) { .links a:nth-child(4), .links a:nth-child(5) { display: none; } }
+  @media (max-width: 680px) { .links { gap: 14px; font-size: 11px; } .links a:nth-child(3), .links .ext { display: none; } }
+</style>

@@ -1,0 +1,10 @@
+---
+interface Props { tone?: "default" | "accent"; }
+const { tone = "default" } = Astro.props;
+---
+<span class:list={["badge", tone]}><slot /></span>
+<style>
+  .badge { font-family: var(--font-mono); font-size: 11px; color: var(--c-text-2); border: 1px solid var(--c-line-2);
+           padding: 2px 8px; border-radius: var(--radius-sm); white-space: nowrap; display: inline-block; transition: color var(--dur-fast), border-color var(--dur-fast); }
+  .badge.accent { color: var(--c-accent); border-color: var(--c-accent); }
+</style>

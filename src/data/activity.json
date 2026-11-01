@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-11-01T05:37:20.464Z",
+  "windowDays": 28,
+  "branch": "origin/monorepo",
+  "commits": 1155,
+  "nonMerge": 779,
+  "merges": 375,
+  "activeDays": 29,
+  "authors": [
+    {
+      "name": "ableclaw",
+      "n": 797
+    },
+    {
+      "name": "lihanlin",
+      "n": 351
+    },
+    {
+      "name": "hanlinlibham",
+      "n": 6
+    },
+    {
+      "name": "Codex",
+      "n": 2
+    }
+  ]
+}

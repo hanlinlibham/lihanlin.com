@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import digest from "../../data/digest.json";
+
+export function getStaticPaths() {
+  return digest.days.map((d) => ({ params: { date: d.date }, props: { day: d } }));
+}
+const { day } = Astro.props;
+const idx = digest.days.findIndex((d) => d.date === day.date);
+const newer = idx > 0 ? digest.days[idx - 1] : null;
+const older = idx < digest.days.length - 1 ? digest.days[idx + 1] : null;
+---
+<BaseLayout title={`科技日报 ${day.date} · Hanlin Li`} description={day.tldr[0] || `第 ${day.issue} 期`}>
+  <section class="section" style="padding-top:calc(56px + 64px)">
+    <div class="wrap">
+      <p class="crumb"><a href="/daily/">← 全部日报</a></p>
+      <h1 class="title">{day.date}<span class="issue mono">#{day.issue}</span></h1>
+
+      <ul class="tldr">
+        {day.tldr.map((t) => <li>{t}</li>)}
+      </ul>
+
+      {day.topics.map((t) => (
+        <article class="topic">
+          <h2>{t.title}</h2>
+          {t.consensus && <p class="consensus">{t.consensus}</p>}
+          <ul class="voices">
+            {t.voices.map((v) => (
+              <li>
+                <div class="who">
+                  {v.url ? <a href={v.url} target="_blank" rel="noopener">{v.name}{v.handle ? ` @${v.handle}` : ""}</a> : <span>{v.name}</span>}
+                  {v.metric && <span class="metric mono">{v.metric}</span>}
+                </div>
+                <p>{v.take}</p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+
+      <nav class="pager">
+        {older ? <a href={`/daily/${older.date}/`}>← {older.date}</a> : <span />}
+        {newer ? <a href={`/daily/${newer.date}/`}>{newer.date} →</a> : <span />}
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .crumb { font-family: var(--font-mono); font-size: 12px; color: var(--c-muted); margin-bottom: 18px; }
+  .crumb a:hover { color: var(--c-accent); }
+  .title { font-size: clamp(32px, 4vw, 52px); font-family: var(--font-mono); letter-spacing: -.02em; }
+  .issue { color: var(--c-muted); font-size: .4em; margin-left: 12px; }
+  .tldr { list-style: none; display: grid; gap: 10px; margin: 24px 0 36px; max-width: 50em; }
+  .tldr li { position: relative; padding-left: 20px; color: var(--c-text-2); }
+  .tldr li::before { content: "→"; position: absolute; left: 0; color: var(--c-accent); font-family: var(--font-mono); }
+  .topic { border-top: 1px solid var(--c-line); padding-top: 24px; margin-bottom: 28px; }
+  .topic h2 { font-size: 22px; margin-bottom: 10px; }
+  .consensus { color: var(--c-text); background: var(--c-bg-2); border: 1px solid var(--c-line); padding: 12px 16px; border-radius: var(--radius); margin-bottom: 18px; max-width: 52em; }
+  .voices { list-style: none; display: grid; gap: 16px; max-width: 52em; }
+  .voices li { border-left: 1px solid var(--c-line-2); padding-left: 16px; }
+  .who { display: flex; gap: 10px; align-items: baseline; font-family: var(--font-mono); font-size: 13px; color: var(--c-accent); margin-bottom: 4px; }
+  .who a:hover { text-decoration: underline; }
+  .metric { color: var(--c-muted); font-size: 11px; }
+  .voices p { color: var(--c-text-2); font-size: 14.5px; }
+  .pager { display: flex; justify-content: space-between; border-top: 1px solid var(--c-line); padding-top: 18px; font-family: var(--font-mono); font-size: 13px; color: var(--c-muted); }
+  .pager a:hover { color: var(--c-accent); }
+</style>

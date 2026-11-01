@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-11-01T05:37:20.313Z",
+  "count": 28,
+  "repos": [
+    {
+      "full": "abuttoncc/agent-taskkit",
+      "name": "agent-taskkit",
+      "description": "One skill entry point for reusable agent workflows, templates, and verification tools. 一次安装，用自然语言启动可验证、可续做的任务。",
+      "url": "https://github.com/abuttoncc/agent-taskkit",
+      "stars": 0,
+      "language": "Python",
+      "pushedAt": "2026-10-31T12:56:25Z",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "api-testing",
+        "task-automation"
+      ]
+    },
+    {
+      "full": "hanlinlibham/deepagents-research-starter-python",
+      "name": "deepagents-research-starter-python",
+      "description": "A research agent that answers questions with web search, built with Deep Agents.",
+      "url": "https://github.com/hanlinlibham/deepagents-research-starter-python",
+      "stars": 0,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-26T12:40:42Z",
+      "topics": []
+    },
+    {
+      "full": "hanlinlibham/dsh-native-tui",
+      "name": "dsh-native-tui",
+      "description": "Classic, dependable DeepSeek Harness TUI with session, provider, and model management.",
+      "url": "https://github.com/hanlinlibham/dsh-native-tui",
+      "stars": 0,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-20T02:33:13Z",
+      "topics": [
+        "cli",
+        "coding-agent",
+        "deepseek",
+        "deepseek-harness",
+        "dsh-plugin",
+        "model-management",
+        "provider-management",
+        "session-management",
+        "terminal-ui",
+        "tui",
+        "typescript"
+      ]
+    },
+    {
+      "full": "hanlinlibham/auto-wiki",
+      "name": "auto-wiki",
+      "description": "wiki&autoresearch with ontology",
+      "url": "https://github.com/hanlinlibham/auto-wiki",
+      "stars": 9,
+      "language": "Python",
+      "pushedAt": "2026-08-13T03:46:01Z",
+      "topics": []
+    },
+    {
+      "full": "hanlinlibham/skills",
+      "name": "skills",
+      "description": "useful-skills，including wind terminal （万德）",
+      "url": "https://github.com/hanlinlibham/skills",
+      "stars": 2,
+      "language": "Python",
+      "pushedAt": "2026-08-04T09:55:08Z",
+      "topics": []
+    },
+    {
+      "full": "hanlinlibham/findatamcp",
+      "name": "findatamcp",
+      "description": "Feed LLMs financial data and interactive charts in one call — an MCP server for A-share quotes, financials, and macro indicators, 42 tools with results-as-UI.",
+      "url": "https://github.com/hanlinlibham/findatamcp",
+      "stars": 1,
+      "language": "Python",
+      "pushedAt": "2026-07-20T10:28:54Z",
+      "topics": [
+        "a-share",
+        "ai-finance",
+        "claude-desktop",
+        "echarts",
+        "fastmcp",
+        "financial-data",
+        "llm-agent",
+        "llm-tools",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "stock-analysis",
+        "tushare"
+      ]
+    },
+    {
+      "full": "abuttoncc/philo_air",
+      "name": "philo_air",
+      "description": "philo_air",
+      "url": "https://github.com/abuttoncc/philo_air",
+      "stars": 0,
+      "language": "HTML",
+      "pushedAt": "2026-07-11T01:30:03Z",
+      "topics": []
+    },
+    {
+      "full": "abuttoncc/burrow-core",
+      "name": "burrow-core",
+      "description": "",
+      "url": "https://github.com/abuttoncc/burrow-core",
+      "stars": 0,
+      "language": "Python",
+      "pushedAt": "2026-07-09T23:33:45Z",
+      "topics": []
+    },
+    {
+      "full": "abuttoncc/tech_air",
+      "name": "tech_air",
+      "description": "",
+      "url": "https://github.com/abuttoncc/tech_air",
+      "stars": 0,
+      "language": "Python",
+      "pushedAt": "2026-07-08T05:24:09Z",
+      "topics": []
+    },
+    {
+      "full": "hanlinlibham/ableppt",
+      "name": "ableppt",
+      "description": "",
+      "url": "https://github.com/hanlinlibham/ableppt",
+      "stars": 0,
+      "language": "Python",
+      "pushedAt": "2026-07-03T09:41:42Z",
+      "topics": []
+    },
+    {
+      "full": "hanlinlibham/ablechart",
+      "name": "ablechart",
+      "description": "",
+      "url": "https://github.com/hanlinlibham/ablechart",
+      "stars": 0,
+      "language": "Python",
+      "pushedAt": "2026-07-03T01:35:20Z",
+      "topics": []
+    },
+    {
+      "full": "abuttoncc/Burrow",
+      "name": "Burrow",
+      "description": "Burrow_Obsidian",
+      "url": "https://github.com/abuttoncc/Burrow",
+      "stars": 1,
+      "language": "Python",
+      "pushedAt": "2026-06-11T22:46:52Z",
+      "topics": []
+    }
+  ]
+}

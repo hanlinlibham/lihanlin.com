@@ -1,0 +1,9 @@
+<div class="wrap cue" aria-hidden="true"><span>SCROLL</span><i class="line"></i></div>
+<style>
+  .cue { position: absolute; bottom: 22px; left: 0; right: 0; display: flex; align-items: center; gap: 12px;
+         font-family: var(--font-mono); font-size: 11px; letter-spacing: .22em; color: var(--c-muted); }
+  .line { position: relative; width: 52px; height: 1px; background: var(--c-line-2); overflow: hidden; display: block; }
+  .line::after { content: ""; position: absolute; inset: 0 auto 0 -100%; width: 100%; background: var(--c-accent); animation: sweep 2.2s ease-in-out infinite; }
+  @keyframes sweep { 0% { left: -100%; } 55% { left: 0; } 100% { left: 100%; } }
+  @media (max-width: 760px) { .cue { display: none; } }
+</style>

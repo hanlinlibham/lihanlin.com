@@ -1,0 +1,7 @@
+{
+  "servicesRoot": "/home/core/dev/services",
+  "github": { "users": ["hanlinlibham", "abuttoncc"], "maxRepos": 12 },
+  "activity": { "days": 28 },
+  "digest": { "days": 45, "source": "apps/digest-pipeline/data/digests.json" },
+  "progress": { "tasksRoot": "/home/core/dev/services/workspace/tasks" }
+}

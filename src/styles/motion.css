@@ -1,0 +1,7 @@
+.noise { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: .035;
+  mix-blend-mode: overlay; background-size: 180px; animation: grain .7s steps(6) infinite; }
+@keyframes grain {
+  0%,100% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); }
+  40% { transform: translate(2%,-3%); } 60% { transform: translate(-2%,-2%); } 80% { transform: translate(3%,3%); }
+}
+@media (prefers-reduced-motion: reduce) { .noise { animation: none; } }

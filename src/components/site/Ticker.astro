@@ -1,0 +1,19 @@
+---
+const items = ["Agent Harness", "上下文工程", "知识编译", "跨会话接续", "DeepSeek Harness", "MCP / Skills", "金融研究"];
+const loop = [...items, ...items];
+---
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    {loop.map((t, i) => (<><span>{t}</span><b>·</b></>))}
+  </div>
+</div>
+<style>
+  .ticker { overflow: hidden; border-bottom: 1px solid var(--c-line); background: var(--c-bg-2); padding: 14px 0; user-select: none; }
+  .track { display: flex; align-items: center; gap: 22px; width: max-content; font-family: var(--font-mono);
+           font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--c-muted);
+           animation: ticker 42s linear infinite; }
+  .track b { color: var(--c-accent); font-weight: 400; }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker:hover .track { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .track { animation: none; } }
+</style>
