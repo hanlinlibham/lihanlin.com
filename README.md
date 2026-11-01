@@ -13,8 +13,9 @@ src/
   layouts/BaseLayout.astro
   content/projects/       作品（Markdown + frontmatter）
   content/notes/          外部文章目录
+  content/research/       系列研究（月份、状态、对象与提纲）
   data/                   采集生成的 JSON 快照（提交进仓库）
-  pages/                  index · projects/[slug] · progress · daily · 404
+  pages/                  index · projects/[slug] · research/[slug] · progress · daily · 404
 scripts/
   collect/                数据采集：GitHub / 提交活动 / 任务进展 / 日报
   sync.sh                 把 CI 产物同步到本机 web 根

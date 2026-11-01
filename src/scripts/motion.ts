@@ -35,9 +35,10 @@ function boot() {
     document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
       a.addEventListener("click", (e) => {
         const id = a.getAttribute("href")!;
-        if (id.length > 1 && document.querySelector(id)) {
+        const target = id.length > 1 ? document.getElementById(decodeURIComponent(id.slice(1))) : null;
+        if (target) {
           e.preventDefault();
-          lenis.scrollTo(id, { offset: -70, duration: 1.1 });
+          lenis.scrollTo(target, { offset: -70, duration: 1.1 });
         }
       });
     });

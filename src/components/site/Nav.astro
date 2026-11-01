@@ -20,6 +20,9 @@ const isActive = (href: string) => href !== "/" && path.startsWith(href.replace(
   .links { display: flex; gap: 22px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .07em; color: var(--c-text-2); }
   .links a { transition: color var(--dur-fast); }
   .links a:hover, .links a.active { color: var(--c-accent); }
-  @media (max-width: 900px) { .links a:nth-child(4), .links a:nth-child(5) { display: none; } }
-  @media (max-width: 680px) { .links { gap: 14px; font-size: 11px; } .links a:nth-child(3), .links .ext { display: none; } }
+  @media (max-width: 1000px) { .links a[href="/progress/"], .links a[href="/daily/"] { display: none; } }
+  @media (max-width: 680px) {
+    .links { gap: 14px; font-size: 11px; }
+    .links a[href="/#open-source"], .links a[href="/#architecture"], .links .ext { display: none; }
+  }
 </style>

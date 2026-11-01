@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHead from "../components/ui/SectionHead.astro";
 import Button from "../components/ui/Button.astro";
@@ -17,6 +17,9 @@ const open = projects.filter((p) => p.data.kind === "open").sort((a, b) => a.dat
 const priv = projects.filter((p) => p.data.kind === "private").sort((a, b) => a.data.order - b.data.order);
 const [major1, major2, ...restOpen] = open;
 const notes = (await getCollection("notes")).sort((a, b) => a.data.order - b.data.order);
+const research = await getEntry("research", "agent-evolution");
+if (!research) throw new Error("Missing agent-evolution research series");
+const [researchYear, researchMonth] = research.data.month.split("-");
 const latestDay = digest.days[0];
 const activeItems = progress.items.slice(0, 3);
 const fmt = (n: number) => n.toLocaleString("en-US");
@@ -85,10 +88,33 @@ const excerpt = (md = "") =>
     </div>
   </section>
 
+  <!-- Research -->
+  <section class="section" id="agent-evolution">
+    <div class="wrap">
+      <SectionHead index="02" title={research.data.title} />
+      <div class="research-grid">
+        <div class="research-date">
+          <span class="mono">SERIES / 01</span>
+          <time datetime={research.data.month}>{researchYear} 年 {Number(researchMonth)} 月</time>
+          <Badge tone="accent">{research.data.status}</Badge>
+        </div>
+        <article class="card card-reveal">
+          <h3 class="research-title"><a href={`/research/${research.id}/`}>从持续工作到协作与知识积累 <span aria-hidden="true">↗</span></a></h3>
+          <p>{research.data.summary}</p>
+          <div class="badges" style="margin-top:18px">
+            {research.data.subjects.map((subject) => <Badge>{subject}</Badge>)}
+          </div>
+          <p class="note">面向 {research.data.audience}。</p>
+          <p class="note"><a class="research-link" href={`/research/${research.id}/`}>阅读系列提纲与比较框架 →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Open source -->
   <section class="section" id="open-source">
     <div class="wrap">
-      <SectionHead index="02" title="开源" />
+      <SectionHead index="03" title="开源" />
       <p class="section-lead">从私有项目里拆出来、单独可用的部分。每个项目解决一个具体的 Agent 失败模式。</p>
 
       {[major1, major2].filter(Boolean).map((p) => (
@@ -149,7 +175,7 @@ const excerpt = (md = "") =>
   <!-- Architecture -->
   <section class="section" id="architecture">
     <div class="wrap">
-      <SectionHead index="03" title="私有项目架构" />
+      <SectionHead index="04" title="私有项目架构" />
       <p class="section-lead">以下项目在内部使用，代码不公开。这里只介绍架构与设计取舍，不涉及客户与内部数据。</p>
       {priv.map((p, i) => (
         <article class="arch card-reveal">
@@ -175,7 +201,7 @@ const excerpt = (md = "") =>
   <!-- Progress -->
   <section class="section" id="progress">
     <div class="wrap">
-      <SectionHead index="04" title="工作进展" />
+      <SectionHead index="05" title="工作进展" />
       <p class="section-lead">从任务记录自动汇总：任务状态、最近交接与仓库提交活动。</p>
       <div class="progress-grid">
         {activeItems.map((it) => (
@@ -202,7 +228,7 @@ const excerpt = (md = "") =>
   <!-- Daily -->
   <section class="section" id="daily">
     <div class="wrap">
-      <SectionHead index="05" title="科技日报" />
+      <SectionHead index="06" title="科技日报" />
       {latestDay ? (
         <>
           <p class="section-lead">每天汇总 AI builders 的公开动态，来自 digest-pipeline。最新一期：{latestDay.date}（第 {latestDay.issue} 期）。</p>
@@ -220,7 +246,7 @@ const excerpt = (md = "") =>
   <!-- Contact -->
   <section class="section" id="contact" style="border-bottom:none">
     <div class="wrap">
-      <SectionHead index="06" title="联系" />
+      <SectionHead index="07" title="联系" />
       <p class="section-lead">欢迎交流 Agent Harness、上下文工程与知识编译，也欢迎在开源仓库里提 issue。</p>
       <div class="contact-row">
         <Button href={`mailto:${site.email}`} variant="solid">{site.email}</Button>
@@ -232,6 +258,13 @@ const excerpt = (md = "") =>
 </BaseLayout>
 
 <style>
+  .research-grid { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 32px; }
+  .research-date { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 6px; }
+  .research-date > span:first-child { color: var(--c-muted); font-size: 12px; letter-spacing: .08em; }
+  .research-date time { color: var(--c-accent); font-size: 20px; }
+  .research-title { color: var(--c-text); font-family: var(--font-sans); font-size: 22px; margin: 0 0 14px; }
+  .research-title a:hover, .research-link { color: var(--c-accent); }
+  .research-link:hover { text-decoration: underline; }
   .metrics { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .metrics li { font-family: var(--font-mono); font-size: 11.5px; color: var(--c-text-2); border: 1px solid var(--c-line-2); padding: 4px 9px; border-radius: var(--radius-sm); }
   .progress-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -246,6 +279,7 @@ const excerpt = (md = "") =>
   .tldr li { position: relative; padding-left: 20px; color: var(--c-text-2); font-size: 15.5px; }
   .tldr li::before { content: "→"; position: absolute; left: 0; color: var(--c-accent); font-family: var(--font-mono); }
   @media (max-width: 760px) {
+    .research-grid { grid-template-columns: 1fr; gap: 20px; }
     .progress-grid { grid-template-columns: 1fr; }
     .notes-list li { grid-template-columns: 1fr; gap: 2px; }
   }

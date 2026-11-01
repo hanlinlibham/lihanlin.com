@@ -27,4 +27,16 @@ const notes = defineCollection({
   }),
 });
 
-export const collections = { projects, notes };
+const research = defineCollection({
+  loader: glob({ pattern: "*.md", base: "./src/content/research" }),
+  schema: z.object({
+    title: z.string(),
+    month: z.string().regex(/^\d{4}-\d{2}$/),
+    summary: z.string(),
+    status: z.string(),
+    audience: z.string(),
+    subjects: z.array(z.string()),
+  }),
+});
+
+export const collections = { projects, notes, research };

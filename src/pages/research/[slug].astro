@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Badge from "../../components/ui/Badge.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("research");
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const chapters = headings.filter((heading) => heading.depth === 2);
+const [year, month] = entry.data.month.split("-");
+---
+<BaseLayout title={`${entry.data.title} · ${year} 年 ${Number(month)} 月 · Hanlin Li`} description={entry.data.summary}>
+  <section class="section research-page">
+    <div class="wrap">
+      <a class="back" href="/#agent-evolution">← 返回首页 · 系列研究</a>
+      <div class="meta">
+        <time datetime={entry.data.month}>{year} 年 {Number(month)} 月</time>
+        <Badge tone="accent">{entry.data.status}</Badge>
+      </div>
+      <h1>{entry.data.title}</h1>
+      <p class="lead">{entry.data.summary}</p>
+      <p class="audience">面向 {entry.data.audience}。</p>
+      <div class="badges subjects">{entry.data.subjects.map((subject) => <Badge>{subject}</Badge>)}</div>
+      <div class="reading-grid">
+        <nav class="outline" aria-label="研究提纲目录">
+          <p class="outline-label">研究路线</p>
+          <ol>{chapters.map((chapter) => <li><a href={`#${chapter.slug}`}>{chapter.text.replace(/^\d+\s*[·/]\s*/, "")}</a></li>)}</ol>
+        </nav>
+        <article class="research-body"><Content /></article>
+      </div>
+      <p class="back bottom"><a href="/#agent-evolution">← 返回首页</a><a href="/projects/ablework/">了解 AbleWork →</a></p>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .research-page { padding-top: calc(56px + 54px); }
+  .back { color: var(--c-muted); font-size: 13px; }
+  .back:hover, .back a:hover { color: var(--c-accent); }
+  .meta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 32px 0 12px; }
+  .meta time { font-family: var(--font-mono); color: var(--c-accent); font-size: 14px; }
+  h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.25; }
+  .lead { max-width: 44em; margin-top: 20px; color: var(--c-text-2); font-size: var(--fs-lead); }
+  .audience { color: var(--c-muted); margin-top: 16px; font-size: 14px; }
+  .subjects { margin-top: 20px; }
+  .reading-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--c-line); }
+  .outline { position: sticky; top: 88px; align-self: start; font-size: 14px; }
+  .outline-label { color: var(--c-accent); font-family: var(--font-mono); margin-bottom: 14px; }
+  .outline ol { padding-left: 20px; display: grid; gap: 14px; color: var(--c-text-2); }
+  .outline a:hover { color: var(--c-accent); }
+  .research-body { min-width: 0; max-width: 48em; overflow-wrap: anywhere; }
+  .research-body :global(h2) { font-size: 24px; margin: 42px 0 16px; line-height: 1.5; }
+  .research-body :global(h3) { font-family: var(--font-sans); font-size: 18px; margin: 28px 0 10px; }
+  .research-body :global(p) { color: var(--c-text-2); margin-bottom: 16px; }
+  .research-body :global(ul), .research-body :global(ol) { padding-left: 22px; margin-bottom: 20px; }
+  .research-body :global(li) { color: var(--c-text-2); margin-bottom: 8px; }
+  .research-body :global(a) { color: var(--c-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .research-body :global(blockquote) { border-left: 2px solid var(--c-accent); padding: 12px 20px; margin: 22px 0; background: var(--c-bg-2); }
+  .research-body :global(blockquote p:last-child) { margin-bottom: 0; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid var(--c-line); padding-top: 24px; margin-top: 48px; }
+  @media (max-width: 900px) {
+    .reading-grid { grid-template-columns: 1fr; gap: 28px; }
+    .outline { position: static; border-bottom: 1px solid var(--c-line); padding-bottom: 24px; }
+  }
+</style>

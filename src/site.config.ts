@@ -12,6 +12,7 @@ export const site = {
     { href: "/#about", label: "ABOUT" },
     { href: "/#open-source", label: "OPEN SOURCE" },
     { href: "/#architecture", label: "ARCHITECTURE" },
+    { href: "/#agent-evolution", label: "RESEARCH" },
     { href: "/progress/", label: "PROGRESS" },
     { href: "/daily/", label: "DAILY" },
     { href: "/#contact", label: "CONTACT" },
