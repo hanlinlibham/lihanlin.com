@@ -19,7 +19,7 @@ export const site = {
   heroStats: [
     { value: 6, label: "开源仓库", suffix: "" },
     { value: 2, label: "私有产品线", suffix: "" },
-    { value: 42, label: "行工程源码（万）", suffix: " 万" },
+    { value: 42, label: "万行工程源码", suffix: "" },
     { value: "2024.12", label: "主导起点", suffix: "" },
   ],
   focus: [

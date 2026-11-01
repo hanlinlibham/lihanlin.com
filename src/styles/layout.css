@@ -1,5 +1,5 @@
 /* ============ Hero ============ */
-.hero { padding: calc(56px + 88px) 0 72px; border-bottom: 1px solid var(--c-line); position: relative;
+.hero { padding: calc(56px + 88px) 0 96px; border-bottom: 1px solid var(--c-line); position: relative;
   background:
     linear-gradient(var(--c-line) 1px, transparent 1px) 0 0 / 100% 64px,
     linear-gradient(90deg, var(--c-line) 1px, transparent 1px) 0 0 / 64px 100%,
