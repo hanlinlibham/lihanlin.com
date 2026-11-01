@@ -1,0 +1,235 @@
+{
+  "title": "智能体的演进",
+  "edition": "2026-11",
+  "compiled_at": "2026-11-02",
+  "as_of": "2026-11-01",
+  "routing": {
+    "format": "journal",
+    "profile": "doc",
+    "style": "flexible",
+    "reason": "面向 Agent 产品与技术负责人，连续论证、机制图、运行证据与来源可回查。"
+  },
+  "scope": {
+    "subjects": [
+      "Muse",
+      "Grok Bot",
+      "Claude Tag",
+      "DeepSeek Super-agent",
+      "AbleWork"
+    ],
+    "pdf_pages": 63,
+    "sections": 60,
+    "mechanism_figures": 20,
+    "performance_benchmark": false,
+    "private_evidence": "仅公开作者脱敏汇总，不含内部路径、标识、凭据或业务正文。"
+  },
+  "checks": {
+    "html_lint": "PASS, doc/flexible, 5 checks",
+    "offline": "inline CSS and SVG; zero scripts and external resource loads",
+    "no_javascript": "core text, native contents, sources and mobile equivalents checked",
+    "print": {
+      "pdf_pages": 63,
+      "page_text_lengths": [
+        327,
+        854,
+        849,
+        882,
+        858,
+        806,
+        861,
+        819,
+        835,
+        819,
+        791,
+        791,
+        792,
+        828,
+        814,
+        813,
+        789,
+        800,
+        780,
+        796,
+        727,
+        795,
+        772,
+        781,
+        776,
+        719,
+        710,
+        748,
+        811,
+        753,
+        720,
+        739,
+        734,
+        778,
+        760,
+        741,
+        754,
+        751,
+        783,
+        772,
+        795,
+        748,
+        771,
+        690,
+        795,
+        718,
+        776,
+        787,
+        730,
+        725,
+        824,
+        725,
+        703,
+        726,
+        637,
+        728,
+        714,
+        724,
+        727,
+        630,
+        724,
+        1183,
+        931
+      ],
+      "print_overflow": [],
+      "toc_overflow": [],
+      "responsive": [
+        {
+          "width": 320,
+          "docWidth": 320,
+          "figures": 20,
+          "sections": 60
+        },
+        {
+          "width": 390,
+          "docWidth": 390,
+          "figures": 20,
+          "sections": 60
+        },
+        {
+          "width": 768,
+          "docWidth": 768,
+          "figures": 20,
+          "sections": 60
+        },
+        {
+          "width": 1440,
+          "docWidth": 1440,
+          "figures": 20,
+          "sections": 60
+        }
+      ],
+      "missing_anchors": [],
+      "pdf_bytes": 2533308
+    },
+    "site_preview": {
+      "base": "http://127.0.0.1:4322",
+      "checks": [
+        {
+          "path": "/research/agent-evolution/",
+          "width": 320,
+          "status": 200,
+          "overflow": false
+        },
+        {
+          "path": "/research/agent-evolution/",
+          "width": 390,
+          "status": 200,
+          "overflow": false
+        },
+        {
+          "path": "/research/agent-evolution/",
+          "width": 768,
+          "status": 200,
+          "overflow": false
+        },
+        {
+          "path": "/research/agent-evolution/",
+          "width": 1440,
+          "status": 200,
+          "overflow": false
+        },
+        {
+          "path": "/research/agent-evolution/report/",
+          "sections": 60,
+          "figures": 20,
+          "contents_and_citations": "pass"
+        },
+        {
+          "pdf_status": 200,
+          "pdf_bytes": 2533308
+        },
+        {
+          "path": "/projects/ablework/",
+          "status": 200
+        },
+        {
+          "path": "/projects/auto-wiki/",
+          "status": 200
+        },
+        {
+          "path": "/daily/",
+          "status": 200
+        },
+        {
+          "path": "/progress/",
+          "status": 200
+        },
+        {
+          "path": "/sitemap-index.xml",
+          "status": 200
+        }
+      ],
+      "page_errors": []
+    },
+    "visual_review": {
+      "desktop": [
+        "cover",
+        "dense comparison table",
+        "commons diagram",
+        "bibliography and final page"
+      ],
+      "mobile": [
+        "top",
+        "dense table",
+        "commons text equivalent",
+        "final page"
+      ],
+      "pdf": [
+        "cover",
+        "contents pages",
+        "executive summary",
+        "dense tables",
+        "commons mechanism",
+        "source pages"
+      ],
+      "corrections": [
+        "contents row spacing fixed to keep all entries above footer",
+        "skip link clipped when unfocused",
+        "desktop text column limited for reading"
+      ],
+      "status": "reviewed"
+    },
+    "reproducible_export": "Maintained export script executed: 63 pages, 83 outline entries; section/page matching passed."
+  },
+  "artifacts": [
+    {
+      "path": "public/research/agent-evolution/report/index.html",
+      "bytes": 248545,
+      "sha256": "ed9d691127b0c2e43aa37a61b74e0ff68445637698c156a29a485548a0e7016c"
+    },
+    {
+      "path": "public/research/agent-evolution/agent-evolution-202611.pdf",
+      "bytes": 2533307,
+      "sha256": "aab149679cd5bb865c3c3ec3e0c6e9dfd399f4cffe468ce620a9b07ee2276d2b"
+    },
+    {
+      "path": "public/research/agent-evolution/cover.svg",
+      "bytes": 1867,
+      "sha256": "7ae14d89cf10b0be17e47dfe5be323909ae26e07d32ef9793bdbf444f92f3dca"
+    }
+  ]
+}

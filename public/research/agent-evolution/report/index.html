@@ -1,0 +1,856 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="五种智能体形态的出发点、目标、机制比较与未来影响，以及 AbleWork 当前应用的完整长篇研究。"><title>智能体的演进｜2026 年 11 月研究专刊 · Hanlin Li</title><style>:root{--ink:#20352e;--paper:#faf7ef;--muted:#667066;--accent:#b95129;--line:#d8d8cb;--violet:#75609b}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#e9e8df;color:var(--ink);font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}a{color:var(--accent);text-underline-offset:3px}a:hover{color:#753a26}a:focus-visible{outline:3px solid var(--violet);outline-offset:4px}main{margin-left:250px;padding:30px 38px 60px;max-width:1240px}.reader-nav{position:fixed;inset:0 auto 0 0;width:250px;padding:36px 24px;background:#20352e;color:#f4f0e7;overflow:auto}.reader-nav a{color:inherit;text-decoration:none}.brand{display:block;font-weight:700;font-size:21px;letter-spacing:.03em}.brand span{display:block;font-size:12px;font-weight:400;color:#c2cdbf;margin-top:8px;letter-spacing:.2em}.reader-nav ol{list-style:none;padding:0;margin:32px 0 25px}.reader-nav li{margin:0}.reader-nav li a{display:flex;gap:13px;padding:11px 0;border-bottom:1px solid #405247;font-size:13px;line-height:1.6}.reader-nav li span{font-size:11px;color:#edb495;font-variant-numeric:tabular-nums;min-width:17px}.reader-actions{display:grid;gap:12px;font-size:12px;border-top:1px solid #657266;padding-top:20px}.nav-note{font-size:11px;line-height:1.9;color:#c2cdbf;margin-top:25px}.skip-link{position:fixed;top:-100px;left:20px;z-index:10;background:white;padding:15px}.skip-link:focus{top:10px}
+.cover{background:#20352e;color:#f4f0e7;padding:34px 42px;min-height:950px;display:flex;flex-direction:column;position:relative;overflow:hidden}.cover-top,.cover-bottom{display:flex;justify-content:space-between;gap:16px;font-size:11px;letter-spacing:.1em;line-height:1.8}.cover-top{border-bottom:1px solid #526457;padding-bottom:18px}.cover-top a{color:inherit;text-decoration:none}.cover-main{padding-top:65px;flex:1}.eyebrow{font-size:12px;color:#eeb18f;letter-spacing:.18em}.cover h1{font-family:"Noto Serif CJK SC","Songti SC",serif;font-size:clamp(62px,6vw,92px);line-height:1.15;font-weight:600;margin:25px 0 28px;letter-spacing:.08em}.cover h1 em{font-style:normal;color:#f0b28e}.cover-sub{font-size:20px;line-height:1.9;color:#d9e1d4;margin-bottom:24px}.cover-art{width:100%;height:auto;display:block;margin:25px 0}.cover-thesis{font-size:15px;line-height:2;color:#ede9de;border-left:2px solid #eeb18f;padding-left:18px}.cover-meta{display:flex;flex-wrap:wrap;gap:12px 22px;font-size:11px;color:#c2cdbf;margin:30px 0}.cover-bottom{border-top:1px solid #526457;padding-top:18px;letter-spacing:0;color:#c2cdbf}
+.folio{background:var(--paper);margin:28px 0 0;padding:28px 42px 24px;box-shadow:0 2px 12px #20352e06;scroll-margin-top:24px}.folio-top,.folio-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:10px;line-height:1.5;letter-spacing:.06em;color:var(--muted)}.folio-top{padding-bottom:15px;border-bottom:1px solid var(--line)}.folio-top span:first-child{color:var(--accent)}.folio-content{padding:28px 0 24px}.section-number{font-size:13px;letter-spacing:.16em;color:var(--accent);font-variant-numeric:tabular-nums;margin-bottom:14px}.folio h2{font-family:"Noto Serif CJK SC","Songti SC",serif;font-size:28px;line-height:1.5;font-weight:600;letter-spacing:.01em;margin:0 0 28px;text-wrap:pretty}.folio p{font-size:16px;line-height:1.95;text-align:justify;margin:0 0 19px;overflow-wrap:break-word}.folio strong{font-weight:700;color:#233e32}.folio-foot{border-top:1px solid var(--line);padding-top:14px}.folio-foot a{font-size:10px;color:var(--muted)}.cite{font-size:10px;white-space:nowrap;vertical-align:super;text-decoration:none;margin-left:4px}.table-scroll{overflow-x:auto;margin:23px 0 26px}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.8}thead{background:#e8ece2;text-align:left}th,td{border-bottom:1px solid #d2d7ca;padding:11px 10px;vertical-align:top;min-width:90px}th{font-weight:600;color:#20352e}tbody tr:nth-child(even){background:#f0f0e7}
+figure{margin:23px 0 26px;padding:20px 20px 16px;background:#f1eee5;border-top:2px solid #ab5937;break-inside:avoid}.figure-kicker{color:var(--accent);font-size:9px;letter-spacing:.12em;margin-bottom:8px}figure h3{font-size:16px;font-weight:600;margin:0 0 10px;line-height:1.6}figure svg{display:block;width:100%;height:auto;font-family:"Noto Sans CJK SC","PingFang SC",sans-serif}figcaption{font-size:11px;line-height:1.8;color:#566455;border-top:1px solid #d8d9cd;padding-top:9px;margin-top:4px}.figure-mobile{display:none}.bibliography{list-style:none;padding:0;margin:18px 0}.bibliography li{display:flex;gap:12px;margin:0;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.6;break-inside:avoid}.bibliography small{display:block;font-size:10px;color:var(--muted);margin-top:2px}.source-id{min-width:24px;color:var(--accent);font-size:10px;padding-top:3px}.screen-end{padding:35px 10px;color:var(--muted);font-size:12px;line-height:1.8}
+@media(min-width:1600px){main{margin-right:auto;margin-left:calc(250px + (100vw - 1500px)/2)}}
+@media(max-width:1100px){.reader-nav{width:215px;padding:28px 20px}main{margin-left:215px;padding:20px}.cover,.folio{padding-left:30px;padding-right:30px}.cover-sub{font-size:18px}}
+@media(max-width:800px){html{scroll-padding-top:15px}.reader-nav{position:static;width:auto;padding:24px}.reader-nav nav ol{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;margin:20px 0}.brand{font-size:20px}.brand span{display:inline;margin-left:15px}.reader-actions{display:flex;flex-wrap:wrap;gap:18px;padding-top:16px}.nav-note{display:none}main{margin:0;padding:12px}.cover{min-height:auto;padding:25px}.cover-main{padding-top:35px}.cover h1{font-size:62px}.cover-sub{font-size:17px}.cover-top,.cover-bottom{font-size:9px}.cover-thesis{font-size:13px}.cover-thesis br{display:none}.cover-art{margin:18px 0}.cover-meta{gap:8px 15px}.folio{padding:22px 24px;margin-top:15px}.folio-content{padding-top:22px}.folio h2{font-size:25px;margin-bottom:22px}.folio p{font-size:16px;line-height:1.95;text-align:left}.folio-top span:last-child{display:none}.folio-foot{font-size:9px}}
+@media(max-width:600px){figure{padding:16px}figure svg{display:none}.figure-mobile{display:block;padding-left:25px;margin:15px 0;font-size:14px;line-height:1.7}.figure-mobile li{padding:7px 0;border-bottom:1px solid #d8d9cd}.figure-mobile li:last-child{border:0}.cover-art{display:none}.cover-main{padding-bottom:12px}.cover-meta{display:grid}.cover h1{font-size:60px}.cover-sub br{display:none}.cover-thesis{margin-top:28px}.cover-bottom{display:block}.cover-bottom span{display:block;margin-top:4px}.reader-nav li a{font-size:12px}.folio h2{font-size:23px}.folio{padding-left:20px;padding-right:20px}.references .bibliography li{font-size:12px}.table-scroll{margin-left:-5px;margin-right:-5px}table{font-size:12px;min-width:490px}.references .folio p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@page{size:A4;margin:0}
+@media print{html{scroll-behavior:auto}body{background:white;font-family:"Noto Sans CJK SC",sans-serif}.reader-nav,.skip-link,.screen-end{display:none!important}main{margin:0;padding:0;max-width:none}.cover,.folio{width:210mm;height:297mm;min-height:0;margin:0;padding:16mm 20mm 13mm;box-shadow:none;break-after:page;position:relative}.cover{print-color-adjust:exact;-webkit-print-color-adjust:exact}.cover-main{padding-top:19mm}.cover h1{font-size:70pt;margin:9mm 0}.cover-sub{font-size:16pt;line-height:1.8}.cover-art{display:block;margin:10mm 0;width:100%;height:auto}.cover-thesis{font-size:11pt;line-height:1.9}.cover-thesis br{display:block}.cover-meta{font-size:8pt;margin:9mm 0;display:flex}.cover-top,.cover-bottom{font-size:8pt;display:flex}.cover-bottom{position:absolute;left:20mm;right:20mm;bottom:15mm}.folio{display:flex;flex-direction:column;background:#fffef9;print-color-adjust:exact;-webkit-print-color-adjust:exact}.folio-top{font-size:7pt;padding-bottom:3mm;flex:none}.folio-top span:last-child{display:block}.folio-content{padding:7mm 0 5mm;flex:1;min-height:0}.section-number{font-size:9pt;margin-bottom:3mm}.folio h2{font-size:20pt;line-height:1.45;margin:0 0 6mm}.folio p{font-size:10.5pt;line-height:1.85;margin:0 0 4mm;text-align:justify;orphans:2;widows:2}.folio-foot{font-size:7pt;padding-top:3mm;flex:none}.folio-foot a{display:none}.cite{font-size:6.5pt}.table-scroll{overflow:visible;margin:5mm 0;break-inside:avoid}table{font-size:8.5pt;line-height:1.65;min-width:0}th,td{padding:2.5mm 2mm;min-width:0}figure{padding:3.5mm 4mm 3mm;margin:5mm 0;break-inside:avoid}.figure-kicker{font-size:6.5pt;margin-bottom:1.5mm}figure h3{font-size:10.5pt;margin-bottom:2mm}figure svg{display:block;width:100%;height:auto}.figure-mobile{display:none}figcaption{font-size:7.5pt;line-height:1.7;padding-top:2mm}.bibliography{margin:3mm 0}.bibliography li{font-size:8pt;line-height:1.5;padding:2mm 0;gap:3mm}.bibliography small{font-size:7pt}.source-id{font-size:7pt;min-width:6mm}.references .folio-content{padding-top:5mm}.references h2{font-size:19pt;margin-bottom:4mm}.references p{font-size:9.5pt;line-height:1.7;margin-bottom:3mm}.references .bibliography li{font-size:8pt}a{color:#6c3c27;text-decoration:none}.folio:last-of-type{break-after:auto}}
+/* Detailed contents remain native and usable without JavaScript. */
+.skip-link{top:0;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0}.skip-link:focus{clip-path:none;width:auto;height:auto;overflow:visible;padding:15px;top:10px}
+.print-contents{display:none}.full-contents{background:var(--paper);padding:22px 30px;margin-top:20px;font-size:14px}.full-contents summary{cursor:pointer;color:var(--accent);font-weight:600}.full-contents ol{list-style:none;padding:0;columns:2;column-gap:30px;margin:25px 0 0}.full-contents li{break-inside:avoid}.full-contents li a{display:flex;gap:10px;text-decoration:none;font-size:12px;line-height:1.7;padding:8px 0;border-bottom:1px solid var(--line)}.full-contents .toc-page{display:none}.toc-number{color:var(--muted);min-width:19px}
+@media(max-width:600px){.full-contents{padding:20px}.full-contents ol{columns:1}}
+@media print{.full-contents{display:none}.folio p{font-size:11.5pt;line-height:1.8}.references p{font-size:9.5pt;line-height:1.7}.print-contents{display:block;width:210mm;height:297mm;padding:16mm 20mm 13mm;break-after:page;background:#fffef9;position:relative}.print-contents header{font-size:7pt;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3mm}.print-contents h2{font-size:22pt;margin:8mm 0 3mm}.print-contents h2 small{font-size:10pt;font-weight:400;margin-left:8mm}.print-contents p{font-size:9pt;color:var(--muted);margin-bottom:5mm}.print-contents ol{list-style:none;padding:0;margin:0}.print-contents li a{display:flex;align-items:baseline;gap:4mm;font-size:9pt;line-height:1.6;padding:1.6mm 0;border-bottom:1px solid var(--line);color:var(--ink)}.print-contents .toc-page{margin-left:auto;color:var(--accent);font-size:8pt}.print-contents footer{position:absolute;bottom:13mm;left:20mm;right:20mm;border-top:1px solid var(--line);padding-top:3mm;font-size:7pt;color:var(--muted);display:flex;justify-content:space-between}}
+@media screen and (min-width:801px){.folio-content{max-width:720px;margin:0 auto}.folio p{font-size:17px}}
+@media print{.print-contents li a{line-height:1.35;padding:1.05mm 0}}
+</style></head><body><a class="skip-link" href="#p01">跳到正文</a><aside class="reader-nav" id="contents"><a class="brand" href="#top">智能体的演进<span>2026 / 11</span></a><nav aria-label="报告目录"><ol><li><a href="#p01"><span>01</span>阅读起点</a></li><li><a href="#p06"><span>06</span>Muse · 个人目标</a></li><li><a href="#p11"><span>11</span>Grok Bot · 角色与流程</a></li><li><a href="#p16"><span>16</span>Claude Tag · 团队讨论</a></li><li><a href="#p21"><span>21</span>Super-agent · 持续任务</a></li><li><a href="#p26"><span>26</span>横向比较</a></li><li><a href="#p36"><span>36</span>AbleWork · 当前应用</a></li><li><a href="#p49"><span>49</span>场景与未来</a></li><li><a href="#p59"><span>59</span>来源与口径</a></li></ol></nav><div class="reader-actions"><a href="https://lihanlin.com/research/agent-evolution/agent-evolution-202611.pdf" download>下载 PDF ↗</a><a href="https://lihanlin.com/research/agent-evolution/">研究主页 ↗</a><a href="#top">回到封面 ↑</a></div><p class="nav-note">官方说明 · 作者运行核查<br>分析与情境推演分别标记</p></aside><main><section class="cover" id="top"><div class="cover-top"><a href="https://lihanlin.com/">HANLIN LI / RESEARCH</a><span>2026 · NOVEMBER</span></div><div class="cover-main"><p class="eyebrow">AGENT EVOLUTION · 研究专刊</p><h1>智能体的<br><em>演进</em></h1><p class="cover-sub">从个人代理、数字角色与团队协作，<br>到持续任务和可复用的研究知识。</p><svg class="cover-art" viewBox="0 0 700 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="个人、角色、团队、任务和知识五条路径围绕持续责任相互连接，表示并存与结合，不表示排名"><g fill="none" stroke-width="1.3"><path d="M65 65 C180 65 210 180 350 115 S530 40 635 65" stroke="#f2b28f"/><path d="M65 180 C190 180 220 65 350 115 S520 220 635 180" stroke="#a5bca6"/><path d="M350 20 V215" stroke="#b1a6d1"/><ellipse cx="350" cy="115" rx="194" ry="82" stroke="#67786e" stroke-dasharray="5 7"/></g><g fill="#f4f0e7" font-family="sans-serif" font-size="16"><circle cx="65" cy="65" r="8" fill="#f2b28f"/><text x="86" y="57">个人 / Muse</text><circle cx="635" cy="65" r="8" fill="#b1a6d1"/><text x="610" y="48" text-anchor="end">角色 / Grok Bot</text><circle cx="65" cy="180" r="8" fill="#a5bca6"/><text x="86" y="207">团队 / Claude Tag</text><circle cx="635" cy="180" r="8" fill="#f2b28f"/><text x="610" y="208" text-anchor="end">任务 / Super-agent</text><circle cx="350" cy="20" r="6" fill="#b1a6d1"/><text x="366" y="30">知识 / AbleWork</text><rect x="281" y="89" width="138" height="52" rx="26" fill="#f4f0e7"/><text x="350" y="121" text-anchor="middle" fill="#20352e" font-size="19" font-weight="600">持续责任</text></g></svg><p class="cover-thesis">当智能体开始持续工作，差异不只在于能做多少事，<br>还在于责任怎样接续、边界怎样保持、成果怎样留下。</p><div class="cover-meta"><span>作者 / Hanlin Li</span><span>资料截至 / 2026.11.01</span><span>编成 / 2026.11.02</span></div></div><div class="cover-bottom"><span>面向 Agent 产品负责人、技术负责人和架构师</span><span>完整报告 · 含机制示意与来源</span></div></section><details class="full-contents"><summary>展开完整目录 · 60 节正文与来源</summary><ol><li><a href="#p01"><span class="toc-number">01</span><span>从一次回答，到一份持续责任</span><span class="toc-page">4</span></a></li><li><a href="#p02"><span class="toc-number">02</span><span>这份材料写给谁，应该怎样使用</span><span class="toc-page">5</span></a></li><li><a href="#p03"><span class="toc-number">03</span><span>先把容易混淆的词说清楚</span><span class="toc-page">6</span></a></li><li><a href="#p04"><span class="toc-number">04</span><span>五种出发点，五种工作中心</span><span class="toc-page">7</span></a></li><li><a href="#p05"><span class="toc-number">05</span><span>证据分层：产品承诺、运行事实与作者推断</span><span class="toc-page">8</span></a></li><li><a href="#p06"><span class="toc-number">06</span><span>Muse：从一个人的生活连续性出发</span><span class="toc-page">9</span></a></li><li><a href="#p07"><span class="toc-number">07</span><span>Muse 的委托链：目标、计划、行动、回看</span><span class="toc-page">10</span></a></li><li><a href="#p08"><span class="toc-number">08</span><span>Muse 的信任基础：记住偏好，也允许纠正</span><span class="toc-page">11</span></a></li><li><a href="#p09"><span class="toc-number">09</span><span>Muse 的权限：执行能力之外需要独立裁定</span><span class="toc-page">12</span></a></li><li><a href="#p10"><span class="toc-number">10</span><span>Muse 的目标与代价：减少生活管理负担</span><span class="toc-page">13</span></a></li><li><a href="#p11"><span class="toc-number">11</span><span>Grok Bot：把反复的工作交给长期角色</span><span class="toc-page">14</span></a></li><li><a href="#p12"><span class="toc-number">12</span><span>共享电脑：协作方便，也改变边界假设</span><span class="toc-page">15</span></a></li><li><a href="#p13"><span class="toc-number">13</span><span>从一次操作，到 Skill 与 Routine</span><span class="toc-page">16</span></a></li><li><a href="#p14"><span class="toc-number">14</span><span>多 Bot 协作：谁交接，谁承担完成责任</span><span class="toc-page">17</span></a></li><li><a href="#p15"><span class="toc-number">15</span><span>Grok Bot 的目标与代价：可委托的重复工作</span><span class="toc-page">18</span></a></li><li><a href="#p16"><span class="toc-number">16</span><span>Claude Tag：工作已经发生在团队讨论里</span><span class="toc-page">19</span></a></li><li><a href="#p17"><span class="toc-number">17</span><span>原线程交付，让异步工作仍然可理解</span><span class="toc-page">20</span></a></li><li><a href="#p18"><span class="toc-number">18</span><span>团队记忆：共享上下文仍需要范围</span><span class="toc-page">21</span></a></li><li><a href="#p19"><span class="toc-number">19</span><span>Agent 身份：谁的工具，谁的行动</span><span class="toc-page">22</span></a></li><li><a href="#p20"><span class="toc-number">20</span><span>Claude Tag 的目标与代价：团队少搬运一次上下文</span><span class="toc-page">23</span></a></li><li><a href="#p21"><span class="toc-number">21</span><span>Super-agent：从事件不断到来的工程工作出发</span><span class="toc-page">24</span></a></li><li><a href="#p22"><span class="toc-number">22</span><span>从事件到任务：看见变化，不等于可以行动</span><span class="toc-page">25</span></a></li><li><a href="#p23"><span class="toc-number">23</span><span>等待、失败与恢复：让人知道为什么停在这里</span><span class="toc-page">26</span></a></li><li><a href="#p24"><span class="toc-number">24</span><span>低打扰与执行边界：原型的启发也有适用范围</span><span class="toc-page">27</span></a></li><li><a href="#p25"><span class="toc-number">25</span><span>Super-agent 的目标与代价：减少人维持任务的工作</span><span class="toc-page">28</span></a></li><li><a href="#p26"><span class="toc-number">26</span><span>横向比较一：谁是工作的中心</span><span class="toc-page">29</span></a></li><li><a href="#p27"><span class="toc-number">27</span><span>横向比较二：触发、准备、通知、行动</span><span class="toc-page">30</span></a></li><li><a href="#p28"><span class="toc-number">28</span><span>横向比较三：持续的是任务，还是机器</span><span class="toc-page">31</span></a></li><li><a href="#p29"><span class="toc-number">29</span><span>横向比较四：记忆、流程与知识分别更新</span><span class="toc-page">32</span></a></li><li><a href="#p30"><span class="toc-number">30</span><span>横向比较五：目录、工单与向量检索可以共存</span><span class="toc-page">33</span></a></li><li><a href="#p31"><span class="toc-number">31</span><span>横向比较六：权限沿着什么传递</span><span class="toc-page">34</span></a></li><li><a href="#p32"><span class="toc-number">32</span><span>横向比较七：结果究竟留在哪里</span><span class="toc-page">35</span></a></li><li><a href="#p33"><span class="toc-number">33</span><span>横向比较八：成本与注意力要一起计算</span><span class="toc-page">36</span></a></li><li><a href="#p34"><span class="toc-number">34</span><span>横向比较九：质量应该在哪些地方被检查</span><span class="toc-page">37</span></a></li><li><a href="#p35"><span class="toc-number">35</span><span>五种形态怎样组合，而不让责任丢失</span><span class="toc-page">38</span></a></li><li><a href="#p36"><span class="toc-number">36</span><span>AbleWork：研究工作的知识托管与边界治理</span><span class="toc-page">39</span></a></li><li><a href="#p37"><span class="toc-number">37</span><span>主路径：从研究成果，到后续问题的输入</span><span class="toc-page">40</span></a></li><li><a href="#p38"><span class="toc-number">38</span><span>运行规模：说明有人使用，也保留统计边界</span><span class="toc-page">41</span></a></li><li><a href="#p39"><span class="toc-number">39</span><span>脱敏案例：一人的新版研究进入另一人的问题</span><span class="toc-page">42</span></a></li><li><a href="#p40"><span class="toc-number">40</span><span>历史完整编译：实际完成了什么</span><span class="toc-page">43</span></a></li><li><a href="#p41"><span class="toc-number">41</span><span>为什么日常采用梗概，完整编译另行选择</span><span class="toc-page">44</span></a></li><li><a href="#p42"><span class="toc-number">42</span><span>AutoWiki 与 AbleWork：语义编译和宿主责任</span><span class="toc-page">45</span></a></li><li><a href="#p43"><span class="toc-number">43</span><span>主动准备：明确关注以后，后台继续检查</span><span class="toc-page">46</span></a></li><li><a href="#p44"><span class="toc-number">44</span><span>只读公共面与候选池：分享不等于直接改写</span><span class="toc-page">47</span></a></li><li><a href="#p45"><span class="toc-number">45</span><span>报告、社区知识与 commons 不是同一块公共层</span><span class="toc-page">48</span></a></li><li><a href="#p46"><span class="toc-number">46</span><span>失败与反馈：把运行问题变成产品改动</span><span class="toc-page">49</span></a></li><li><a href="#p47"><span class="toc-number">47</span><span>当前完整度：已运行、历史验证、待补证据</span><span class="toc-page">50</span></a></li><li><a href="#p48"><span class="toc-number">48</span><span>AbleWork 的结合路线：先增强已有工作</span><span class="toc-page">51</span></a></li><li><a href="#p49"><span class="toc-number">49</span><span>情境推演：一份持续研究委托怎样分工</span><span class="toc-page">52</span></a></li><li><a href="#p50"><span class="toc-number">50</span><span>情境推演：多人接力修复一个问题</span><span class="toc-page">53</span></a></li><li><a href="#p51"><span class="toc-number">51</span><span>情境推演：来源更新或撤回之后怎么办</span><span class="toc-page">54</span></a></li><li><a href="#p52"><span class="toc-number">52</span><span>情境推演：个人发现怎样成为公共知识</span><span class="toc-page">55</span></a></li><li><a href="#p53"><span class="toc-number">53</span><span>未来判断一：入口会更自然，责任对象会更明确</span><span class="toc-page">56</span></a></li><li><a href="#p54"><span class="toc-number">54</span><span>未来判断二：Agent 身份会成为应用设计的一部分</span><span class="toc-page">57</span></a></li><li><a href="#p55"><span class="toc-number">55</span><span>未来判断三：可携带成果比无限对话更耐久</span><span class="toc-page">58</span></a></li><li><a href="#p56"><span class="toc-number">56</span><span>未来判断四：多个形态会并存，运营能力成为分水岭</span><span class="toc-page">59</span></a></li><li><a href="#p57"><span class="toc-number">57</span><span>怎样做一轮公平、可复核的比较</span><span class="toc-page">60</span></a></li><li><a href="#p58"><span class="toc-number">58</span><span>建设路线：从一个可靠案例，走向持续职责</span><span class="toc-page">61</span></a></li><li><a href="#p59"><span class="toc-number">59</span><span>公开来源：外部产品与研究原型</span><span class="toc-page">62</span></a></li><li><a href="#p60"><span class="toc-number">60</span><span>AbleWork 依据、统计口径与研究限制</span><span class="toc-page">63</span></a></li></ol></details><section class="print-contents"><header>智能体的演进 / 2026.11</header><h2>目录 <small>1 / 2</small></h2><p>左侧为正文节号，右侧为 PDF 页码；电子版可点击标题跳转。</p><ol><li><a href="#p01"><span class="toc-number">01</span><span>从一次回答，到一份持续责任</span><span class="toc-page">4</span></a></li><li><a href="#p02"><span class="toc-number">02</span><span>这份材料写给谁，应该怎样使用</span><span class="toc-page">5</span></a></li><li><a href="#p03"><span class="toc-number">03</span><span>先把容易混淆的词说清楚</span><span class="toc-page">6</span></a></li><li><a href="#p04"><span class="toc-number">04</span><span>五种出发点，五种工作中心</span><span class="toc-page">7</span></a></li><li><a href="#p05"><span class="toc-number">05</span><span>证据分层：产品承诺、运行事实与作者推断</span><span class="toc-page">8</span></a></li><li><a href="#p06"><span class="toc-number">06</span><span>Muse：从一个人的生活连续性出发</span><span class="toc-page">9</span></a></li><li><a href="#p07"><span class="toc-number">07</span><span>Muse 的委托链：目标、计划、行动、回看</span><span class="toc-page">10</span></a></li><li><a href="#p08"><span class="toc-number">08</span><span>Muse 的信任基础：记住偏好，也允许纠正</span><span class="toc-page">11</span></a></li><li><a href="#p09"><span class="toc-number">09</span><span>Muse 的权限：执行能力之外需要独立裁定</span><span class="toc-page">12</span></a></li><li><a href="#p10"><span class="toc-number">10</span><span>Muse 的目标与代价：减少生活管理负担</span><span class="toc-page">13</span></a></li><li><a href="#p11"><span class="toc-number">11</span><span>Grok Bot：把反复的工作交给长期角色</span><span class="toc-page">14</span></a></li><li><a href="#p12"><span class="toc-number">12</span><span>共享电脑：协作方便，也改变边界假设</span><span class="toc-page">15</span></a></li><li><a href="#p13"><span class="toc-number">13</span><span>从一次操作，到 Skill 与 Routine</span><span class="toc-page">16</span></a></li><li><a href="#p14"><span class="toc-number">14</span><span>多 Bot 协作：谁交接，谁承担完成责任</span><span class="toc-page">17</span></a></li><li><a href="#p15"><span class="toc-number">15</span><span>Grok Bot 的目标与代价：可委托的重复工作</span><span class="toc-page">18</span></a></li><li><a href="#p16"><span class="toc-number">16</span><span>Claude Tag：工作已经发生在团队讨论里</span><span class="toc-page">19</span></a></li><li><a href="#p17"><span class="toc-number">17</span><span>原线程交付，让异步工作仍然可理解</span><span class="toc-page">20</span></a></li><li><a href="#p18"><span class="toc-number">18</span><span>团队记忆：共享上下文仍需要范围</span><span class="toc-page">21</span></a></li><li><a href="#p19"><span class="toc-number">19</span><span>Agent 身份：谁的工具，谁的行动</span><span class="toc-page">22</span></a></li><li><a href="#p20"><span class="toc-number">20</span><span>Claude Tag 的目标与代价：团队少搬运一次上下文</span><span class="toc-page">23</span></a></li><li><a href="#p21"><span class="toc-number">21</span><span>Super-agent：从事件不断到来的工程工作出发</span><span class="toc-page">24</span></a></li><li><a href="#p22"><span class="toc-number">22</span><span>从事件到任务：看见变化，不等于可以行动</span><span class="toc-page">25</span></a></li><li><a href="#p23"><span class="toc-number">23</span><span>等待、失败与恢复：让人知道为什么停在这里</span><span class="toc-page">26</span></a></li><li><a href="#p24"><span class="toc-number">24</span><span>低打扰与执行边界：原型的启发也有适用范围</span><span class="toc-page">27</span></a></li><li><a href="#p25"><span class="toc-number">25</span><span>Super-agent 的目标与代价：减少人维持任务的工作</span><span class="toc-page">28</span></a></li><li><a href="#p26"><span class="toc-number">26</span><span>横向比较一：谁是工作的中心</span><span class="toc-page">29</span></a></li><li><a href="#p27"><span class="toc-number">27</span><span>横向比较二：触发、准备、通知、行动</span><span class="toc-page">30</span></a></li><li><a href="#p28"><span class="toc-number">28</span><span>横向比较三：持续的是任务，还是机器</span><span class="toc-page">31</span></a></li><li><a href="#p29"><span class="toc-number">29</span><span>横向比较四：记忆、流程与知识分别更新</span><span class="toc-page">32</span></a></li><li><a href="#p30"><span class="toc-number">30</span><span>横向比较五：目录、工单与向量检索可以共存</span><span class="toc-page">33</span></a></li></ol><footer>Hanlin Li · 研究专刊 <span>2</span></footer></section><section class="print-contents"><header>智能体的演进 / 2026.11</header><h2>目录 <small>2 / 2</small></h2><p>左侧为正文节号，右侧为 PDF 页码；电子版可点击标题跳转。</p><ol><li><a href="#p31"><span class="toc-number">31</span><span>横向比较六：权限沿着什么传递</span><span class="toc-page">34</span></a></li><li><a href="#p32"><span class="toc-number">32</span><span>横向比较七：结果究竟留在哪里</span><span class="toc-page">35</span></a></li><li><a href="#p33"><span class="toc-number">33</span><span>横向比较八：成本与注意力要一起计算</span><span class="toc-page">36</span></a></li><li><a href="#p34"><span class="toc-number">34</span><span>横向比较九：质量应该在哪些地方被检查</span><span class="toc-page">37</span></a></li><li><a href="#p35"><span class="toc-number">35</span><span>五种形态怎样组合，而不让责任丢失</span><span class="toc-page">38</span></a></li><li><a href="#p36"><span class="toc-number">36</span><span>AbleWork：研究工作的知识托管与边界治理</span><span class="toc-page">39</span></a></li><li><a href="#p37"><span class="toc-number">37</span><span>主路径：从研究成果，到后续问题的输入</span><span class="toc-page">40</span></a></li><li><a href="#p38"><span class="toc-number">38</span><span>运行规模：说明有人使用，也保留统计边界</span><span class="toc-page">41</span></a></li><li><a href="#p39"><span class="toc-number">39</span><span>脱敏案例：一人的新版研究进入另一人的问题</span><span class="toc-page">42</span></a></li><li><a href="#p40"><span class="toc-number">40</span><span>历史完整编译：实际完成了什么</span><span class="toc-page">43</span></a></li><li><a href="#p41"><span class="toc-number">41</span><span>为什么日常采用梗概，完整编译另行选择</span><span class="toc-page">44</span></a></li><li><a href="#p42"><span class="toc-number">42</span><span>AutoWiki 与 AbleWork：语义编译和宿主责任</span><span class="toc-page">45</span></a></li><li><a href="#p43"><span class="toc-number">43</span><span>主动准备：明确关注以后，后台继续检查</span><span class="toc-page">46</span></a></li><li><a href="#p44"><span class="toc-number">44</span><span>只读公共面与候选池：分享不等于直接改写</span><span class="toc-page">47</span></a></li><li><a href="#p45"><span class="toc-number">45</span><span>报告、社区知识与 commons 不是同一块公共层</span><span class="toc-page">48</span></a></li><li><a href="#p46"><span class="toc-number">46</span><span>失败与反馈：把运行问题变成产品改动</span><span class="toc-page">49</span></a></li><li><a href="#p47"><span class="toc-number">47</span><span>当前完整度：已运行、历史验证、待补证据</span><span class="toc-page">50</span></a></li><li><a href="#p48"><span class="toc-number">48</span><span>AbleWork 的结合路线：先增强已有工作</span><span class="toc-page">51</span></a></li><li><a href="#p49"><span class="toc-number">49</span><span>情境推演：一份持续研究委托怎样分工</span><span class="toc-page">52</span></a></li><li><a href="#p50"><span class="toc-number">50</span><span>情境推演：多人接力修复一个问题</span><span class="toc-page">53</span></a></li><li><a href="#p51"><span class="toc-number">51</span><span>情境推演：来源更新或撤回之后怎么办</span><span class="toc-page">54</span></a></li><li><a href="#p52"><span class="toc-number">52</span><span>情境推演：个人发现怎样成为公共知识</span><span class="toc-page">55</span></a></li><li><a href="#p53"><span class="toc-number">53</span><span>未来判断一：入口会更自然，责任对象会更明确</span><span class="toc-page">56</span></a></li><li><a href="#p54"><span class="toc-number">54</span><span>未来判断二：Agent 身份会成为应用设计的一部分</span><span class="toc-page">57</span></a></li><li><a href="#p55"><span class="toc-number">55</span><span>未来判断三：可携带成果比无限对话更耐久</span><span class="toc-page">58</span></a></li><li><a href="#p56"><span class="toc-number">56</span><span>未来判断四：多个形态会并存，运营能力成为分水岭</span><span class="toc-page">59</span></a></li><li><a href="#p57"><span class="toc-number">57</span><span>怎样做一轮公平、可复核的比较</span><span class="toc-page">60</span></a></li><li><a href="#p58"><span class="toc-number">58</span><span>建设路线：从一个可靠案例，走向持续职责</span><span class="toc-page">61</span></a></li><li><a href="#p59"><span class="toc-number">59</span><span>公开来源：外部产品与研究原型</span><span class="toc-page">62</span></a></li><li><a href="#p60"><span class="toc-number">60</span><span>AbleWork 依据、统计口径与研究限制</span><span class="toc-page">63</span></a></li></ol><footer>Hanlin Li · 研究专刊 <span>3</span></footer></section><section class="folio " id="p01" aria-labelledby="title-01"><header class="folio-top"><span>阅读起点</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">01</div><h2 id="title-01">从一次回答，到一份持续责任</h2><p>智能体开始承担持续工作以后，产品的难题发生了变化。一次回答是否正确仍然重要，但用户还会追问：我离开后事情会不会继续？明天回来，它是否记得已经做过什么？同事接手时，能否看见依据？曾经允许读取的材料，现在还能不能使用？这些问题决定了智能体能够承担多大的责任。</p>
+<p>本报告比较 Muse、Grok Bot、Claude Tag、DeepSeek Super-agent 和 AbleWork。五者分别以个人目标、角色职责、团队讨论、持续任务和研究对象为主要组织中心。这是对产品出发点的归纳，不是排他分类。一种产品完全可能同时拥有其他几种能力。比较的目的，是找到不同选择解决的问题，以及它们把什么成本留给了用户和系统。</p>
+<p><strong>核心判断是：后续智能体的差异，将越来越多地体现在责任如何持续、权限如何约束、结果如何留下。</strong> 模型能力提供行动的可能；任务记录、身份、工具、交付和知识更新共同决定行动能否进入日常工作。入口越自然，背后的责任划分反而越需要明确。</p>
+<p>AbleWork 在这组比较中的价值，是提供一个研究协作场景。研究员和 Agent 产出报告，平台保留来源、版本与读权，再让后来的问题使用这些成果。它还提供就地委托和有边界的后台准备，因此不能只被描述为“个人 Agent 干完活以后的存储层”。知识托管与边界治理是其主要定位，研究工作的组织是实现这个定位所需的产品部分。</p>
+<p>对建设者而言，优先顺序应从具体责任出发：先选一类反复发生、能够验收的工作，再确定工作如何接续、在哪些地方停下来、结果由谁采用。过早追求角色数量、主动消息数量或知识页数量，容易让系统显得繁忙，却无法说明用户少承担了什么。</p>
+<p>本报告没有对五个产品做同条件性能测试。官方说明用于确认定位与机制；AbleWork 的运行汇总用于说明实际采用；跨产品的比较和未来判断属于作者分析。全文截至 2026 年 11 月 1 日，封面月份为 2026 年 11 月。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>01 / 60</span></footer></section><section class="folio " id="p02" aria-labelledby="title-02"><header class="folio-top"><span>阅读起点</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">02</div><h2 id="title-02">这份材料写给谁，应该怎样使用</h2><p>主要读者是正在决定 Agent 产品形态的产品负责人、技术负责人和架构师。报告希望帮助他们回答一项具体决策：<strong>我们准备把哪一种持续责任交给系统，为此需要建设什么，而哪些事情可以暂时不做？</strong> 对研究团队负责人，另一项问题同样重要：一人的成果怎样减少另一人重新找材料、核对版本和解释背景的工作？</p>
+<p>如果正在讨论定位，可先读五个产品的出发点，再读横向比较。讨论“我们也要做主动 Agent”时，应把主动拆开：后台检查变化、准备草稿、提出建议、公开发言、修改业务系统，分别需要不同授权。用一个形容词概括它们，会掩盖产品真正要做的选择。</p>
+<p>如果负责工程落地，可从任务状态、记忆、权限和结果交付几节进入。关键不是照搬完整架构，而是找到当前最常见的失败。例如用户反复解释旧背景，首先需要可靠的接续记录；任务中断后重复发消息，需要的是外部操作回执；资料过期仍进入回答，则需要版本与失效处理。不同故障对应不同工程动作。</p>
+<p>如果负责 AbleWork 或类似知识应用，重点看后半部的三条路径：日常梗概与检索、历史完整知识编译、个人成果进入公共候选。它们具有不同目标和证据强度。把三条路径合写成一个“已经完成的知识循环”，会让读者误判当前应用；把它们全部写成未来规划，又会抹掉已经存在的用户价值。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>阅读任务</th>
+<th>建议阅读范围</th>
+<th>带走的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>确定产品方向</td>
+<td>01—05、26—35</td>
+<td>工作中心与责任边界</td>
+</tr>
+<tr>
+<td>深读具体形态</td>
+<td>06—25</td>
+<td>出发点、机制、代价</td>
+</tr>
+<tr>
+<td>评估研究平台</td>
+<td>36—48</td>
+<td>运行证据与实际缺口</td>
+</tr>
+<tr>
+<td>制定验证方案</td>
+<td>49—58</td>
+<td>场景、指标与建设顺序</td>
+</tr>
+<tr>
+<td>核对依据</td>
+<td>59—60</td>
+<td>来源、日期与口径</td>
+</tr>
+</tbody>
+</table></div>
+<p>报告中的流程图都属于机制示意，具体实施以相应产品资料为准。案例标记为“情境推演”时，表示用一个假设任务检查设计，不能当作产品实测记录。读者可以把情境中的对象换成自己的工作，保留授权、等待和验收问题，形成内部讨论材料。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>02 / 60</span></footer></section><section class="folio " id="p03" aria-labelledby="title-03"><header class="folio-top"><span>阅读起点</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">03</div><h2 id="title-03">先把容易混淆的词说清楚</h2><p>“智能体”在本文指能够围绕目标选择行动、调用工具并根据结果继续工作的系统。聊天界面只是入口之一。一个系统是否持续工作，也不能只看进程是否常驻：真正需要持续的是目标、约束、任务状态和结果之间的关系。模型可以按事件唤醒，工作记录仍然连续。</p>
+<p><strong>任务</strong>有相对明确的完成条件，例如准备一份比较表；<strong>职责</strong>反复产生任务，例如每周核对某类变化；<strong>目标</strong>允许路径调整，例如持续改善某项研究质量。三者不能混作同一种委托。目标越开放，系统越需要解释为什么选择下一步，以及什么变化会使旧授权不再适用。</p>
+<p>“记忆”也至少有几种对象。偏好记忆帮助减少重复沟通；任务记录帮助接续执行；流程知识说明如何做事；领域知识保存事实、判断及其依据。一个用户喜欢简短回答，不等于某项业务判断已经得到验证。把这些内容放进同一份长提示词，可能方便初次实现，却会让更新和纠错变得含糊。</p>
+<p>“主动”涉及发现变化、判断意义、准备结果和打断用户几个步骤。后台发现新材料，并不必然需要立即通知。系统可以先准备一张有出处的卡片，等用户回到相关对象时呈现。相反，一项即将失效的审批可能值得立即提醒。评价主动性，应看被处理的时机是否合适。</p>
+<p>“边界治理”在本文有具体含义：确认谁发起工作、允许读取什么、允许修改什么、结果对谁可见，以及权限或来源改变后如何处理。它不只是提示词里的一句“注意安全”。“知识编译”则指把源材料与已有知识比较，形成有结构、可更新、可追溯的内容；简单摘要可以是其中一种输入，不能自动代表全部过程。</p>
+<p>这些区分使比较更公平。一套工单系统可能擅长状态接续，却没有正式知识更新机制；一个知识平台可能擅长跨作者复用，却并不适合控制个人账户里的所有应用。评价应该跟着任务走，避免把不同工作中心的产品放在同一条能力分数线上。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>03 / 60</span></footer></section><section class="folio " id="p04" aria-labelledby="title-04"><header class="folio-top"><span>阅读起点</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">04</div><h2 id="title-04">五种出发点，五种工作中心</h2><p>产品形态往往由最初想解除的用户负担决定。个人事务散在多个应用中，容易产生围绕“我”的持续代理；同一类操作反复发生，容易产生长期角色和例行流程；团队已经在讨论工作，适合把 Agent 放进原讨论；工程事件连续到来，需要明确任务与执行者；研究成果跨人、跨时间使用，则需要稳定的知识对象。</p>
+<figure id="figure-1"><div class="figure-kicker">FIG. 01 / 机制示意</div><h3>五种工作中心</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="fig-title-1 fig-desc-1"><title id="fig-title-1">五种工作中心</title><desc id="fig-desc-1">Muse｜个人与目标 → Grok Bot｜角色与流程 → Claude Tag｜频道与线程 → Super-agent｜授权任务 → AbleWork｜研究与知识。五条路径并列存在；工作中心影响委托、状态和交付，不表示能力排名。</desc><defs><marker id="arrow-1" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><path d="M20 155 H700" stroke="#b95129" stroke-width="1"/><rect x="10.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="76.0" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">Muse</text><text x="76.0" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">个人与目标</text><path d="M76.0,121 L76.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-1)"/><rect x="152.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="164.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="218.0" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">Grok Bot</text><text x="218.0" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">角色与流程</text><path d="M218.0,121 L218.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-1)"/><rect x="294.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="306.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">Claude Tag</text><text x="360.0" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">频道与线程</text><path d="M360.0,121 L360.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-1)"/><rect x="436.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="448.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="502.0" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">Super-agent</text><text x="502.0" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">授权任务</text><path d="M502.0,121 L502.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-1)"/><rect x="578.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="590.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="644.0" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">AbleWork</text><text x="644.0" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">研究与知识</text><path d="M644.0,121 L644.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-1)"/><text x="360" y="185" text-anchor="middle" font-size="14" fill="#20352e">共同问题：怎样让工作接续，结果可用，边界清楚</text></svg><ol class="figure-mobile"><li>Muse · 个人与目标</li><li>Grok Bot · 角色与流程</li><li>Claude Tag · 频道与线程</li><li>Super-agent · 授权任务</li><li>AbleWork · 研究与知识</li></ol><figcaption>五条路径并列存在；工作中心影响委托、状态和交付，不表示能力排名。</figcaption></figure>
+
+<p>这张图没有高低顺序。一个人的旅行安排和团队的代码修复，不应共享同一套完成标准。旅行任务可能在预订确认后结束；代码任务可能在审查、合并和部署后才完成；研究结论甚至没有永久终点，后续来源变化会重新打开问题。工作中心决定什么信息需要长久保留。</p>
+<p>入口也会影响用户预期。给一个有名字的 Bot 发消息，容易让人期待长期理解与主动安排；在频道里 @Claude，容易期待同事能够看到过程；在报告旁委托 Able，则自然期待结果仍与那份报告、那个主题相关。界面看起来只是按钮和聊天框，其实已经向用户承诺了一种责任关系。</p>
+<p>本报告将这种关系拆成同一套问题：谁委托，围绕什么对象，怎样开始，工作在哪里运行，等待什么事件，结果交给谁，怎样在下一次工作中继续使用。比较不要求每个产品都给出同一种答案，但要求答案前后一致。</p>
+<p>对 AbleWork 最有帮助的学习方式，是借用其他形态中适合研究工作的部分：个人代理的低沟通负担，角色流程的可重复方法，频道 Agent 的原处交付，持续任务系统的等待与恢复。组合时仍需保留研究对象的来源、版本和共享范围，不能让入口体验覆盖这些约束。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>04 / 60</span></footer></section><section class="folio " id="p05" aria-labelledby="title-05"><header class="folio-top"><span>阅读起点</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">05</div><h2 id="title-05">证据分层：产品承诺、运行事实与作者推断</h2><p>一份比较报告最容易出现的问题，是把不同性质的证据写成同一种事实。官方说支持某项能力，证明的是产品公开承诺或文档描述；一段运行记录证明某次路径确实发生；长期稳定性、任务质量和节省时间，还需要另外的数据。本报告按这几个层次组织材料。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>标记</th>
+<th>表示什么</th>
+<th>不能据此推出什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>官方说明</td>
+<td>厂商或项目维护者公开描述</td>
+<td>作者已亲自测试全部功能</td>
+</tr>
+<tr>
+<td>运行汇总</td>
+<td>作者对自有项目记录的核查</td>
+<td>独立第三方审计、普遍效果</td>
+</tr>
+<tr>
+<td>作者分析</td>
+<td>根据机制推导收益与代价</td>
+<td>产品已提供相应新功能</td>
+</tr>
+<tr>
+<td>情境推演</td>
+<td>用假设案例检验设计</td>
+<td>真实客户案例或性能结果</td>
+</tr>
+<tr>
+<td>建议</td>
+<td>后续可实施和验证的方案</td>
+<td>已排期、已上线或已获采用</td>
+</tr>
+</tbody>
+</table></div>
+<p>外部产品以官方介绍、官方使用文档及公开研究代码为主。本文不使用不透明排行榜，也不把某家内部开发比例换算成普遍生产率。不同文档可能处于不同更新时点；涉及关键差异时，采用截至报告日期可读取的具体页面，并在来源页列出地址。</p>
+<p>AbleWork 部分使用公开项目介绍与作者自有核查汇总。运行材料保留两个时间口径：近期使用窗口，以及较早的一次完整编译批次。两者分别证明日常采用和历史可执行性，不能相加形成新的“月度成果”。内部用户身份、业务材料和服务地址不公开，读者据此应把相关数字视为作者披露。</p>
+<p>未来形态一章采用条件判断。例如“如果角色交接能够携带约束和回执，多角色协作才可能减少人工协调”。这种表述允许被后续结果推翻，比断言某种形态一定取代其他形态更有用。报告也列出反例：当任务短、权限简单、结果无需复用时，普通助手可能已经足够。</p>
+<p>这份材料的贡献主要是分析框架和工程取舍。它不提供五个产品在同一任务上的准确率、成本或安全优劣排名。要做采购或迁移决定，仍应使用本报告后半部的验证方法，在自己的任务、资料和权限环境中形成可比较证据。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>05 / 60</span></footer></section><section class="folio " id="p06" aria-labelledby="title-06"><header class="folio-top"><span>Muse · 个人目标</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">06</div><h2 id="title-06">Muse：从一个人的生活连续性出发</h2><p>Muse 的公开定位是个人 AI Agent。它通过应用或 WhatsApp 接收委托，在个人专属的云端环境中使用工具，继续推进任务与长期目标。手机承载日常沟通，实际执行并不等于全部发生在手机本地。用户可以决定连接哪些服务，以及授予多少访问权限。<a class="cite" href="#source-M1" aria-label="来源 M1：Meta · Introducing Muse">[M1]</a></p>
+<p>这个出发点值得单独讨论。个人工作和生活并不天然按软件划分：一封邮件可能影响日程，日程又影响出行和采购。用户记住的是“把这件事安排好”，软件却要求逐一操作。围绕个人建立持续代理，可以尝试保存任务之间的关联，让用户少做一次又一次的背景转述。</p>
+<p>个人目标也带来特殊困难。目标经常没有清晰的完成线，偏好甚至相互冲突。某人想减少出行费用，同时不愿乘坐过早航班；想规律训练，却需要照顾临时家庭安排。系统若只优化一个容易计算的指标，可能完成了表面任务，却偏离真实意图。因此持续代理需要保留约束的来历和优先顺序。</p>
+<p><strong>作者分析：Muse 最有代表性的变化，是把“理解这个人”作为跨任务的连续关系。</strong> 这种关系可以降低沟通成本，但会使用户对记忆的纠正、对行为的解释提出更高要求。一个记错的偏好，若只影响一次回复，代价有限；若持续影响多个后台任务，就会反复制造偏差。</p>
+<p>适合这种形态的任务通常跨应用、反复发生，又有个人特征。它们的价值并不一定表现为复杂推理，可能只是把几件容易遗漏的事情按时完成。评价时应记录用户还需要补充多少背景、是否经常撤销安排、哪些提醒真正促成了行动，而不能只统计 Agent 做了多少步骤。</p>
+<p>对 AbleWork 的启发，是长期关注也应围绕研究员的真实问题组织。用户关注某个主题，系统应保存关注原因与有效期限，而不只是保存关键词。这样后续材料到来时，才可能解释它与既有研究的关系。这个启发属于设计借鉴，不表示两者当前拥有相同的个人代理范围。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>06 / 60</span></footer></section><section class="folio " id="p07" aria-labelledby="title-07"><header class="folio-top"><span>Muse · 个人目标</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">07</div><h2 id="title-07">Muse 的委托链：目标、计划、行动、回看</h2><p>Muse 的设计说明把持续对话、侧边话题、目标视图和活动记录放在同一体验中，并描述了后台工作完成后判断是否值得通知的做法。它还允许产出文档、页面等可独立使用的成果。这些是官方产品设计描述，本文没有进行完整体验测试。<a class="cite" href="#source-M2" aria-label="来源 M2：Meta · How We Designed Muse">[M2]</a></p>
+<figure id="figure-2"><div class="figure-kicker">FIG. 02 / 机制示意</div><h3>个人目标如何继续推进</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-2 fig-desc-2"><title id="fig-title-2">个人目标如何继续推进</title><desc id="fig-desc-2">表达目标 → 保留约束 → 准备与执行 → 检查变化 → 回看与调整。用户的目标与约束贯穿过程；涉及重要外部后果时另行检查权限。依据 M1、M2 简化。</desc><defs><marker id="arrow-2" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">表达目标</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-2)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">保留约束</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-2)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">准备与执行</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-2)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">检查变化</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-2)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">回看与调整</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>表达目标</li><li>保留约束</li><li>准备与执行</li><li>检查变化</li><li>回看与调整</li></ol><figcaption>用户的目标与约束贯穿过程；涉及重要外部后果时另行检查权限。依据 M1、M2 简化。</figcaption></figure>
+
+<p>从产品分析看，这条链中最容易被忽略的是回看。用户中途回来，关心的往往不是执行过哪些工具，而是当前还有哪些未决事项。好的接续摘要应能够回答：目标有没有变化，哪些部分已经完成，哪些依赖外部回应，接下来需要用户决定什么。工具日志可以作为依据，不能代替面向人的状态说明。</p>
+<p>设想用户安排一场家庭聚会。邀请名单、饮食限制和日期属于约束；比较场地属于准备；发出邀请和支付订金属于外部行动。把它们写成一个长任务，并不会消除边界。相反，系统需要明确哪些准备工作可以继续，哪些行动在条件变化后应重新检查。此例是情境推演，不是 Muse 实测案例。</p>
+<p>任务之间还可能争夺资源。两个目标同时占用同一天下午，即使分别规划合理，也不能同时执行。持续代理需要一种能够暴露冲突的对象视图，而非只靠消息先后顺序。由此可以推导，未来的个人 Agent 界面会需要比聊天记录更稳定的计划、承诺和待决事项表达。</p>
+<p>这也解释了为什么“像与人聊天”只是入口优势。使用者可以自然表达，系统仍须把自然语言转成可检查的工作对象。个人代理的成熟程度，最终体现在对含糊目标和变化约束的处理，而不是聊天气泡是否像真人。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>07 / 60</span></footer></section><section class="folio " id="p08" aria-labelledby="title-08"><header class="folio-top"><span>Muse · 个人目标</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">08</div><h2 id="title-08">Muse 的信任基础：记住偏好，也允许纠正</h2><p>个人代理越有用，往往越需要持续接触敏感而零散的背景。用户今天提到的一次临时偏好，未来可能被理解为长期规则。产品因此需要让记忆能够被检查和修正。Muse 的公开说明包含可查看和编辑的记忆文件，以及让它忘记特定信息的能力。<a class="cite" href="#source-M1" aria-label="来源 M1：Meta · Introducing Muse">[M1]</a><a class="cite" href="#source-M2" aria-label="来源 M2：Meta · How We Designed Muse">[M2]</a></p>
+<p><strong>作者分析：记忆的产品价值来自少解释，记忆的产品成本来自错解释。</strong> 两者应一起衡量。假如系统记得用户偏好火车，后续建议更省心；如果某次出差必须乘飞机，旧偏好就不应阻止完成新任务。事实、偏好、临时要求、推测之间最好存在可辨认的差别。</p>
+<p>可以用四个问题检查个人记忆：这条内容由谁提出，适用范围是什么，最后确认在何时，新的指令是否覆盖了它。无须把所有记忆都变成复杂数据库，但影响重大行为的记忆，至少应该保留这些语义。否则模型每次都在长历史中重新猜测，长期一致性很难解释。</p>
+<p>记忆纠正还需要处理下游影响。用户撤销一个偏好以后，已生成但尚未执行的计划是否更新？旧文件是否继续误导另一个任务？系统不能简单回答“我忘了”，却让过时内容留在后台任务里。删除一段文本、撤销一个授权、改变一项计划，是不同操作。</p>
+<p>在研究工作中，这对应着“研究偏好”和“领域判断”的分离。某研究员喜欢先看行业供需，不意味着供需就是某家公司唯一重要的因素。平台可以用偏好安排展示顺序，但不应把偏好当作事实权重。AbleWork 若学习个人代理的记忆体验，应优先学习可纠正性，而非无条件扩大记忆范围。</p>
+<p>实际验证可以从一次可控纠正开始：先给系统一个偏好，运行若干相关任务，再明确修改它，观察新任务、旧计划和展示界面是否一致变化。这比询问“你还记得什么”更接近真实可靠性，也能暴露记忆与任务状态之间是否真正相连。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>08 / 60</span></footer></section><section class="folio " id="p09" aria-labelledby="title-09"><header class="folio-top"><span>Muse · 个人目标</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">09</div><h2 id="title-09">Muse 的权限：执行能力之外需要独立裁定</h2><p>Meta 的安全说明描述了运行环境与安全服务的隔离，以及由 Sentinel 对连接器行动和网络出口作权限判断。凭据服务与主执行环境分开；敏感行动可转成人的审批。这里引用的是其公开架构说明，不能据此断言系统不存在漏洞。<a class="cite" href="#source-M3" aria-label="来源 M3：Meta · How We Built Safety Into Muse">[M3]</a></p>
+<p>值得借鉴的是职责分离。提出行动的模型可能正在读取网页、邮件和文件，而这些输入未必可信。若同一个上下文又能修改自己的权限规则，外来内容就可能影响授权判断。把权限裁定放在执行者不能随意改写的位置，可以减少“看见一段指令就把它当成用户要求”的风险。</p>
+<p>审批本身也需要具体。用户批准“处理旅行”与批准“向某商户支付某金额”不是同一件事。一次审批应绑定对象、操作、用途和范围。否则用户以为只批准眼前一步，系统却把同一句话解释成长期权限；或者用户已经明确授权，系统仍为每次低影响操作重复打断。</p>
+<p>个人场景还需要避免审批疲劳。凡事确认，会把原本希望节省的注意力重新消耗在弹窗上。较合理的路径是让只读准备按既定范围继续，把审批集中在费用、对外承诺、删除、权限变化等后果上。具体阈值应由任务和用户控制，不能由一个抽象的“积极程度”替代。</p>
+<p>报告特意保留一个时间边界：Muse 的相关发布材料把 Confidential VM 描述为后续计划。现有专属环境、安全隔离与“服务提供者在密码学意义上无法访问”是不同保证。本文不会把计划中的保证写成已经普遍交付。<a class="cite" href="#source-M3" aria-label="来源 M3：Meta · How We Built Safety Into Muse">[M3]</a></p>
+<p>对 AbleWork 而言，对应问题不是复制个人电脑安全架构，而是让材料权限、正式知识写入和公共发布不由读取材料的 Agent 自行决定。机制可以不同，职责关系应相似：执行者准备结果，宿主依据真实身份与当前政策判断结果能去哪里。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>09 / 60</span></footer></section><section class="folio " id="p10" aria-labelledby="title-10"><header class="folio-top"><span>Muse · 个人目标</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">10</div><h2 id="title-10">Muse 的目标与代价：减少生活管理负担</h2><p>Muse 形态的目标可以概括为减少一个人协调零散事务的负担。其成败应放在长期关系中观察：用户是否更少遗漏事项，是否更少反复解释，是否愿意持续授权，以及错误发生后能否迅速恢复信任。单次任务演示很难回答这些问题。</p>
+<p>这种形态的主要代价是个性化积累与授权复杂度相互增长。接入服务越多，可安排的事情越丰富，但权限也更难让普通用户理解。系统需要区分“它知道什么”和“它能做什么”，还要让用户看见某个结果使用了哪些来源。一个温和、自然的角色形象不能代替这些说明。</p>
+<p>另一个代价是依赖性。用户把很多约束交给代理之后，迁移或暂停服务会变得困难。可导出的计划、偏好和待办记录，具有实际产品价值；它们使用户能够保有工作连续性。对于长期 Agent，退出体验应与接入体验一同设计，这也是检验其是否真正以用户为中心的方法。</p>
+<p><strong>作者判断：个人持续代理可能成为跨应用事务的重要入口，但不会自动覆盖组织知识治理。</strong> 多人共享材料时，需要处理署名、争议、版本、组织权限和正式采用。个人偏好越深，反而越需要与公共知识分离。一个人为方便自己形成的摘要，不应未经检查就代表团队共识。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>应检验的收益</th>
+<th>对应观察</th>
+<th>需要防止的误读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>少解释背景</td>
+<td>同类任务的补充说明次数</td>
+<td>对话变短就一定更准确</td>
+</tr>
+<tr>
+<td>少遗漏事项</td>
+<td>用户确认的遗漏减少</td>
+<td>提醒更多就更有用</td>
+</tr>
+<tr>
+<td>安排更合适</td>
+<td>修改和撤销原因</td>
+<td>执行动作多就更成功</td>
+</tr>
+<tr>
+<td>信任可恢复</td>
+<td>错误纠正后的后续表现</td>
+<td>一次道歉等于系统修复</td>
+</tr>
+</tbody>
+</table></div>
+<p>AbleWork 可以从这里获得一个明确方向：长期关注要服务于人的研究目标，并让用户能够修改、暂停和回看。它无需先成为覆盖私人生活的通用代理，才能做好持续研究支持。把适用范围限定清楚，反而有助于形成可验证的产品承诺。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>10 / 60</span></footer></section><section class="folio " id="p11" aria-labelledby="title-11"><header class="folio-top"><span>Grok Bot · 角色与流程</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">11</div><h2 id="title-11">Grok Bot：把反复的工作交给长期角色</h2><p>Grok Bot 的官方文档把 Bot 描述为有名字、职责和持续上下文的协作者。它们可在持久云端电脑上使用浏览器、文件和终端，处理跨应用任务。多个 Bot 可以协作并移交工作。这里讨论的是这一执行产品，而不是把 X 上的公开问答账号直接当作完整工作系统。<a class="cite" href="#source-G1" aria-label="来源 G1：Grok Bot · Overview">[G1]</a></p>
+<p>角色是这种形态的组织中心。用户不一定每次从零写任务，而是先设定某个角色负责什么，再向它委托相关工作。这接近现实团队中的分工：同一个研究支持角色能够持续理解输出习惯，同一个运营角色能够重复处理相似流程。用户希望减少的，是每次重新配置工具与上下文的负担。</p>
+<p><strong>作者分析：角色的价值在于稳定职责，而不在于增加拟人名称。</strong> 如果两个 Bot 读取同样的材料、使用同样的工具、接受同样的任务，分别命名并不会自动提高质量。只有在职责、输入、输出和验收方式确有差异时，角色划分才有清晰收益。</p>
+<p>角色也会形成新的沟通成本。用户究竟应该找谁？一个角色发现另一角色的结果有误，谁负责修正？如果用户仍需在多个对话间复制信息，分工就没有实现其原本目标。因此多角色产品必须提供工作归属和交接记录，避免让用户成为所有 Agent 之间的人工路由器。</p>
+<p>Grok Bot 对后续形态的启发，是把一次成功任务转成可重复职责。产品不必一开始就建立复杂自动化图，可以先让用户委托一个具体工作，观察稳定方法，再逐渐形成例行流程。不过，对角色的信任应该来自完成记录，而非头像、名字或系统对自己的能力描述。</p>
+<p>放到 AbleWork 场景中，适合借鉴的是研究方法的可复用表达。资料筛选、版本比较、引用核查可以成为相对稳定的职责；最终判断和正式发布仍需保留明确责任人。角色可以协助研究工作，但不会因为被命名为“审稿人”，就自动获得对公共知识的裁定权。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>11 / 60</span></footer></section><section class="folio " id="p12" aria-labelledby="title-12"><header class="folio-top"><span>Grok Bot · 角色与流程</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">12</div><h2 id="title-12">共享电脑：协作方便，也改变边界假设</h2><p>Grok Bot 文档明确说明，同一用户的 Bots 共享一台云端电脑上的文件、浏览器会话和应用登录。各 Bot 的对话和学习上下文通常分开，部分个人信息共享。这意味着“有多个角色”与“存在多个隔离的权限主体”不能画等号。<a class="cite" href="#source-G1" aria-label="来源 G1：Grok Bot · Overview">[G1]</a></p>
+<figure id="figure-3"><div class="figure-kicker">FIG. 03 / 机制示意</div><h3>角色分开，账户内环境共享</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="fig-title-3 fig-desc-3"><title id="fig-title-3">角色分开，账户内环境共享</title><desc id="fig-desc-3">研究 Bot → 写作 Bot → 流程 Bot → 共享文件 → 浏览器与登录。上方是不同角色，下方是同一用户共享环境；角色记忆与环境访问是不同关系。依据 G1。</desc><defs><marker id="arrow-3" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="5" y="105" width="710" height="88" rx="8" fill="#e7ece3"/><rect x="17" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="29" y="27" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="119.5" y="53.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">研究 Bot</text><path d="M119,84 L119,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-3)"/><rect x="257" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="269" y="27" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="359.5" y="53.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">写作 Bot</text><path d="M359,84 L359,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-3)"/><rect x="497" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="509" y="27" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="599.5" y="53.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">流程 Bot</text><path d="M599,84 L599,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-3)"/><rect x="80" y="117" width="250" height="62" rx="5" fill="#f6f3ed" stroke="#c8cbbf" /><text x="92" y="136" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="205.0" y="156.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">共享文件</text><rect x="390" y="117" width="250" height="62" rx="5" fill="#f6f3ed" stroke="#c8cbbf" /><text x="402" y="136" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="515.0" y="156.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">浏览器与登录</text></svg><ol class="figure-mobile"><li>研究 Bot</li><li>写作 Bot</li><li>流程 Bot</li><li>共享文件</li><li>浏览器与登录</li></ol><figcaption>上方是不同角色，下方是同一用户共享环境；角色记忆与环境访问是不同关系。依据 G1。</figcaption></figure>
+
+<p>共享环境的直接收益，是交接不必从头准备。一个 Bot 产生的文件，另一个可以继续加工；已完成的应用连接，也不必为每个角色重复建立。在同一用户的工作范围内，这样的便利可能比每个任务完全隔离更符合使用习惯。</p>
+<p>代价是角色边界不能只靠文件夹名称或提示词。假设用户让一个 Bot 处理客户材料，另一个负责公开内容，两个角色共享登录和文件时，后者是否可读取前者的数据，需要由真实访问与行动控制决定。仅仅告诉它“你是公开内容助理”，不构成可以依赖的隔离保证。此例属于边界分析，不是对产品漏洞的断言。</p>
+<p>协作还会遇到共享状态竞争。同一个文档被同时修改，同一个浏览器登录状态发生变化，或两个任务都以旧数据生成结果，都可能导致工作不一致。多角色并行因此需要明确哪些资源可以同时读、哪些写入需要串行，以及失败后由谁恢复。并行数量本身不是收益证明。</p>
+<p>对 AbleWork 的对应启发，是严格区分三件事：多个 Agent 的分工、不同用户的访问权、正式知识的发布权。前者可以灵活编排，后两者应由宿主系统依据身份执行。合作不要求取消所有边界；可靠的交接应携带结果和必要上下文，而非默认移交所有可访问资源。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>12 / 60</span></footer></section><section class="folio " id="p13" aria-labelledby="title-13"><header class="folio-top"><span>Grok Bot · 角色与流程</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">13</div><h2 id="title-13">从一次操作，到 Skill 与 Routine</h2><p>Grok Bot 的官方说明区分 Skill 与 Routine：前者保存如何做一项工作，后者规定何时由某个 Bot 执行。文档还描述了通过示范产生流程草稿，并要求补充验证方法、失败处理与审批边界。示范功能可能逐步开放，本文不假定所有用户都已拥有。<a class="cite" href="#source-G2" aria-label="来源 G2：Grok Bot · Skills and routines">[G2]</a></p>
+<p>这个区分有实用价值。一项流程可能方法正确，却在错误时间运行；也可能按时启动，但读取了过期输入。把方法与触发分开，可以分别修正。用户改变每周执行日期，不应意外改变研究方法；更新筛选规则，也不应悄悄新增对外发送行为。</p>
+<p><strong>作者分析：可重复流程的核心是条件，而非点击顺序。</strong> 浏览器演示能记录走过的路径，但不能从一个成功样本中得出全部例外。来源缺失、登录过期、结果为空、版本冲突和权限变化，常常没有出现在示范里。若这些情况没有写清，自动化只是把原本由人临场判断的工作隐藏起来。</p>
+<p>考虑一个每周客户信息整理任务。正常路径是读取名单、检查变化、形成草稿。若名单为空，系统应区分“本周确实没有对象”与“读取失败”；若同一客户出现两次，应保留去重依据；若准备发送结果，应单独确认收件人与共享范围。这些条件比保存一串工具调用更接近可用方法。</p>
+<p>在研究平台中，Skill 可以描述材料选择、事实与判断分离、引用检查及输出形式。Routine 则描述关注对象、频率、时间范围、停止条件与通知方式。两者还应能够独立停用：停止跟踪一个主题，不必删除相关研究方法；方法升级，也不该默认扩大订阅范围。</p>
+<p>对后续智能体形态的影响，是用户可以从一个已验证任务逐步建立自动化。建设者需要保留每次运行的输入版本和方法版本，才能判断变化来自资料，还是来自流程修改。否则同一例行任务的结果变了，系统自己也无法解释原因。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>13 / 60</span></footer></section><section class="folio " id="p14" aria-labelledby="title-14"><header class="folio-top"><span>Grok Bot · 角色与流程</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">14</div><h2 id="title-14">多 Bot 协作：谁交接，谁承担完成责任</h2><p>多角色协作最吸引人的承诺，是用户只需说明目标，不必自己分解所有步骤。Grok Bot 的公开文档描述了角色间消息、群组协作和任务交接能力。<a class="cite" href="#source-G1" aria-label="来源 G1：Grok Bot · Overview">[G1]</a> 但从产品分析看，“能够互相发消息”只是协作的前提，不能单独证明协调成本下降。</p>
+<p>一份有效交接至少应保留任务范围、已完成部分、证据位置、未解决问题和下一步责任。假如研究 Bot 只把一句结论交给写作 Bot，后者可能无法判断结论适用时间；假如写作 Bot 把生成的页面交给发布 Bot，却没有共享范围，后续行动就缺少重要约束。</p>
+<p>需要特别防止责任在角色之间消失。每个 Bot 都可以说自己完成了分工，但整体结果可能仍然无人验收。相对稳妥的组织方式，是让一个任务拥有明确负责人，其他角色提供可检查的子结果。负责人可以轮换，任务的目标与验收记录应保持连续。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>交接内容</th>
+<th>用途</th>
+<th>缺少时的常见后果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入与版本</td>
+<td>确认双方谈的是同一材料</td>
+<td>新旧结论混用</td>
+</tr>
+<tr>
+<td>完成标准</td>
+<td>判断子任务是否足够</td>
+<td>无止境补充分析</td>
+</tr>
+<tr>
+<td>权限与禁止事项</td>
+<td>约束后续行动</td>
+<td>把处理权限误作发布权限</td>
+</tr>
+<tr>
+<td>证据与失败记录</td>
+<td>支持复核和恢复</td>
+<td>重复失败、重复操作</td>
+</tr>
+<tr>
+<td>归属与截止条件</td>
+<td>确定谁继续</td>
+<td>任务在角色间悬空</td>
+</tr>
+</tbody>
+</table></div>
+<p>角色数量增加时，应观察失败路径，而非只看顺利演示。一个角色无法读取资料，其他角色会等待、绕过还是凭记忆补写？一个子结果遭到纠正，哪些后续任务应撤回？这些问题能检验协作是否具有共同任务状态。</p>
+<p>AbleWork 可以先把少数高频职责做稳，例如整理材料与检查引用，再考虑更复杂的角色编排。只有当独立分工能形成清楚的中间成果，并减少人的搬运或等待时，新增角色才值得维护。把同一个模型拆成更多名字，通常不能代替这项验证。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>14 / 60</span></footer></section><section class="folio " id="p15" aria-labelledby="title-15"><header class="folio-top"><span>Grok Bot · 角色与流程</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">15</div><h2 id="title-15">Grok Bot 的目标与代价：可委托的重复工作</h2><p>Grok Bot 形态的目标，是让用户把一类跨工具工作持续交给固定角色，并逐步复用成功方法。它适合重复发生、输入输出相对清楚的工作。任务越稳定，角色记忆和流程复用越容易转化为实际收益；任务越模糊，用户仍需承担更多范围裁定与结果验收。</p>
+<p>官方审批说明描述了行动前检查，以及允许一次、保存规则或拒绝等控制。它区分用户自己的请求与来自网页、邮件等外部内容，并提示审批只控制尚未发生的行动。<a class="cite" href="#source-G3" aria-label="来源 G3：Grok Bot · Approvals, security, and privacy">[G3]</a> 这些机制的产品意义，在于让长期角色仍然受具体行动范围约束，而非获得一个模糊的永久委托。</p>
+<p><strong>作者分析：例行化会放大正确方法，也会放大未被发现的错误。</strong> 一次错误筛选可能只漏掉一条记录；被保存为例行流程以后，同类遗漏可能持续发生。因此自动化前应先观察几个具有差异的样本，尤其是空结果、来源变化和需要人工判断的情况。</p>
+<p>长期角色也需要退出机制。一个业务职责结束后，相关例行任务是否停止，已保存的登录是否仍然有效，旧角色能否继续收到外部事件，都影响管理成本。用户看到的是一个名字，系统需要管理的是一组随时间变化的任务、记忆与访问关系。</p>
+<p>对后续形态的判断是：角色将成为用户组织工作的一种便利方式，但底层仍需可检验的任务和权限对象。角色适合承载交流习惯，不能代替工作契约。可移植的流程知识也可能比某个固定角色更有长期价值，因为它可以被不同执行者使用和修订。</p>
+<p>AbleWork 与这种路径可以互补：个人或团队 Bot 负责完成工作，平台负责保存可分享成果及其来源，AutoWiki 负责将适合积累的材料编译成知识。是否值得进入正式知识，应由材料价值、更新成本和使用需求决定；不能因为某个 Bot 自动生成了结果，就默认永久收录。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>15 / 60</span></footer></section><section class="folio " id="p16" aria-labelledby="title-16"><header class="folio-top"><span>Claude Tag · 团队讨论</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">16</div><h2 id="title-16">Claude Tag：工作已经发生在团队讨论里</h2><p>Claude Tag 从团队协作出发。官方介绍描述了在 Slack 频道中委托 Claude、异步执行并在原线程返回结果的方式。团队可以共同看到工作，也可以继续接上同一个讨论。管理员配置可用工具与范围，主动跟进属于可启用的行为。<a class="cite" href="#source-C1" aria-label="来源 C1：Anthropic · Introducing Claude Tag">[C1]</a></p>
+<p>这一出发点对应着常见的组织成本：问题、决定和背景已经存在于讨论里，使用 AI 时却要另开窗口，再把前因后果复述一遍。结果完成后，还要搬回团队。把 Agent 放在工作发生的位置，可以减少这两次搬运，也让其他参与者看到委托究竟是什么。</p>
+<p><strong>作者分析：频道形态改变的是上下文的共同持有方式。</strong> 私人助手的对话主要由一个人维护；共享线程则允许不同成员补充事实、修正目标和查看结果。这有助于交接，但也意味着系统必须理解“谁正在提出什么要求”，不能把所有参与者的话都视作同等授权。</p>
+<p>原处交付还有一个容易低估的收益：结果与最初问题留在一起。后来加入讨论的人，可以追溯为什么要做这项工作，哪些条件已经改变。一个独立生成的文档即使写得很好，如果丢失这段上下文，也可能在传播过程中被误解为正式决定。</p>
+<p>然而频道天然混合事实、猜测、玩笑和暂定意见。一个成员提出方案，不代表团队已经通过；消息获得几个表情，也不一定等于批准行动。产品如果希望主动跟进，就需要识别未决问题与正式承诺，并给用户一个容易纠正的表达方式。</p>
+<p>AbleWork 与此最直接的对应是“在对象旁工作”。研究员阅读报告、查看主题或指标时发起委托，结果回到相关对象，其他有权限的人能够继续使用。它可以借鉴线程协作，但研究对象往往比一段讨论存在更久，因此需要额外保留对象版本和知识更新关系。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>16 / 60</span></footer></section><section class="folio " id="p17" aria-labelledby="title-17"><header class="folio-top"><span>Claude Tag · 团队讨论</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">17</div><h2 id="title-17">原线程交付，让异步工作仍然可理解</h2><p>Claude Tag 使用文档说明，频道任务在临时沙箱中运行，结果回到线程；执行环境的生命周期与用户电脑不同。文档也描述了任务进展的可见表达。这些机制用于支持团队异步委托，而不要求发起人一直守着执行过程。<a class="cite" href="#source-C2" aria-label="来源 C2：Claude Tag · Overview">[C2]</a></p>
+<figure id="figure-4"><div class="figure-kicker">FIG. 04 / 机制示意</div><h3>在原讨论中委托与交付</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-4 fig-desc-4"><title id="fig-title-4">在原讨论中委托与交付</title><desc id="fig-desc-4">频道提出问题 → 线程保留上下文 → 获准工具执行 → 成果回到线程。团队在共同可见的位置接续工作；执行范围由配置与授权约束。依据 C1—C3 简化。</desc><defs><marker id="arrow-4" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="89.625" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">频道提出问题</text><path d="M169.25,68 L189.25,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-4)"/><rect x="190.25" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="202.25" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="269.875" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">线程保留上下文</text><path d="M349.5,68 L369.5,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-4)"/><rect x="370.5" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="382.5" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="450.125" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">获准工具执行</text><path d="M529.75,68 L549.75,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-4)"/><rect x="550.75" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="562.75" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="630.375" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">成果回到线程</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>频道提出问题</li><li>线程保留上下文</li><li>获准工具执行</li><li>成果回到线程</li></ol><figcaption>团队在共同可见的位置接续工作；执行范围由配置与授权约束。依据 C1—C3 简化。</figcaption></figure>
+
+<p>异步工作带来的首要问题是预期。用户离开之前，需要知道系统已经接受什么；回来之后，需要知道已经完成什么。一个模糊的“处理中”不足以支撑长任务，因为它无法区分正常等待、输入不足和真正失败。对用户有用的状态，应说明下一步依赖谁或什么事件。</p>
+<p>设想团队在频道里发现一次指标异常，请 Agent 调查。调查可能发现数据采集延迟，也可能发现代码变化。结果应该分别列出观察、解释、证据和建议；如果需要修改生产系统，应把这项行动单独呈现。把分析写进线程，不等于已经获得修改所有相关系统的权限。此处是通用情境推演。</p>
+<p>原线程也不必承担所有详细内容。长报告、代码变更和数据表适合放在独立成果中，线程保留摘要、入口和待决事项。这样既能保持上下文连续，又不让整个频道被大段输出淹没。不同载体各自承担适合的阅读任务。</p>
+<p>这给 AbleWork 的启发是，任务状态、成果和讨论可以相互链接，但不必合成一个无限延长的聊天记录。报告承载完整论证，主题承载长期问题，任务承载执行进度，讨论承载协商。它们之间的关联应清楚，才能让用户既看见进度，也找到可长期使用的结果。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>17 / 60</span></footer></section><section class="folio " id="p18" aria-labelledby="title-18"><header class="folio-top"><span>Claude Tag · 团队讨论</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">18</div><h2 id="title-18">团队记忆：共享上下文仍需要范围</h2><p>Claude Tag 公开材料把工具、记忆与管理员定义的范围联系起来，并提供专门的记忆说明。共享频道上下文与私人对话不是同一类访问关系。<a class="cite" href="#source-C1" aria-label="来源 C1：Anthropic · Introducing Claude Tag">[C1]</a><a class="cite" href="#source-C4" aria-label="来源 C4：Claude Tag · What Claude Tag remembers">[C4]</a> 本文据此讨论团队记忆的设计问题，不假定任何看到频道的用户都能读取组织全部资料。</p>
+<p>团队记忆最有价值的部分，常常是那些没有写进正式文档的工作背景：某个项目为什么延后，某个数据字段为何暂时不用，一项决定在什么条件下成立。保存这些背景能减少重复解释，但也容易把临时意见长期固化。</p>
+<p><strong>作者分析：团队记忆需要区别“有人说过”与“团队采用”。</strong> 前者是讨论事实，后者是组织状态。系统应尽量保留判断的提出者、适用条件和最后确认时间。否则一条旧消息经过摘要，再经过另一次回答，会逐渐失去原本的不确定语气。</p>
+<p>跨频道复用还涉及目的变化。销售讨论中的某个客户细节，未必适合进入工程频道的概括；即使两个频道都能读取同一文档，也不代表所有推导结果都适合公开。权限检查需要发生在读取和输出的位置，不能只在最初接入时检查一次。</p>
+<p>从知识管理角度看，频道记忆适合帮助团队接续工作，却未必等于正式知识库。正式知识需要解决冲突、旧版本、引用和失效问题。团队可以把成熟的讨论转成文档或知识条目，但这一过程应有明确动作，而非让模型默默把一切讨论变成默认共识。</p>
+<p>AbleWork 的知识编译可在这里承担互补角色：把适合积累的讨论成果与源材料比较，形成有出处的知识；把仍有争议的观点保留为候选或带署名判断。学习共享记忆的便利时，也应保留知识获得正式地位所需的检查。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>18 / 60</span></footer></section><section class="folio " id="p19" aria-labelledby="title-19"><header class="folio-top"><span>Claude Tag · 团队讨论</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">19</div><h2 id="title-19">Agent 身份：谁的工具，谁的行动</h2><p>Claude Tag 的身份文档区分频道内的服务账号身份与个人账户路径。频道工作主要使用管理员配置的访问；个人连接器可在用户允许后用于其自己的任务，其他成员的请求不会因此继承个人连接器权限。凭据由相应代理机制处理，不能简单理解为发起者把全部账户交给频道。<a class="cite" href="#source-C3" aria-label="来源 C3：Claude Tag · How agent identity works">[C3]</a></p>
+<p>这个区分使组织能够解释行动归属。谁提出了任务、哪个 Agent 执行、使用哪种账号、最终写入哪个系统，是不同字段。若只保留“Claude 做的”，事后很难判断是需求错误、配置错误还是执行错误，也难以定位谁有权纠正。</p>
+<p><strong>作者分析：共享 Agent 的身份设计，应先于大范围工具接入。</strong> 一个组织可能希望所有频道成员都能让 Agent 查询某个公共数据源，但只有少数人可以提出变更。读权、发起权、执行身份和发布权可以不同。把这些全部绑定到一个万能服务账号，虽然接入方便，却增加解释与治理成本。</p>
+<p>还需要考虑离职、换组和项目结束。某个长期任务原来由有权成员发起，后来成员关系改变，任务是否继续？某份结果原来可见，后来来源撤回，已经缓存的摘要怎么办？这些问题超出了聊天界面，却是团队持续 Agent 的日常问题。</p>
+<p>在研究平台中，对应的身份链可以是作者、任务发起者、执行者、发布者和读者。作者提供材料，不一定批准所有衍生用途；读者可以提出问题，不一定能够修改源报告；执行者可以生成候选，不一定能够写入公共知识。把这些角色写清楚，能减少后续规则的临时补丁。</p>
+<p>身份设计的最终目标是让用户理解发生了什么，而不是展示更多技术名词。一次结果交付可以简明说明“基于哪些有权材料、完成了什么、由谁确认发布”。更细的审计记录留给需要追查的人，日常体验保持清楚即可。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>19 / 60</span></footer></section><section class="folio " id="p20" aria-labelledby="title-20"><header class="folio-top"><span>Claude Tag · 团队讨论</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">20</div><h2 id="title-20">Claude Tag 的目标与代价：团队少搬运一次上下文</h2><p>Claude Tag 形态的目标，是让团队在原本协作的位置使用 Agent，并共享任务过程。它最直接的优势可能不是让单个回答更聪明，而是让调用、纠正和交付进入同一段工作关系。这对多人接力、跨职能调查和需要共同确认的任务尤其有意义。</p>
+<p>代价则来自共享空间。一个私人助手多说几句，主要影响一个人；频道 Agent 频繁发言，可能影响整个团队。主动跟进应以尚未解决的问题、明确责任和有用变化为依据，而非看到新消息就参与。用户需要能够调整它何时回应，以及哪些情况适合静默准备。</p>
+<p>第二项代价是讨论中的歧义。多人可能提出冲突要求，任务负责人也可能中途变化。系统应暴露冲突，并保留当前采用的目标。不能用最后一条消息机械覆盖整个工作，也不能永远固守最初指令，让后续合理修正无法生效。</p>
+<p>第三项代价是组织配置。频道范围、连接器、服务账号和预算需要维护。如果一项简单任务需要频繁找管理员调整配置，便利性就会受损。因此应先选择工具需求稳定、权限范围清楚的频道，形成可靠实践，再逐步扩展。</p>
+<p><strong>作者判断：嵌入协作空间会是一种长期存在的形态。</strong> 它利用已有交流习惯，但不自动解决正式成果管理。讨论结束以后，团队仍需要知道哪个版本可用、哪些决定已通过、哪些结论已经过期。线程与文档、任务与知识之间的连接，将决定这种形态能承担多长的工作周期。</p>
+<p>AbleWork 可以吸收原处协作和共同可见的优点，同时围绕报告、主题和指标保留长期对象。它不必变成一个全天候在社区发言的虚拟同事。对研究工作而言，适时出现的结果、明确的来源和可继续追问的上下文，可能比更强的社交存在感更有价值。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>20 / 60</span></footer></section><section class="folio " id="p21" aria-labelledby="title-21"><header class="folio-top"><span>Super-agent · 持续任务</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">21</div><h2 id="title-21">Super-agent：从事件不断到来的工程工作出发</h2><p>DeepSeek 公开的 dsh-superagent-prototype 面向一个 GitHub 仓库的编程协作，可接收 GitHub 及可选飞书事件。项目明确声明它是研究原型，不是官方生产产品；公开代码与内部版本、设计文章不完全相同，部分设计仍属未来方向。<a class="cite" href="#source-D1" aria-label="来源 D1：DeepSeek · dsh-superagent-prototype README">[D1]</a></p>
+<p>它要解决的问题与普通问答不同。工程工作可能由新问题、审查意见、CI 结果和人的追问不断推动。一次模型调用结束，并不意味着任务结束；等待外部事件也不意味着系统失败。持续任务系统需要把这些情况区分开，才能减少人反复唤醒、解释和追踪的负担。</p>
+<p><strong>作者分析：这种形态把“工作状态”提升为独立对象。</strong> 执行会话只是处理工作的一个载体。会话可能重启、换执行者或等待很久，任务仍应保有目标、授权、结果和后续输入。若状态只存在于最后一段对话里，任何中断都可能迫使系统重新猜测。</p>
+<p>工程任务适合暴露这类问题，因为它有较明确的外部对象：Issue、分支、PR、审查、检查结果。用户可以看到代码是否提交，检查是否通过，变更是否合并。这些对象为持续工作提供了落点，也让失败更容易被定位。</p>
+<p>研究任务的外部对象通常没那么整齐。新报告、新数据和观点变化可能来自不同来源，结束条件也更开放。因此 AbleWork 若借鉴这种任务组织，不能只复制工单字段；需要明确研究对象、材料版本、待验证问题和后续触发条件。</p>
+<p>本报告关注其可复用的组织思想：事件如何成为任务、授权如何随任务保留、等待如何表达、恢复如何避免重复行动。不会把“Super-agent”这个名称当作已经实现全自主工作的证据，也不会用公开研究代码替代生产成熟度评价。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>21 / 60</span></footer></section><section class="folio " id="p22" aria-labelledby="title-22"><header class="folio-top"><span>Super-agent · 持续任务</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">22</div><h2 id="title-22">从事件到任务：看见变化，不等于可以行动</h2><p>原型的领域文档区分 Source、Trigger、Thread、Eval、Mandate、Ticket 与 Assignment。事件进入后可能成为已有任务的上下文，也可能经过评估成为新任务；接受任务时记录授权依据与范围。执行者通过派工关系承接工作，结果回到相应渠道。<a class="cite" href="#source-D2" aria-label="来源 D2：Super-agent · Domain model / Authorization">[D2]</a></p>
+<figure id="figure-5"><div class="figure-kicker">FIG. 05 / 机制示意</div><h3>事件进入持续任务</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-5 fig-desc-5"><title id="fig-title-5">事件进入持续任务</title><desc id="fig-desc-5">来源事件 → 准入与评估 → 授权任务 → 派工执行 → 回到原渠道。已有任务可接收相关上下文；新工作需要授权判断。依据 D2、D3 简化，不展示全部分支。</desc><defs><marker id="arrow-5" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">来源事件</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-5)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">准入与评估</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-5)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">授权任务</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-5)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">派工执行</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-5)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">回到原渠道</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>来源事件</li><li>准入与评估</li><li>授权任务</li><li>派工执行</li><li>回到原渠道</li></ol><figcaption>已有任务可接收相关上下文；新工作需要授权判断。依据 D2、D3 简化，不展示全部分支。</figcaption></figure>
+
+<p>这套区分的意义，在于减少两种混淆。第一种是把任何新消息都当成新工作，产生重复任务；第二种是把上下文材料当成新的授权，使一个本来有限的任务不断扩大。事件可以提供信息，而不改变工作范围。</p>
+<p>设想代码任务正在等待 CI。检查结果到来，应继续已有任务；另一位成员在相邻讨论中提出新功能，未必属于当前授权。如果系统只根据主题相似度追加工作，任务很容易无边界增长。更合理的做法，是把相关性与工作归属分开判断。</p>
+<p>任务授权还应能够解释。系统不只记录“被允许”，还要知道是谁、依据哪条规则、允许到哪里。这样当政策变化或任务恢复时，才有依据判断是否继续。授权是一项工作事实，不应完全依赖执行者每次阅读聊天历史后的印象。</p>
+<p>对 AbleWork 的对应，是新材料可以触发分类或候选整理，但不能因为它出现了，就自动修改作者观点或扩大共享范围。已有研究问题可以吸收相关材料；新的研究目标则可能需要新的委托。事件丰富，不代表行动权限也随之增长。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>22 / 60</span></footer></section><section class="folio " id="p23" aria-labelledby="title-23"><header class="folio-top"><span>Super-agent · 持续任务</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">23</div><h2 id="title-23">等待、失败与恢复：让人知道为什么停在这里</h2><p>原型执行文档明确区分工作中、等待触发、等待人工回答、等待审查、受阻和失败等状态，并描述了输入持久化、重试和重启后的恢复。恢复时需要检查已有目录、版本历史及外部结果，以避免重复外部行动。<a class="cite" href="#source-D3" aria-label="来源 D3：Super-agent · Execution">[D3]</a></p>
+<p><strong>作者分析：持续任务系统最重要的状态信息，是下一步依赖。</strong> “没有输出”可能表示正常等待审查，也可能表示模型服务故障，两者需要不同处理。把它们统称为忙碌或失败，会导致用户反复催问，或者误以为任务仍在推进。</p>
+<p>重试也不能只等于再次发送同一提示。若前一次已经创建 PR，但回执丢失，直接重跑可能创建第二份；若已经写入报告，只是在通知时失败，应补通知而非重新生成。恢复必须先确认哪些效果已经发生，再选择剩余动作。</p>
+<p>持续任务通常有三个不同的记录：打算做什么、系统实际尝试了什么、外部世界最终接受了什么。它们不一定同时成功。任务记录应能保留差异，例如“文件已保存、发布未完成”“修改已提交、审查待定”。这种表达比一个总成功标记更有诊断价值。</p>
+<p>在研究编译中，候选生成可能消耗较大成本。如果合并时遇到版本变化，保留候选并重新比较，通常比从头生成更合理。但旧候选不能直接覆盖新基线，仍需要确认它针对的材料与现有知识是否一致。恢复是在保留成果的同时重新检查条件。</p>
+<p>对未来 Agent 的影响，是“会继续”将逐渐包含更多工程含义：保存状态、识别外部效果、接受新输入、正确等待以及有限重试。模型能长时间推理只是其中一部分。用户真正需要的是工作不中断，且中断后能够解释和恢复。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>23 / 60</span></footer></section><section class="folio " id="p24" aria-labelledby="title-24"><header class="folio-top"><span>Super-agent · 持续任务</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">24</div><h2 id="title-24">低打扰与执行边界：原型的启发也有适用范围</h2><p>Super-agent 的行为原则强调尽量少占用人的注意力，只在明确请求或团队规则允许时行动，并在有可用结果或需要决定时发言。<a class="cite" href="#source-D4" aria-label="来源 D4：Super-agent · Philosophy">[D4]</a> 因此不能把“低打扰、有授权的主动性”写成 AbleWork 独有的发明；它是不同持续工作系统共同面对的问题。</p>
+<p>原型也明确说明，任务目录与命令包装建立的是默认行为，不构成安全边界；执行器以操作者的操作系统用户运行。<a class="cite" href="#source-D3" aria-label="来源 D3：Super-agent · Execution">[D3]</a><a class="cite" href="#source-D5" aria-label="来源 D5：Super-agent · Deployment">[D5]</a> 独立目录可以减少文件混淆，独立会话可以减少上下文混淆，但无法据此推导对宿主资源的强隔离。</p>
+<p><strong>作者分析：可靠比较必须把隔离拆成具体对象。</strong> 是对话上下文分开，文件目录分开，进程权限分开，凭据分开，还是网络出口受限？每一种保证都有不同作用。把它们统称为“沙箱”，容易使读者高估部署后的安全属性。</p>
+<p>研究原型的价值，在于公开了可讨论的概念和取舍。它允许建设者看到为什么任务与会话分开、为什么上下文不应扩大授权、为什么失败需要持久化。生产化还要结合部署环境补充身份管理、资源限制、凭据控制和维护流程，不能省略这一步。</p>
+<p>对 AbleWork 来说，可以借鉴低注意力成本的工作原则和任务组织，而保留自身的多用户材料边界。研究平台存在跨作者成果和共享读面，不能把单仓库工程助手的信任假设原样扩大到整个平台。</p>
+<p>判断一种架构是否适用，应该先写出它假定哪些人可信、能访问哪些资源、错误可能影响多大范围。假设相近时，机制容易复用；假设不同，就需要调整，而不是争论某种形态抽象地更先进。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>24 / 60</span></footer></section><section class="folio " id="p25" aria-labelledby="title-25"><header class="folio-top"><span>Super-agent · 持续任务</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">25</div><h2 id="title-25">Super-agent 的目标与代价：减少人维持任务的工作</h2><p>Super-agent 形态的目标，是让连续事件推动工作，人主要处理需要判断和验收的部分。它试图减少的负担包括派工、补上下文、催进度、处理中断以及把结果搬回原讨论。这些工作在复杂任务中经常比首次提问耗费更多注意力。</p>
+<p>其代价是状态管理与运营复杂度。系统需要知道哪些输入已经处理，哪些任务等待外部事件，哪些失败可重试，哪些必须由人解决。只有一个简单任务时，这套结构可能显得过重；多个任务持续交错时，它才更容易体现价值。</p>
+<p><strong>作者判断：任务运行系统可能成为多种 Agent 产品的共同底座，但不必成为用户直接面对的界面。</strong> 用户仍可以在聊天、频道或研究对象旁委托。底层把授权、状态和回执保存下来，前台只呈现与用户有关的进度。工单概念可以存在于实现中，不必要求每个研究员先学会管理工单。</p>
+<p>这种形态也不会自动保证结果质量。CI 通过能证明某些检查满足要求，不等于变更符合全部业务目标；任务状态为完成，不等于用户已经采用结果。研究场景更需要区分工程完成与论证质量，否则系统会把“成功生成”误认为“结论可靠”。</p>
+<p>对 AbleWork 的合理结合，是在少数真正需要跨天等待的研究任务上引入明确状态：等待新材料、等待作者确认、等待来源可读、等待审查。短问题仍可快速回答，避免把所有交流都变成长任务。</p>
+<p>由此得到一条建设顺序：先发现真实中断，保存必要状态，再引入恢复与事件推进。不要为了拥有“持续 Agent”而先制造复杂工单流程。系统应该承担原本由人维持的连续性，而不是新增一套必须由人持续维护的管理界面。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>25 / 60</span></footer></section><section class="folio " id="p26" aria-labelledby="title-26"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">26</div><h2 id="title-26">横向比较一：谁是工作的中心</h2><p>五个案例的差异首先来自工作中心，而非界面大小或模型名称。中心对象决定上下文围绕什么累积，任务如何归属，完成结果应该放在哪里。下面是基于前文事实所作的作者归纳，并非产品排他定义。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>形态</th>
+<th>主要中心</th>
+<th>用户首先希望减少什么</th>
+<th>结果通常回到哪里</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muse</td>
+<td>个人与目标</td>
+<td>零散事务的协调</td>
+<td>个人任务、计划与成果</td>
+</tr>
+<tr>
+<td>Grok Bot</td>
+<td>角色与流程</td>
+<td>反复配置和跨工具操作</td>
+<td>角色对话与实际工具</td>
+</tr>
+<tr>
+<td>Claude Tag</td>
+<td>团队频道与线程</td>
+<td>上下文搬运和接力解释</td>
+<td>原讨论与链接成果</td>
+</tr>
+<tr>
+<td>Super-agent</td>
+<td>获授权的持续任务</td>
+<td>派工、等待与恢复</td>
+<td>任务渠道及工程对象</td>
+</tr>
+<tr>
+<td>AbleWork</td>
+<td>研究对象与知识</td>
+<td>找材料、核版本和重复研究</td>
+<td>报告、主题及知识读面</td>
+</tr>
+</tbody>
+</table></div>
+<p>中心对象不同，默认优先级也不同。个人代理更需要理解偏好；团队 Agent 更需要理解共同可见的范围；任务系统更需要保持状态准确；知识平台更需要解释结论来源和更新时间。这些能力可以组合，但不能靠增加一个入口就自动获得。</p>
+<p>一个实用选择方法，是观察用户最常说的失败抱怨。“每次都得重新解释我是谁”偏向个人关系；“事情在几个软件间搬来搬去”偏向流程；“同事不知道已经做了什么”偏向共享协作；“一等外部结果就断了”偏向任务接续；“别人做过的研究找不到或不敢用”偏向知识管理。</p>
+<p>产品应首先对准其中一个高频负担。否则所有能力都做一点，用户仍不知道什么时候应该使用它。AbleWork 的主要承诺应围绕研究成果进入后续工作展开，再解释就地委托和持续关注怎样服务于这个承诺。</p>
+<p>这种比较也避免了不必要的替代叙事。一个研究员可以使用个人 Agent 安排行程，用角色 Bot 整理材料，在团队频道讨论，再把正式成果放进研究平台。多个形态能长期并存，关键在于交接时是否保留身份、权限和来源。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>26 / 60</span></footer></section><section class="folio " id="p27" aria-labelledby="title-27"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">27</div><h2 id="title-27">横向比较二：触发、准备、通知、行动</h2><p>“主动性”不适合只用开关或高低分来比较。一次持续工作至少包含发现触发、判断关联、准备结果、选择呈现时机和执行外部行动。某系统可以积极准备但很少通知；另一个系统可能频繁回复，却没有持续执行能力。两者都可能被营销为主动 Agent。</p>
+<figure id="figure-6"><div class="figure-kicker">FIG. 06 / 机制示意</div><h3>把主动性拆成具体动作</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-6 fig-desc-6"><title id="fig-title-6">把主动性拆成具体动作</title><desc id="fig-desc-6">发现变化 → 判断关联 → 准备结果 → 选择通知 → 外部行动。每一步都有独立条件；准备可以积极，通知可以克制，外部行动仍需明确授权。作者分析。</desc><defs><marker id="arrow-6" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="18" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="37" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="66.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">发现变化</text><path d="M133.2,58 L153.2,67" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-6)"/><rect x="154.2" y="27" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="46" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="75.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">判断关联</text><path d="M277.4,67 L297.4,76" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-6)"/><rect x="298.4" y="36" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="55" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="84.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">准备结果</text><path d="M421.59999999999997,76 L441.59999999999997,85" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-6)"/><rect x="442.59999999999997" y="45" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="64" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="93.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">选择通知</text><path d="M565.8,85 L585.8,94" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-6)"/><rect x="586.8" y="54" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="73" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="102.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">外部行动</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>发现变化</li><li>判断关联</li><li>准备结果</li><li>选择通知</li><li>外部行动</li></ol><figcaption>每一步都有独立条件；准备可以积极，通知可以克制，外部行动仍需明确授权。作者分析。</figcaption></figure>
+
+<p><strong>作者分析：应把主动程度与后果分开。</strong> 读取已授权资料、整理内部草稿、提醒截止时间和对外发出承诺，涉及不同风险。用户允许系统每小时检查变化，不等于允许它每小时在公共频道发言。用户允许准备研究建议，也不等于允许修改正式观点。</p>
+<p>触发本身也需要语义。定时器到点，表示“可以检查”；新文件出现，表示“有新输入”；某指标越过阈值，表示“可能值得关注”。它们都不直接证明用户必须采取行动。系统应该把触发解释为候选工作，再依据既定目标与当前事实决定如何处理。</p>
+<p>低打扰设计可以有多种实现：重要变化即时通知，一般变化汇总呈现，重复变化不重写，尚无足够证据的变化留作候选。这里提出的是通用设计建议，不表示五个产品都采用同样规则。规则应让用户能够理解和修改。</p>
+<p>AbleWork 当前的订阅检查与晨报准备体现了其中一条路径：在明确关注范围内检查事实，有需要时组织结果，用户回来可读。它与开放目标的自主发现不同。把这两者分开，既承认当前主动工作的价值，也保留未来能力需要验证的空间。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>27 / 60</span></footer></section><section class="folio " id="p28" aria-labelledby="title-28"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">28</div><h2 id="title-28">横向比较三：持续的是任务，还是机器</h2><p>持久云端电脑、临时沙箱、任务会话和后台定时进程，都是可能的运行形式。它们不能直接排列成先进程度。持久环境便于保存工作文件和登录状态；临时环境便于限定单次任务的生命周期；明确的任务记录则可以跨不同环境保持工作连续。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>运行选择</th>
+<th>可能收益</th>
+<th>需要额外解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>持久环境</td>
+<td>接续方便、少重复配置</td>
+<td>状态污染、资源竞争、过期登录</td>
+</tr>
+<tr>
+<td>临时环境</td>
+<td>清理清楚、任务范围易表达</td>
+<td>成果保存、环境重建、状态恢复</td>
+</tr>
+<tr>
+<td>常驻会话</td>
+<td>上下文延续直接</td>
+<td>历史膨胀、错误累积、成本</td>
+</tr>
+<tr>
+<td>事件唤醒</td>
+<td>空闲期少占资源</td>
+<td>事件去重、恢复上下文、漏触发</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>作者分析：真正需要持久的是有业务含义的状态。</strong> 例如目标、授权、输入版本、已经发生的外部效果和待决事项。机器可以更换，会话可以压缩，只要这些状态能够正确恢复，用户仍会认为工作在持续。</p>
+<p>反过来，一台一直运行的电脑也可能没有持续工作能力。若任务结束条件不明确，文件混在一起，外部操作没有回执，进程常驻只会让问题积累更久。判断“持续 Agent”时，应检查中断后行为，而不是只看后台是否有进程。</p>
+<p>研究平台的运行安排更应遵循工作性质。短摘要可以是独立任务，长报告需要可恢复产物，主题跟踪需要事件与时间条件，正式知识合并需要短而明确的写入阶段。不同阶段使用不同运行方式，通常比要求一个永不结束的会话承担全部工作更容易管理。</p>
+<p>因此 AbleWork 与其他形态结合时，应优先约定任务与成果接口，再决定执行器部署方式。可替换的执行者需要清晰的输入和回执；只共享一个工作目录，往往不足以形成可靠的跨系统协作。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>28 / 60</span></footer></section><section class="folio " id="p29" aria-labelledby="title-29"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">29</div><h2 id="title-29">横向比较四：记忆、流程与知识分别更新</h2><p>同样叫“记住”，产品可能保存完全不同的东西。个人偏好服务于交流，角色经验服务于重复工作，线程记忆服务于团队接续，任务记录服务于恢复，领域知识服务于后续判断。它们有不同的正确性标准和失效方式。</p>
+<figure id="figure-7"><div class="figure-kicker">FIG. 07 / 机制示意</div><h3>不同记忆需要不同更新方法</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="fig-title-7 fig-desc-7"><title id="fig-title-7">不同记忆需要不同更新方法</title><desc id="fig-desc-7">个人偏好｜用户纠正 → 流程方法｜版本修订 → 任务状态｜操作回执 → 领域知识｜证据更新。对象不同，正确性与失效方式不同；召回只是其中一步。作者分析。</desc><defs><marker id="arrow-7" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><path d="M20 155 H700" stroke="#b95129" stroke-width="1"/><rect x="10.0" y="15" width="167.5" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="93.75" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">个人偏好</text><text x="93.75" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">用户纠正</text><path d="M93.75,121 L93.75,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-7)"/><rect x="187.5" y="15" width="167.5" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="199.5" y="34" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="271.25" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">流程方法</text><text x="271.25" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">版本修订</text><path d="M271.25,121 L271.25,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-7)"/><rect x="365.0" y="15" width="167.5" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="377.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="448.75" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">任务状态</text><text x="448.75" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">操作回执</text><path d="M448.75,121 L448.75,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-7)"/><rect x="542.5" y="15" width="167.5" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="554.5" y="34" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="626.25" y="68.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">领域知识</text><text x="626.25" y="91.5" text-anchor="middle" font-size="13" fill="#75609b">证据更新</text><path d="M626.25,121 L626.25,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-7)"/><text x="360" y="185" text-anchor="middle" font-size="14" fill="#20352e">共同问题：怎样让工作接续，结果可用，边界清楚</text></svg><ol class="figure-mobile"><li>个人偏好 · 用户纠正</li><li>流程方法 · 版本修订</li><li>任务状态 · 操作回执</li><li>领域知识 · 证据更新</li></ol><figcaption>对象不同，正确性与失效方式不同；召回只是其中一步。作者分析。</figcaption></figure>
+
+<p>偏好改变时，通常由用户直接纠正；流程改变时，需要检查新旧方法与适用条件；事实改变时，需要来源和时间；任务状态改变时，需要执行回执。若这些内容都由模型自行重写成一段综合摘要，就很难回答某项变化为什么发生。</p>
+<p><strong>作者分析：记忆系统的成熟度应看更新与撤回，而不只看召回。</strong> 找到旧信息只是第一步。系统还需要知道旧信息是否仍然有效、与新证据是否冲突，以及谁有权修改。越接近正式组织知识，对这些要求就越高。</p>
+<p>在研究场景中，“某分析师当时认为需求会改善”与“需求已经改善”尤其需要分开。前者可以长期保存为带署名的历史判断，后者应由对应期间的数据支持。摘要如果删掉时间和条件，就可能把观点变成事实。知识编译因此必须保留来源语义，而非仅追求压缩率。</p>
+<p>AbleWork 可以让几类存储共存：个人方法帮助工作，任务状态帮助恢复，报告保留完整论证，知识页组织可更新的结论。它们之间通过来源与版本关联，但不应彼此替代。最终读者看到的，应是当前问题需要的内容，以及足够判断其可靠性的依据。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>29 / 60</span></footer></section><section class="folio " id="p30" aria-labelledby="title-30"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">30</div><h2 id="title-30">横向比较五：目录、工单与向量检索可以共存</h2><p>“为什么用目录树而不用工单机或向量记忆”这个问题需要改写。目录、工单和向量检索解决不同问题。目录帮助人和 Agent 浏览、编辑与引用稳定对象；工单描述工作状态与责任；向量检索帮助发现语义相关内容。三者可以共同存在于一个系统中。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>主要回答的问题</th>
+<th>单独使用的不足</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目录与文档</td>
+<td>内容在哪里，如何组织</td>
+<td>不自动管理并发与权限</td>
+</tr>
+<tr>
+<td>任务系统</td>
+<td>谁在做，等待什么</td>
+<td>不自动形成可靠领域知识</td>
+</tr>
+<tr>
+<td>向量检索</td>
+<td>什么内容可能相关</td>
+<td>相似不等于有效或有权使用</td>
+</tr>
+<tr>
+<td>结构化数据库</td>
+<td>对象、关系和状态是什么</td>
+<td>需要明确建模与维护</td>
+</tr>
+</tbody>
+</table></div>
+<p>目录的优点是直观、可携带、易于人工审阅。它适合让知识对象具有稳定位置，也方便一般工具读取。但文件存在不等于内容正式，文件名也不能替代身份授权。多人写入时，还需要版本控制、冲突处理和发布流程。</p>
+<p>工单适合持续任务，却不一定适合成为研究员的主界面。用户希望围绕主题工作，系统可以在背后建立任务。向量检索可以增强发现，但应在授权范围内运行，并在最终引用时核对来源、版本和可见性。检索得分不能成为真伪判断。</p>
+<p><strong>作者分析：AbleWork 的选择应描述为面向不同对象组合这些机制。</strong> 它既有文件形态的知识与个人工作区，也有结构化社区、任务和知识数据。把项目写成“目录战胜数据库”或“知识库战胜工单”，会误导对真实工程的理解。</p>
+<p>选型时可从一次失败反推。如果用户找不到内容，先改善索引与检索；如果找到的是旧结论，改善版本与失效机制；如果工作没人接，改善任务归属；如果结果越权，改善授权与发布。换一种存储形态，通常不能一次解决所有问题。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>30 / 60</span></footer></section><section class="folio " id="p31" aria-labelledby="title-31"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">31</div><h2 id="title-31">横向比较六：权限沿着什么传递</h2><p>一个 Agent 任务通常经过委托、取材、执行、交付和后续复用。每一步都可能改变参与者或可见范围。用户有权读取某份资料，不表示整个团队有权看到由它生成的摘要；Agent 有权创建草稿，也不表示它有权正式发布。权限需要沿着工作路径检查。</p>
+<figure id="figure-8"><div class="figure-kicker">FIG. 08 / 机制示意</div><h3>权限随工作路径反复检查</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-8 fig-desc-8"><title id="fig-title-8">权限随工作路径反复检查</title><desc id="fig-desc-8">谁委托 → 读取什么 → 修改什么 → 分享给谁 → 以后还能否使用。相关性不授予权限；读取、执行、发布与后续消费分别检查。作者分析。</desc><defs><marker id="arrow-8" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">谁委托</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-8)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">读取什么</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-8)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">修改什么</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-8)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">分享给谁</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-8)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">以后还能否使用</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>谁委托</li><li>读取什么</li><li>修改什么</li><li>分享给谁</li><li>以后还能否使用</li></ol><figcaption>相关性不授予权限；读取、执行、发布与后续消费分别检查。作者分析。</figcaption></figure>
+
+<p>前文案例给出了不同实现：个人代理围绕个人连接与行动审批，角色产品围绕账户环境与行动控制，频道 Agent 围绕管理员配置及个人连接器例外，任务原型围绕工作授权，AbleWork 围绕材料与结果的身份、版本和读权。这里比较的是主要约束对象，不能据此宣布谁更安全。<a class="cite" href="#source-M3" aria-label="来源 M3：Meta · How We Built Safety Into Muse">[M3]</a><a class="cite" href="#source-G3" aria-label="来源 G3：Grok Bot · Approvals, security, and privacy">[G3]</a><a class="cite" href="#source-C3" aria-label="来源 C3：Claude Tag · How agent identity works">[C3]</a><a class="cite" href="#source-D2" aria-label="来源 D2：Super-agent · Domain model / Authorization">[D2]</a><a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p><strong>作者分析：权限不能从“相关”自动推导。</strong> 一份材料与任务相关，只说明可能有帮助；一个人参与讨论，只说明他在提供上下文。系统还需分别确认可读取、可使用、可修改和可分享。相似度、成员关系和任务归属都不能单独替代授权。</p>
+<p>共享结果尤其需要注意信息变换。去掉姓名的摘要仍可能包含足以识别对象的细节；多个低敏感材料组合后也可能产生更敏感的推断。正式发布前应关注结果实际包含什么，而不是只看每个输入的标签。</p>
+<p>对于 AbleWork，最重要的产品承诺之一应是：别人能够复用被允许共享的成果，而原作者不必因此交出整个私人工作区。公共可读内容、个人研究过程和候选提交可以分开。这样分享的是具体成果，不是默认开放作者全部记忆。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>31 / 60</span></footer></section><section class="folio " id="p32" aria-labelledby="title-32"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">32</div><h2 id="title-32">横向比较七：结果究竟留在哪里</h2><p>Agent 完成工作以后，结果可能是一条回答、一个文件、一项业务系统更新、一份 PR，或者一个知识版本。不同结果有不同的复用方式。把它们统称为“产出”，会掩盖用户下一步还需要做多少工作。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>结果形式</th>
+<th>适合用途</th>
+<th>需要补充的长期信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>对话回答</td>
+<td>快速理解、临时判断</td>
+<td>来源、时间、后续纠正</td>
+</tr>
+<tr>
+<td>文件或页面</td>
+<td>完整阅读与分享</td>
+<td>作者、版本、稳定入口</td>
+</tr>
+<tr>
+<td>系统写入</td>
+<td>直接改变业务状态</td>
+<td>操作回执、恢复办法</td>
+</tr>
+<tr>
+<td>PR 或任务结果</td>
+<td>受审查的变更</td>
+<td>检查、批准与最终状态</td>
+</tr>
+<tr>
+<td>知识条目</td>
+<td>跨任务持续复用</td>
+<td>来源、适用条件、失效关系</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>作者分析：交付不是最后一句“完成了”，而是结果进入了可使用的位置。</strong> 用户如果还需要追问文件在哪里、哪一版是最新、能不能分享，系统的交付就没有完成。一个可见链接也不足以说明全部完成：链接可能指向临时文件，或对目标读者不可读。</p>
+<p>后续复用的成本与结果结构有关。只有一大段文本，读者需要重新判断哪些是事实、哪些是假设；有明确来源和时间的报告，更容易核对；有更新关系的知识条目，更容易在新材料出现时修订。结构带来维护成本，但也能减少后来者重复推导。</p>
+<p>AbleWork 的定位在这里比较清楚：让成果拥有可见、可追溯、受权限约束的位置，再进入后续阅读和问答。它不能替代所有个人 Agent 的执行能力，但可以承接不同执行者产生的研究成果。是否值得编译为知识，应由后续使用需求决定。</p>
+<p>因此系统组合的接口应围绕成果，而不只是围绕消息。至少应能传递成果标识、版本、作者、来源、可见范围和状态。这样一个 Agent 离开后，其他人和其他 Agent 才能继续工作，而不会只剩一段无法验证的“已完成”描述。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>32 / 60</span></footer></section><section class="folio " id="p33" aria-labelledby="title-33"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">33</div><h2 id="title-33">横向比较八：成本与注意力要一起计算</h2><p>持续 Agent 的成本不只有模型费用。还包括执行环境、存储、连接维护、失败恢复、人工检查和用户注意力。一个系统调用次数很少，却需要人反复修正和搬运，未必便宜；另一个系统调用更多，但稳定替代了一段耗时工作，也可能更有价值。</p>
+<p>本报告建议使用一项解释性账本：<strong>总工作成本 = 系统资源 + 人工准备 + 人工审核 + 失败恢复 + 被打断的注意力。</strong> 这不是已经测量的公式，也不把不同单位直接相加；它提醒建设者至少记录这些成本项，再按实际业务方法估计。</p>
+<p>主动检查需要尤其谨慎。高频唤醒不一定需要每次调用模型，来源没有变化时可以保留检查记录。发现变化以后，也不一定需要完整重编译。阅读导航可能只需摘要；重要结论变化可能需要精读、比较和人工判断。处理深度应与预期用途相称。</p>
+<p>角色协作也有额外成本。每一次交接都可能重复上下文和验证，如果任务本身很短，分工反而增加开销。适合并行的部分应能独立验收，并且其等待时间或专业差异足以抵消协调成本。不能以角色数量作为先进程度的指标。</p>
+<p>对 AbleWork 而言，日常梗概与完整编译分路，正是需要结合用途理解的选择。它不能只用“更便宜”解释，因为便宜可能牺牲细节；也不能只用“更完整”解释全量编译，因为许多材料并不值得长期维护。应观察后续问题是否真的需要那些细节。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p>评估时可先采集少量真实任务的全程记录：用户开始准备到最终采用之间经过了什么，而不只记录模型运行时间。若没有原流程基线，就报告观察到的行为变化，暂不宣称效率提高了某个百分比。可解释的有限证据，比漂亮但无依据的提升数字更有用。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>33 / 60</span></footer></section><section class="folio " id="p34" aria-labelledby="title-34"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">34</div><h2 id="title-34">横向比较九：质量应该在哪些地方被检查</h2><p>Agent 系统可以在输入、候选、正式写入、发布和后续消费几个位置检查质量。不同检查回答不同问题。格式合法，不能证明事实正确；事实有来源，不能证明来源足以支持结论；执行成功，也不能证明用户接受结果。</p>
+<figure id="figure-9"><div class="figure-kicker">FIG. 09 / 机制示意</div><h3>检查靠近它能控制的后果</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-9 fig-desc-9"><title id="fig-title-9">检查靠近它能控制的后果</title><desc id="fig-desc-9">材料输入 → 候选质量 → 正式写入 → 发布范围 → 后续有效性。格式、来源、语义、写入与可见性是不同检查，不由一个成功标记替代。作者建议。</desc><defs><marker id="arrow-9" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">材料输入</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-9)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">候选质量</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-9)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">正式写入</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-9)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">发布范围</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-9)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">后续有效性</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>材料输入</li><li>候选质量</li><li>正式写入</li><li>发布范围</li><li>后续有效性</li></ol><figcaption>格式、来源、语义、写入与可见性是不同检查，不由一个成功标记替代。作者建议。</figcaption></figure>
+
+<p>输入检查关注材料是否完整、身份与版本是否明确。候选检查关注引用、结构、冲突和适用条件。正式写入检查关注是否基于当前状态、是否发生重复或覆盖。发布检查关注目标读者和可见范围。后续消费则要重新考虑来源是否仍有效。</p>
+<p><strong>作者分析：检查应靠近它真正能够控制的后果。</strong> 生成前可以防止读入不该使用的材料，但无法预先知道最终文本是否歪曲条件；发布前可以检查结果可见范围，却不能补回已经丢失的原始依据。只在最后加一个“审核 Agent”，往往不足以代替前面各阶段的约束。</p>
+<p>独立复核也需要独立证据。如果两个模型只看同一段错误摘要，它们意见一致并不意味着可靠。让复核者能够看到原材料、具体引用和需要判断的争议，比让它简单评价“是否合理”更有价值。复核任务本身也应该有明确标准。</p>
+<p>AbleWork 历史编译的回执可以证明比较、校验、提交和发布之间存在实际连接；它不能证明所有知识已经逐句由专家确认。因此报告把结构可追溯与语义质量分别说明。后续质量建设应从高影响、常复用的内容抽检开始，逐步形成纠错记录。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>34 / 60</span></footer></section><section class="folio " id="p35" aria-labelledby="title-35"><header class="folio-top"><span>横向比较</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">35</div><h2 id="title-35">五种形态怎样组合，而不让责任丢失</h2><p>一种可能的工作组合是：个人代理帮助用户明确长期关注，角色 Bot 执行重复整理，频道 Agent 支持团队讨论，持续任务系统处理等待与恢复，知识平台保留正式成果。这个组合是作者提出的设计模型，并非五个产品已经建立互联。</p>
+<figure id="figure-10"><div class="figure-kicker">FIG. 10 / 机制示意</div><h3>一种可能的组合，而非已建成的互联</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="fig-title-10 fig-desc-10"><title id="fig-title-10">一种可能的组合，而非已建成的互联</title><desc id="fig-desc-10">个人目标 → 可复用流程 → 团队讨论 → 持续任务 → 领域知识。跨形态交接携带成果、版本、来源、权限和责任。此图为作者提出的组合模型。</desc><defs><marker id="arrow-10" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><path d="M20 155 H700" stroke="#b95129" stroke-width="1"/><rect x="10.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="76.0" y="75.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">个人目标</text><path d="M76.0,121 L76.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-10)"/><rect x="152.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="164.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="218.0" y="75.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">可复用流程</text><path d="M218.0,121 L218.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-10)"/><rect x="294.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="306.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="75.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">团队讨论</text><path d="M360.0,121 L360.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-10)"/><rect x="436.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="448.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="502.0" y="75.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">持续任务</text><path d="M502.0,121 L502.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-10)"/><rect x="578.0" y="15" width="132.0" height="105" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="590.0" y="34" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="644.0" y="75.5" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">领域知识</text><path d="M644.0,121 L644.0,155" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-10)"/><text x="360" y="185" text-anchor="middle" font-size="14" fill="#20352e">共同问题：怎样让工作接续，结果可用，边界清楚</text></svg><ol class="figure-mobile"><li>个人目标</li><li>可复用流程</li><li>团队讨论</li><li>持续任务</li><li>领域知识</li></ol><figcaption>跨形态交接携带成果、版本、来源、权限和责任。此图为作者提出的组合模型。</figcaption></figure>
+
+<p>组合的难点在边界。个人偏好不应自动成为团队规则；团队讨论不应自动授权外部发布；一个执行任务成功，也不意味着知识条目已经可供所有人使用。每次跨系统交接，都需要说明结果的性质与权限，而不能只传递最终文本。</p>
+<p>最小可行交接可以很朴素：一份成果、一个稳定版本、来源清单、当前状态、允许的用途和负责确认的人。只有当交接频率与复杂度增加时，才值得建设更完整协议。先有真实接续，再做通用抽象，通常更容易避免无人使用的接口。</p>
+<p>研究平台应保有对正式知识的最终控制。外部 Agent 可以生成材料和候选，平台依据当前规则决定如何纳入。这样执行者可以替换，已有知识不会跟着某个对话或某家工具消失。反过来，平台也应提供清楚的读接口，让不同 Agent 使用被允许的知识。</p>
+<p>对 AbleWork 的近期方向而言，这比同时复刻四种产品更具体：把成果接入、版本核对和后续消费做好，再选择一个高频职责引入流程复用。每新增一种外部执行形态，都应能够证明交付更省心，且没有使作者与读者的边界变得模糊。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>35 / 60</span></footer></section><section class="folio " id="p36" aria-labelledby="title-36"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">36</div><h2 id="title-36">AbleWork：研究工作的知识托管与边界治理</h2><p>AbleWork 的一句话定位可以写成：<strong>它是研究协作场景中的知识托管与边界治理平台，让人和 Agent 的成果可以积累、共享、更新与追溯。</strong> 平台中的 Able 承接报告、主题和指标旁的委托，并在已建立的关注范围内持续准备结果。知识能力与工作组织共同服务于研究流程。<a class="cite" href="#source-A0" aria-label="来源 A0：AbleWork · 公开项目介绍">[A0]</a><a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p>这个定位比“比个人 Agent 多一层”更清楚。研究员的问题不是缺少另一个会说话的工具，而是材料、判断和成果不断增加，下一次工作仍可能重新开始。有人已经研究过，其他人却不知道；找到了报告，又不确定是否为最新版本；愿意分享结论，却不希望开放私人工作过程。</p>
+<p>AbleWork 因此围绕几个稳定对象组织工作：来源材料、研究成果、主题、任务、知识和参与者。对象之间保存关系，用户可以在工作发生的位置委托，而不是每次从空白聊天开始。报告保持作者归属，衍生的梗概与知识保持来源联系，读取时继续考虑权限。</p>
+<p><strong>作者分析：平台的价值来自成果的第二次使用。</strong> 第一次产出可以由很多工具完成；如果成果能够被另一个人用于后续问题，且保留版本和来源，平台才开始承担独特责任。这里的“第二次”是产品判断，不是限定必须恰好两次访问。</p>
+<p>这也决定了它不需要以社交存在感为中心。Able 可以主动准备材料，也可以在需要决定时提醒，但不必为了像同事而持续发言。研究员应更容易找到有用结果，而不是多管理一个需要回应的角色。</p>
+<p>当前完整度应据实描述：社区发布、梗概调用、历史完整编译以及有边界的主动准备已有运行依据；个人候选进入公共层的正式采纳仍缺完整实例证据。项目已经在使用，不等于每条设计路径都已完成。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a><a class="cite" href="#source-A2" aria-label="来源 A2：作者运行补核 · Able 主动准备路径">[A2]</a><a class="cite" href="#source-A3" aria-label="来源 A3：作者运行核查 · commons 读面与候选上行">[A3]</a></p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>36 / 60</span></footer></section><section class="folio " id="p37" aria-labelledby="title-37"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">37</div><h2 id="title-37">主路径：从研究成果，到后续问题的输入</h2><p>AbleWork 当前社区增量采用分类、梗概与主题导航。用户或其 Agent 保存、发布成果后，宿主核对来源身份、版本与读权，后台生成或复用梗概，保存报告卡及回执；后续检索与问答读取时再次检查来源条件。这是当前日常路径。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<figure id="figure-11"><div class="figure-kicker">FIG. 11 / 机制示意</div><h3>AbleWork 当前日常路径</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-11 fig-desc-11"><title id="fig-title-11">AbleWork 当前日常路径</title><desc id="fig-desc-11">发布研究成果 → 核对身份与版本 → 生成或复用梗概 → 保存卡片与回执 → 后续检索与问答。消费前继续核对来源版本和读权；当前默认是梗概导航，非全量完整编译。依据 A1。</desc><defs><marker id="arrow-11" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">发布研究成果</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-11)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">核对身份与版本</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-11)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">生成或复用梗概</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-11)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">保存卡片与回执</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-11)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">后续检索与问答</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>发布研究成果</li><li>核对身份与版本</li><li>生成或复用梗概</li><li>保存卡片与回执</li><li>后续检索与问答</li></ol><figcaption>消费前继续核对来源版本和读权；当前默认是梗概导航，非全量完整编译。依据 A1。</figcaption></figure>
+
+<p>这条路径的重点是保持引用关系。摘要不应脱离源报告成为无主文本。源报告更新后，旧摘要不能继续冒充当前版本；来源不再可见时，缓存不能绕过新的权限状态。报告卡、来源版本与读取条件之间需要可检查的一致性。</p>
+<p><strong>作者分析：梗概的任务是帮助发现和理解材料，而不是替作者完成全部论证。</strong> 它可以告诉读者材料讨论什么、哪些条件值得关注，并帮助问答定位可用内容。需要细节或重要判断时，应回到原文。把梗概当成完整知识，会放大压缩时丢失的信息。</p>
+<p>这条主路径已经足以构成有价值的应用循环：成果发布以后，其他任务能够实际读入。它并不要求每篇材料先变成大量概念页，也不要求所有用户先参与复杂知识维护。较轻的入口有助于让共享成为日常行为。</p>
+<p>但这一价值仍需继续验证深度。来源被调用，说明资料进入了任务；回答得到交付，说明系统完成了输出；读者是否认可、是否据此采取行动，是另外的结果。AbleWork 当前材料可以证明前两者的具体样本，尚不能把它们全部写成最终研究采用。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>37 / 60</span></footer></section><section class="folio " id="p38" aria-labelledby="title-38"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">38</div><h2 id="title-38">运行规模：说明有人使用，也保留统计边界</h2><p>作者运行核查覆盖的近期窗口为北京时间 2026 年 10 月 1 日 23:37:37 至 10 月 31 日 23:37:37，左闭右开。按可识别个人主体去重，并排除测试、后台同步及归属不明活动。这是一项保守使用汇总，不是全平台月活普查。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>观察项</th>
+<th style="text-align: right;">汇总结果</th>
+<th>可以说明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>真实业务使用者</td>
+<td style="text-align: right;">19 人，其中 18 人非作者本人</td>
+<td>已有内部自然使用</td>
+</tr>
+<tr>
+<td>非本人作者</td>
+<td style="text-align: right;">13 人</td>
+<td>成果来自多位使用者</td>
+</tr>
+<tr>
+<td>非本人发布成果</td>
+<td style="text-align: right;">50 个不同报告或站点</td>
+<td>已发生持续内容交付</td>
+</tr>
+<tr>
+<td>调用社区梗概的问答</td>
+<td style="text-align: right;">11 单、7 人</td>
+<td>知识输入进入后续任务</td>
+</tr>
+<tr>
+<td>当前版本梗概</td>
+<td style="text-align: right;">301 / 318 个在架来源</td>
+<td>日常导航已有实际覆盖</td>
+</tr>
+</tbody>
+</table></div>
+<p>50 个成果按作者与成果标识去重，多版本不重复计数。11 单问答表示来源记录中调用过社区梗概，不等于 11 个正确答案，也不代表每份报告都被使用。301 / 318 对应核查时点的在架来源，剩余 17 个被明确延后，不应写成隐含成功。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p>这些数字支持“项目已投入使用”的表述，也说明平台不只是作者个人演示。但它们不足以支持留存率、研究效率提升或决策质量改善。相关指标需要更完整的分母、基线和用户采用记录，不能从发布数量推算。</p>
+<p><strong>作者分析：当前最值得追踪的是从发布到有意义复用的转化。</strong> 哪些成果被跨人调用，哪些问题因此少做了重复查找，哪些摘要需要回到原文纠正。这个问题比单纯增加报告数量更接近平台定位。</p>
+<p>后续统计应继续把人、Agent 和后台任务分开。代人执行的 Agent 归到相应主体，不能另算新增用户；重试不算新成果；知识页不算输入报告。清楚的计数规则有助于避免系统越自动化，指标看起来越繁荣，却无法对应真实使用。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>38 / 60</span></footer></section><section class="folio " id="p39" aria-labelledby="title-39"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">39</div><h2 id="title-39">脱敏案例：一人的新版研究进入另一人的问题</h2><p>运行核查记录了一条跨作者路径：一位研究者发布并更新报告至 v2，平台随后生成对应版本的梗概；两天后，另一位使用者提出相关后续问题，问答来源记录包含这张 v2 卡，版本与内容指纹能够对应。这里保留流程，省略业务对象和用户身份。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<figure id="figure-12"><div class="figure-kicker">FIG. 12 / 机制示意</div><h3>跨作者复用的已观察路径</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-12 fig-desc-12"><title id="fig-title-12">跨作者复用的已观察路径</title><desc id="fig-desc-12">作者 A 发布 v2 → 生成对应梗概 → 作者 B 提出新问题 → 来源记录包含 v2。脱敏运行样本：证明新版成果进入另一人的任务输入，不证明答案已获用户接受。依据 A1。</desc><defs><marker id="arrow-12" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="89.625" y="68.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">作者 A 发布 </text><text x="89.625" y="90.0" text-anchor="middle" font-size="14" fill="#20352e">v2</text><path d="M169.25,68 L189.25,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-12)"/><rect x="190.25" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="202.25" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="269.875" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">生成对应梗概</text><path d="M349.5,68 L369.5,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-12)"/><rect x="370.5" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="382.5" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="450.125" y="68.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">作者 B 提出新</text><text x="450.125" y="90.0" text-anchor="middle" font-size="14" fill="#20352e">问题</text><path d="M529.75,68 L549.75,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-12)"/><rect x="550.75" y="28" width="159.25" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="562.75" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="630.375" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">来源记录包含 v2</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>作者 A 发布 v2</li><li>生成对应梗概</li><li>作者 B 提出新问题</li><li>来源记录包含 v2</li></ol><figcaption>脱敏运行样本：证明新版成果进入另一人的任务输入，不证明答案已获用户接受。依据 A1。</figcaption></figure>
+
+<p>这条证据比“系统能够检索报告”更具体。它说明一个真实作者的成果进入了另一个真实使用者的后续任务，而且使用的是可定位版本。平台并非只保存文件，也不是只在验收测试里演示引用。</p>
+<p>它的边界同样明确。运行记录证明材料被读入并形成回答，没有证明用户最终接受结论，也没有证明源报告的全部判断正确。回答中是否向用户充分展示了引用，需要与内部来源记录区分。两者都重要，但不能互相替代。</p>
+<p><strong>作者分析：这个案例体现的是研究协作中的信息连续性。</strong> 原作者不必在每次后续问题出现时重新解释全部材料；后来者也不必从零寻找版本。平台承担了材料识别、摘要组织和后续调用之间的连接工作。</p>
+<p>下一步值得补充的证据，是用户能否从回答回到原报告、能否发现结论条件、发现错误后能否让纠正影响后续使用。只有把这些环节补齐，跨作者复用才能从“被调用”进一步走向“可放心采用”。这是一项明确的后续验证任务，不能通过扩大现有数字来代替。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>39 / 60</span></footer></section><section class="folio " id="p40" aria-labelledby="title-40"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">40</div><h2 id="title-40">历史完整编译：实际完成了什么</h2><p>AbleWork 曾运行完整 AutoWiki 编译批次。任务创建于 2026 年 9 月 30 日，正式发布跨越 9 月 30 日至 10 月 1 日。核查的 152 个逻辑任务中，151 个完成并发布，1 个失败；正式快照保留 1,717 个页面记录。这是历史批次，不能计作近期窗口内的新增长。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<figure id="figure-13"><div class="figure-kicker">FIG. 13 / 机制示意</div><h3>历史完整编译的工作路径</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-13 fig-desc-13"><title id="fig-title-13">历史完整编译的工作路径</title><desc id="fig-desc-13">材料与旧知识 → 比较形成候选 → 预检与重新比较 → 内核正式提交 → 宿主发布与再读取。候选、正式提交与发布分别有记录；历史验证不能代替当前默认运行状态。依据 A1。</desc><defs><marker id="arrow-13" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">材料与旧知识</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-13)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">比较形成候选</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-13)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">预检与重新比较</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-13)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">内核正式提交</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-13)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">宿主发布与再读取</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>材料与旧知识</li><li>比较形成候选</li><li>预检与重新比较</li><li>内核正式提交</li><li>宿主发布与再读取</li></ol><figcaption>候选、正式提交与发布分别有记录；历史验证不能代替当前默认运行状态。依据 A1。</figcaption></figure>
+
+<p>成功结果能够对应候选、预检、内核正式提交和宿主发布回执。部分后续任务读取已有知识，再比较新材料。这说明完整编译不只是生成若干独立摘要，也存在跨材料的积累与更新。</p>
+<p>具体汇总中，131 个任务记录了非空旧知识读取；59 个任务更新既有页面；快照中保留事实替代关系与多来源页面。这些证据支持“发生了更新与复用”，但不等于所有更新判断都经过专家确认，也不应把任务数当成人数。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p><strong>作者分析：完整编译最有价值的能力，是让后来的材料能够改变已有知识，并保留改变的依据。</strong> 如果每次只是追加一篇摘要，旧结论仍然存在，却没有说明是否被修订。真正的增量维护需要处理支持、更新、冲突和失效。</p>
+<p>历史结果也暴露了工程成本：并发候选需要重新比较基线，失败要保留产物，正式提交与可读发布需要分别确认。能够跑完批次，证明这条技术路径已有实际成果；是否适合所有日常材料，还要依据用途、质量和维护成本选择。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>40 / 60</span></footer></section><section class="folio " id="p41" aria-labelledby="title-41"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">41</div><h2 id="title-41">为什么日常采用梗概，完整编译另行选择</h2><p>AbleWork 当前社区增量默认使用分类、梗概与主题索引，完整语义编译通路没有作为日常默认开启，历史成果仍保留。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a> 这个现状应直接写清，不能让读者误以为每一篇新报告都会进入完整知识编译。</p>
+<p>选择较轻的处理方式，有明确的产品理由。社区里许多材料首先需要被发现、阅读和讨论。为了回答“这篇报告是否与我有关”，不一定需要抽取全部实体、关系和事实。完整编译更适合反复使用、需要更新和跨材料比较的内容。</p>
+<p><strong>作者分析：处理深度应跟随使用目的。</strong> 一次性动态可以保留来源与梗概；持续研究的核心对象值得建立正式知识；存在重大争议的判断可能先保留原文与候选，不急于纳入共同知识。选择深度并非给材料排尊卑，而是控制维护责任。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>使用需求</th>
+<th>适合的处理</th>
+<th>仍需保留</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>判断是否值得读</td>
+<td>分类、梗概</td>
+<td>作者、时间、原文入口</td>
+</tr>
+<tr>
+<td>回答局部问题</td>
+<td>检索后精读</td>
+<td>引用位置、条件、版本</td>
+</tr>
+<tr>
+<td>持续跟踪对象</td>
+<td>增量知识编译</td>
+<td>更新关系与历史</td>
+</tr>
+<tr>
+<td>处理分歧</td>
+<td>并列材料与审查</td>
+<td>争议双方、待决问题</td>
+</tr>
+</tbody>
+</table></div>
+<p>梗概也有质量风险。已有核查材料记录过条件被压成直接预测，以及摘要增加原文没有的立场。修复需要回到具体语句和来源，不能用任务状态成功来覆盖语义问题。这个经验说明，轻处理仍然需要合适的质量检查。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p>因此完整编译与梗概的关系应写成分工：前者承担较重的知识维护，后者承担日常发现与导航。未来可以根据真实复用频率和错误类型调整选择，不必把一次取舍固化为永远不变的架构信条。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>41 / 60</span></footer></section><section class="folio " id="p42" aria-labelledby="title-42"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">42</div><h2 id="title-42">AutoWiki 与 AbleWork：语义编译和宿主责任</h2><p>AutoWiki 的公开项目说明了新材料与已有知识比较、更新页面、保留来源和处理冲突的基本方法。它提供围绕知识库的取材、编译、查询与治理能力。AbleWork 将知识编译接入自身的材料、任务与发布流程。<a class="cite" href="#source-A4" aria-label="来源 A4：AutoWiki · 公开项目与方法说明">[A4]</a><a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<figure id="figure-14"><div class="figure-kicker">FIG. 14 / 机制示意</div><h3>编译语义与应用边界分工</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="fig-title-14 fig-desc-14"><title id="fig-title-14">编译语义与应用边界分工</title><desc id="fig-desc-14">模型｜提出候选 → AutoWiki｜比较与校验 → 内核｜正式提交 → AbleWork｜身份与材料 → 宿主｜权限与发布。上方为编译路径，下方为宿主责任；图为职责简化，具体接线以部署为准。依据 A1、A4。</desc><defs><marker id="arrow-14" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="5" y="105" width="710" height="88" rx="8" fill="#e7ece3"/><rect x="17" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="29" y="27" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="119.5" y="46.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">模型</text><text x="119.5" y="69.5" text-anchor="middle" font-size="13" fill="#75609b">提出候选</text><path d="M119,84 L119,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-14)"/><rect x="257" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="269" y="27" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="359.5" y="46.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">AutoWiki</text><text x="359.5" y="69.5" text-anchor="middle" font-size="13" fill="#75609b">比较与校验</text><path d="M359,84 L359,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-14)"/><rect x="497" y="8" width="205" height="75" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="509" y="27" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="599.5" y="46.5" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">内核</text><text x="599.5" y="69.5" text-anchor="middle" font-size="13" fill="#75609b">正式提交</text><path d="M599,84 L599,112" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-14)"/><rect x="80" y="117" width="250" height="62" rx="5" fill="#f6f3ed" stroke="#c8cbbf" /><text x="92" y="136" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="205.0" y="149.0" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">AbleWork</text><text x="205.0" y="172.0" text-anchor="middle" font-size="13" fill="#75609b">身份与材料</text><rect x="390" y="117" width="250" height="62" rx="5" fill="#f6f3ed" stroke="#c8cbbf" /><text x="402" y="136" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="515.0" y="149.0" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">宿主</text><text x="515.0" y="172.0" text-anchor="middle" font-size="13" fill="#75609b">权限与发布</text></svg><ol class="figure-mobile"><li>模型 · 提出候选</li><li>AutoWiki · 比较与校验</li><li>内核 · 正式提交</li><li>AbleWork · 身份与材料</li><li>宿主 · 权限与发布</li></ol><figcaption>上方为编译路径，下方为宿主责任；图为职责简化，具体接线以部署为准。依据 A1、A4。</figcaption></figure>
+
+<p>可以把两者关系理解为：AutoWiki 回答“这份材料怎样影响已有知识”；AbleWork 回答“这是谁的材料、当前允许怎样使用、何时执行、结果向谁开放”。模型生成候选，编译内核检查并提交，宿主确认版本与权限后发布。几个责任不能因同一次工具调用而混成一个。</p>
+<p><strong>作者分析：这种划分使知识语义可以复用，业务边界由具体应用承担。</strong> 相同的编译方法可能用于个人文件库或平台结构化存储，但每个宿主仍需提供真实身份、材料版本和写入规则。不能因为内核支持提交，就默认某个调用者有权公开全部结果。</p>
+<p>独立内核也便于避免多套语义逐渐分叉。若每个服务自己定义“更新”“冲突”和“替代”，相同材料可能产生不同知识关系。集中维护比较与提交规则，有助于让结果一致；宿主则保留对应用流程和读权的控制。</p>
+<p>这并不意味着所有语义判断都能由确定性代码完成。来源是否足以支持结论、两个观点是否真正矛盾，仍需要模型或人的判断。内核能够验证结构和约束，不能把这种验证夸大为全文真实。报告把可追溯性、结构正确性与语义可靠性分开评价。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>42 / 60</span></footer></section><section class="folio " id="p43" aria-labelledby="title-43"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">43</div><h2 id="title-43">主动准备：明确关注以后，后台继续检查</h2><p>AbleWork 的运行材料记录了有边界的主动准备路径：个人建立订阅，后台周期检查事实与候选，比较当日事实水位，必要时调用模型组织卡片，经过结构与链接检查后保存，用户回来查看并继续追问。<a class="cite" href="#source-A2" aria-label="来源 A2：作者运行补核 · Able 主动准备路径">[A2]</a></p>
+<figure id="figure-15"><div class="figure-kicker">FIG. 15 / 机制示意</div><h3>关注以后，后台准备结果</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-15 fig-desc-15"><title id="fig-title-15">关注以后，后台准备结果</title><desc id="fig-desc-15">明确个人订阅 → 周期检查事实 → 比较当日水位 → 按需组织卡片 → 保存后回来阅读。同日水位未变可跳过模型和重写；产物保存与用户采用分开统计。依据 A2。</desc><defs><marker id="arrow-15" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">明确个人订阅</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-15)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">周期检查事实</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-15)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">比较当日水位</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-15)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">按需组织卡片</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-15)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">保存后回来阅读</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>明确个人订阅</li><li>周期检查事实</li><li>比较当日水位</li><li>按需组织卡片</li><li>保存后回来阅读</li></ol><figcaption>同日水位未变可跳过模型和重写；产物保存与用户采用分开统计。依据 A2。</figcaption></figure>
+
+<p>这里的主动性来自已经建立的关注范围。系统不需要等用户每天重新提出相同问题，但也不应据此自行追逐任意研究目标。周期检查是一次执行机会；是否生成新结果，仍取决于事实与已有产物。</p>
+<p>当前机制将唤醒与模型调用分开。同日事实水位未变时，可以跳过模型和重复写入；跨日仍可能生成新一期。因此不能把这个做法扩大描述为“只要事实不变，任何时候都完全零调用”。准确的条件说明有助于后续评估成本。<a class="cite" href="#source-A2" aria-label="来源 A2：作者运行补核 · Able 主动准备路径">[A2]</a></p>
+<p><strong>作者分析：这种方式符合研究工作的节奏。</strong> 很多变化值得提前准备，却不值得立即打断。结果进入用户回来时会看到的位置，可以降低通知压力。真正紧急或需要决定的事项，再使用明确的提醒规则。</p>
+<p>当前证据证明已有调度和保存产物，不自动证明用户阅读或采用每张卡片。结构与链接检查也不能保证所有表达都准确。后续应把有用提醒、无效提醒、遗漏和用户纠正记录下来，才能判断主动准备是否实际节省注意力，而非只是增加后台输出。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>43 / 60</span></footer></section><section class="folio " id="p44" aria-labelledby="title-44"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">44</div><h2 id="title-44">只读公共面与候选池：分享不等于直接改写</h2><p>2026 年 11 月 1 日的生产只读核查确认，个人实例消费的 commons 公共目录以只读方式挂载，个人成果向治理候选池的汇聚已经发生；但未观察到候选正式纳入 commons 数据正典的发布回执。因此可证明的上行终点目前是候选池。<a class="cite" href="#source-A3" aria-label="来源 A3：作者运行核查 · commons 读面与候选上行">[A3]</a></p>
+<figure id="figure-16"><div class="figure-kicker">FIG. 16 / 机制示意</div><h3>个人候选到公共知识的边界</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-16 fig-desc-16"><title id="fig-title-16">个人候选到公共知识的边界</title><desc id="fig-desc-16">个人知识与方法 → 候选池｜已观察 → 审核采纳｜待补实例 → 公共母本 → 用户只读消费。消费只读与候选上行已确认；候选到正式公共数据的采纳回执未观察到。依据 A3。</desc><defs><marker id="arrow-16" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">个人知识与方法</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-16)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="69.0" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">候选池</text><text x="215.79999999999998" y="92.0" text-anchor="middle" font-size="13" fill="#75609b">已观察</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-16)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#eee9f2" stroke="#75609b" stroke-dasharray="5 4"/><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="69.0" text-anchor="middle" font-size="15" font-weight="600" fill="#20352e">审核采纳</text><text x="360.0" y="92.0" text-anchor="middle" font-size="13" fill="#75609b">待补实例</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow-16)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#75609b" stroke-dasharray="5 4"/><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">公共母本</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-16)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">用户只读消费</text><text x="12" y="151" font-size="11" fill="#75609b">虚线：正式采纳路径待补真实实例</text></svg><ol class="figure-mobile"><li>个人知识与方法</li><li>候选池 · 已观察</li><li>审核采纳 · 待补实例</li><li>公共母本</li><li>用户只读消费</li></ol><figcaption>消费只读与候选上行已确认；候选到正式公共数据的采纳回执未观察到。依据 A3。</figcaption></figure>
+
+<p>“公共层只读”需要说明读者是谁。它表示消费实例不能直接改写公共母本，不表示整个系统永远没有写入者。经过授权的发布者仍然需要维护公共内容。把消费与发布分开，可以避免个人任务无意覆盖所有人共享的知识。</p>
+<p>候选池则保留一种低风险的贡献方式。个人 Agent 可以提出有用知识或方法，附上依据与适用范围，等待检查。提交候选并不自动赋予它正式地位，也不意味着所有私人记忆都应上行。哪些内容适合共享，需要依据类型、来源和授权判断。</p>
+<p><strong>作者分析：这个设计在分享便利与共同知识稳定性之间做了取舍。</strong> 代价是采纳流程可能变慢，候选也可能长期无人处理。只读边界本身不能解决治理资源不足。若候选池不断增长，却没有明确评审与发布者，就不能把它称为完整知识循环。</p>
+<p>下一步需要真实走完少量候选的审核、正式发布、回执与消费。观察重点不是候选数量，而是读者能否使用被采纳内容、作者能否知道处理结果，以及错误能否撤回。这些仍待完成的工作应作为明确缺口呈现，而不是包装成“刻意留下的接口”。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>44 / 60</span></footer></section><section class="folio " id="p45" aria-labelledby="title-45"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">45</div><h2 id="title-45">报告、社区知识与 commons 不是同一块公共层</h2><p>AbleWork 的不同知识路径容易因为“共享”“公共”这些词混在一起。作者报告的可见发布、社区梗概或完整知识投影、个人实例读取的 commons，各自有不同对象与写入方式。某条路径已经发布成功，不能推导另一条路径也已完成。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a><a class="cite" href="#source-A3" aria-label="来源 A3：作者运行核查 · commons 读面与候选上行">[A3]</a></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>路径</th>
+<th>核心对象</th>
+<th>当前证据</th>
+<th>不应混入的结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作者成果发布</td>
+<td>报告、站点及版本</td>
+<td>多人真实发布</td>
+<td>代表全部知识已正式编译</td>
+</tr>
+<tr>
+<td>社区日常导航</td>
+<td>来源梗概与主题索引</td>
+<td>后续问答有调用</td>
+<td>摘要等于完整领域知识</td>
+</tr>
+<tr>
+<td>历史完整编译</td>
+<td>正式知识及读面</td>
+<td>提交与发布能对应</td>
+<td>当前每篇新材料都走此路</td>
+</tr>
+<tr>
+<td>commons 上行</td>
+<td>个人候选与公共母本</td>
+<td>只读消费、候选汇聚</td>
+<td>候选已正式采纳并复用</td>
+</tr>
+</tbody>
+</table></div>
+<p>这种区分不是文字上的谨慎，而是影响下一步建设。社区发布需要关注作者与版本；完整编译需要关注新旧知识比较；commons 需要关注候选评审、正式采纳和回执。把它们当成一个系统状态，就无法准确定位缺口。</p>
+<p><strong>作者分析：平台可以有多条完整程度不同的路径，同时仍是一个已经投入使用的项目。</strong> 成熟应用往往如此。报告应说明用户今天能够完成什么、什么需要额外操作、什么还没有真实证据。项目价值不要求把全部路线都写成已完成。</p>
+<p>对外介绍时，可以先讲最常用、证据最清楚的成果发布与后续问答路径，再介绍完整编译能力，最后说明个人到公共知识的治理方向。这样读者能够先理解实际应用，再评估扩展空间，不会被多个“层”的概念淹没。</p>
+<p>这也修正了最初提纲中的一处风险：不能为了呈现“完整项目”，把“触发、编译、目录、边界、再消费”写成所有路径都完全相同的一条线。完整介绍应包含实际分路、异常处理和证据空白，才能支持可信的产品判断。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>45 / 60</span></footer></section><section class="folio " id="p46" aria-labelledby="title-46"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">46</div><h2 id="title-46">失败与反馈：把运行问题变成产品改动</h2><p>AbleWork 的核查材料保留了真实使用反馈进入开发和发布的案例：一名非本人用户提出 7 条数据页面反馈，改动上线并逐条回复；同日该用户继续针对改后的页面提出建议。已有交付与再次使用证据，但没有原反馈者最终接受的完整记录。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a></p>
+<p>这类证据与功能清单不同。它说明平台已经面对实际使用中的歧义，例如统计窗口、曲线选择、数值对应和导航。用户提出的问题往往不会准确对应某个模块，而是表达“这里不好理解”。产品工作需要把体验问题转成可验证改动。</p>
+<p><strong>作者分析：研究平台的质量需要同时检查数据表达与知识表达。</strong> 数值计算正确，但展示范围让人误读，仍然会影响判断；摘要保留了关键词，却删掉关键条件，也可能改变原意。工程成功与用户理解之间存在一段需要反复修正的距离。</p>
+<p>反馈处理应保留原问题、采用的解释、实际改动和后续状态。若用户表达含糊，可以先做可逆的改善，并明确尚待确认的部分。不能因为代码已经部署，就把用户问题关闭成“完全解决”；也不能因为还有后续建议，就否认前一轮交付。</p>
+<p>Agent 可以帮助归类反馈、定位相关对象、整理证据和生成修复建议，但产品裁定仍需要了解业务语义。一个看似重复的指标，可能是不同时间口径；一个看似旧版本的报告，可能用于历史回看。自动清理之前，应先弄清用户为什么需要它。</p>
+<p>后续衡量应关注纠正是否真正影响之后的体验。某条摘要错误修复后，同类任务是否还会出现相同问题？某个页面说明改善后，用户是否仍需重复询问？这些问题比单纯统计关闭多少反馈，更能检验平台是否在变得可靠。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>46 / 60</span></footer></section><section class="folio " id="p47" aria-labelledby="title-47"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">47</div><h2 id="title-47">当前完整度：已运行、历史验证、待补证据</h2><p>AbleWork 可以作为一个完整项目介绍，但“完整”应指定位、用户路径、工程责任和证据能够相互解释，不代表全部设想都已上线。下面按证据状态给出当前判断，截止于本报告采用的 2026 年 11 月 1 日核查资料。<a class="cite" href="#source-A1" aria-label="来源 A1：作者运行核查 · AbleWork 实际运行与产品成果">[A1]</a><a class="cite" href="#source-A2" aria-label="来源 A2：作者运行补核 · Able 主动准备路径">[A2]</a><a class="cite" href="#source-A3" aria-label="来源 A3：作者运行核查 · commons 读面与候选上行">[A3]</a></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>状态</th>
+<th>已能说明的内容</th>
+<th>仍需注意</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前运行</td>
+<td>成果发布、梗概导航与后续问答</td>
+<td>调用不等于答案获接受</td>
+</tr>
+<tr>
+<td>当前运行</td>
+<td>订阅后的周期检查与结果准备</td>
+<td>保存不等于用户阅读采用</td>
+</tr>
+<tr>
+<td>历史完整验证</td>
+<td>候选、比较、校验、提交、发布、再读取</td>
+<td>不代表当前默认全量运行</td>
+</tr>
+<tr>
+<td>当前部分路径</td>
+<td>commons 只读消费与候选上行</td>
+<td>未观察到正式采纳回执</td>
+</tr>
+<tr>
+<td>已有设计方向</td>
+<td>更完整的对象与持续任务交互</td>
+<td>不能仅凭设计文档认定交付</td>
+</tr>
+<tr>
+<td>尚缺证据</td>
+<td>全量语义质量、最终采用和效率收益</td>
+<td>需要专门评价与用户记录</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>作者分析：应把有意取舍与尚未完成分开。</strong> 日常优先梗概，是根据用途选择处理深度；正式发布权集中在宿主，是边界设计；候选没有完成采纳实例，则是尚缺的路径证据。三者不能都用“暂留接口”概括。</p>
+<p>这个区分也使规划更清楚。有意取舍可以长期保留，并通过使用反馈调整；证据缺口需要安排实际案例验证；工程缺口需要实现和验收。不同问题对应不同动作，避免用继续讨论定位来拖延具体交付。</p>
+<p>对读者最诚实的表述是：AbleWork 已让多位使用者发布并复用研究成果，也曾跑通完整知识编译；正在把这些能力组织成更稳定的持续研究体验。下一阶段的重点，是补齐正式采纳、纠错传播和用户采用证据，而不是先把能力清单写得更长。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>47 / 60</span></footer></section><section class="folio " id="p48" aria-labelledby="title-48"><header class="folio-top"><span>AbleWork · 当前应用</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">48</div><h2 id="title-48">AbleWork 的结合路线：先增强已有工作</h2><p>结合其他形态，应从 AbleWork 已有用户路径出发。最值得优先增强的，是研究员已经在做、平台已经有对象和证据的工作。每个借鉴都应能够说明它减少了哪项负担，以及怎样验证没有引入新的边界问题。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>借鉴方向</th>
+<th>可落在 AbleWork 的动作</th>
+<th>验证条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Muse 的持续关系</td>
+<td>保存关注原因、期限和用户修正</td>
+<td>少重复解释，旧关注可停用</td>
+</tr>
+<tr>
+<td>Grok Bot 的流程复用</td>
+<td>固化高频研究方法与例行检查</td>
+<td>异常样本可处理，方法有版本</td>
+</tr>
+<tr>
+<td>Claude Tag 的原处协作</td>
+<td>委托、进展与成果链接到对象</td>
+<td>同事能接续，读权保持正确</td>
+</tr>
+<tr>
+<td>Super-agent 的任务状态</td>
+<td>显式表达等待、恢复与交付</td>
+<td>中断后不丢成果、不重复行动</td>
+</tr>
+<tr>
+<td>知识治理的深化</td>
+<td>候选采纳与纠错影响后续消费</td>
+<td>回执、版本与撤回可核对</td>
+</tr>
+</tbody>
+</table></div>
+<p>近期可以选一项持续主题作为贯穿案例：用户建立关注，后台检查变化，Agent 准备有出处的更新，用户确认其中有长期价值的内容，再让另一位有权读者用于后续问题。每一步都保留输入、状态和结果，而不要求同时扩展所有领域。</p>
+<p><strong>作者建议：先补齐已发生复用的解释与纠错，再扩大自动化范围。</strong> 如果用户看不见来源，更多自动摘要只会增加难以判断的内容；如果候选无人采纳，扩大候选生成量不会形成公共知识；如果等待状态不清楚，新增更多主动任务会增加追踪负担。</p>
+<p>这种建设顺序不排斥更开放的研究 Agent。它为开放任务提供必要基础：知道自己在依据什么工作，哪些条件改变了，谁可以决定下一步，以及结果如何进入共同知识。后续形态越自主，这些基础越重要。</p>
+<p>AbleWork 的方向因此可以保持聚焦：让研究工作有连续对象，让成果有可靠归属，让复用有边界。具体执行器、模型与交互入口可以变化，用户已经积累的知识与工作记录应能够继续使用。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>48 / 60</span></footer></section><section class="folio " id="p49" aria-labelledby="title-49"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">49</div><h2 id="title-49">情境推演：一份持续研究委托怎样分工</h2><p>设想一位研究员提出：“持续关注一个行业的供需变化，每周准备更新，有重要证据时修订研究框架。”这是情境推演，不对应任何产品的实测成绩。它同时包含长期目标、例行流程、资料更新和知识维护，适合检查几种形态如何组合。</p>
+<p>个人代理可以先帮助明确关注目的：哪些问题尚未回答，研究期限多长，哪些变化值得提醒。角色 Bot 可以承担稳定的资料整理方法。团队频道可以讨论新证据，确认是否改变原有假设。任务系统记录等待的数据与审查。知识平台保存正式成果和更新依据。</p>
+<figure id="figure-17"><div class="figure-kicker">FIG. 17 / 机制示意</div><h3>持续研究委托中的责任交接</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-17 fig-desc-17"><title id="fig-title-17">持续研究委托中的责任交接</title><desc id="fig-desc-17">关注目标 → 整理证据 → 团队判断 → 修订成果 → 后续问题。情境推演：口径分歧与重要结论变化需要明确裁定，不能只按时间覆盖。</desc><defs><marker id="arrow-17" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">关注目标</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-17)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">整理证据</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-17)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">团队判断</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-17)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">修订成果</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-17)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">后续问题</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>关注目标</li><li>整理证据</li><li>团队判断</li><li>修订成果</li><li>后续问题</li></ol><figcaption>情境推演：口径分歧与重要结论变化需要明确裁定，不能只按时间覆盖。</figcaption></figure>
+
+<p>真正困难的节点出现在分歧。一份新材料支持旧判断，另一份材料却使用不同统计口径。系统不应简单按发布时间选较新结论，也不应把两者平均成一段模糊表述。它需要把口径差异与待决问题交给合适的人，再记录采用哪种解释。</p>
+<p>用户可能只希望每周看到摘要，却在重要变化时愿意即时介入。这要求通知规则与处理方法分开。系统可以每天检查，但只有满足既定条件时提醒；也可以在证据不足时先积累候选，不频繁制造“重大变化”。</p>
+<p>对 AbleWork 的验证重点，是整个过程能否围绕同一个研究对象接续。新资料、讨论、任务和最终版本应能相互找到。若每次更新都生成一篇与过去无关的新报告，虽然内容增加了，持续研究的责任仍然落在人身上。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>49 / 60</span></footer></section><section class="folio " id="p50" aria-labelledby="title-50"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">50</div><h2 id="title-50">情境推演：多人接力修复一个问题</h2><p>设想团队发现数据页面上的某个读数含义不清，请 Agent 调查。第一位成员只看到异常，第二位成员了解业务口径，第三位成员负责工程实现。这个情境能够检验团队协作与任务接续，也说明为什么单个高质量回答还不够。</p>
+<p>频道形态适合保留共同讨论：异常何时出现，谁提供了新线索，目前采用什么解释。持续任务形态适合记录执行状态：是否已经复现、是否等待数据口径确认、修改是否可供审查。研究平台则应把修正与受影响的指标、报告或主题关联起来。</p>
+<p><strong>作者分析：任务交接应保留已经排除的解释。</strong> 如果后来者只看到最终一句“请修复显示”，可能重新走一遍排查，或者把有意保留的历史口径删掉。失败尝试与被排除假设并非都需要长篇展示，但应在需要时能够查回。</p>
+<p>这里的授权也不是一次性笼统批准。调查和制作可审查改动，可以在已委托范围内继续；生产发布、改变数据定义或删除历史记录，可能需要不同责任人确认。系统应该把需要决定的具体差异呈现出来，让用户批准一个可检查结果。</p>
+<p>验收应同时覆盖技术与阅读。测试可以证明计算或接口行为符合预期，真实页面检查则能发现标题、单位、范围和提示是否使用户理解错误。若只看测试通过，用户原本的困惑可能仍然存在。</p>
+<p>AbleWork 已有真实反馈推动页面改动的案例，但本页是更一般的推演。后续可以把它形成可复用方法：保留原问题，列出采用解释，生成可审查结果，确认发布，再记录用户是否继续遇到同类问题。这样 Agent 协作围绕用户困难展开，而不是围绕内部步骤自我完成。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>50 / 60</span></footer></section><section class="folio " id="p51" aria-labelledby="title-51"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">51</div><h2 id="title-51">情境推演：来源更新或撤回之后怎么办</h2><p>设想一份共享报告曾支持某个知识条目，后来作者更新了结论，或收回了共享权限。系统中可能仍有旧摘要、已生成回答、个人笔记和后台任务。这个情境检验的是知识生命周期，而非首次生成能力。</p>
+<figure id="figure-18"><div class="figure-kicker">FIG. 18 / 机制示意</div><h3>来源变化应影响派生结果</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-18 fig-desc-18"><title id="fig-title-18">来源变化应影响派生结果</title><desc id="fig-desc-18">来源更新或撤回 → 定位派生对象 → 重新检查读权 → 修订或标记结果 → 恢复任务再核对。情境推演与建议；不表示所有影响传播均已实现。历史合法交付按具体政策处理。</desc><defs><marker id="arrow-18" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">来源更新或撤回</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-18)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">定位派生对象</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-18)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">重新检查读权</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-18)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">修订或标记结果</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-18)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">恢复任务再核对</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>来源更新或撤回</li><li>定位派生对象</li><li>重新检查读权</li><li>修订或标记结果</li><li>恢复任务再核对</li></ol><figcaption>情境推演与建议；不表示所有影响传播均已实现。历史合法交付按具体政策处理。</figcaption></figure>
+
+<p>来源更新时，应先区分内容变化与可见性变化。内容变化可能需要重新摘要、比较知识和提示受影响任务；可见性变化则要求后续读取遵守当前权限。已经合法交付的历史结果如何处理，需要具体产品政策，不能笼统承诺可以从所有人的记忆中删除。</p>
+<p><strong>作者建议：至少建立可追踪的派生关系。</strong> 知道哪些摘要和知识引用了哪一版来源，才能安排更新。若只有无来源文本，系统连影响范围都无法判断。派生关系不要求每个字都有复杂标签，但重要结论应能追到依据。</p>
+<p>后台任务恢复时也应重新核对材料条件。任务在昨天获得读权，不代表今天仍可照常读取。若来源不可用，系统应该明确说明缺口，保留已完成的其他工作，而不是悄悄用旧缓存补齐后宣称最新。</p>
+<p>对 AbleWork，这类验证比单纯扩大知识规模更能支撑“边界治理”定位。可以选择一份测试材料，完成发布、摘要、后续调用，再更新或撤回，检查每个读面和恢复任务。只有真实跑过变化后的路径，才能说明边界在持续工作中有效，而不只是首次接入时有效。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>51 / 60</span></footer></section><section class="folio " id="p52" aria-labelledby="title-52"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">52</div><h2 id="title-52">情境推演：个人发现怎样成为公共知识</h2><p>设想研究员在私人工作区发现一条可复用方法，希望分享给同事。个人 Agent 可以整理方法说明、适用条件和来源，再形成候选。公共知识的发布者需要检查它是否确有共享价值、是否含有私人材料，以及是否与已有方法冲突。</p>
+<p>这里最容易出现的误判，是把“作者愿意提交”当作“所有输入都允许公开”。方法可能引用第三方受限资料，也可能包含只有特定团队才能理解的业务背景。提交候选时应明确允许分享的内容，而非直接复制整个私人研究过程。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>应形成的记录</th>
+<th>决策重点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提出候选</td>
+<td>方法、依据、适用范围</td>
+<td>是否值得他人复用</td>
+</tr>
+<tr>
+<td>比较检查</td>
+<td>与现有知识的关系</td>
+<td>重复、更新还是分歧</td>
+</tr>
+<tr>
+<td>正式采纳</td>
+<td>版本、发布者、可见范围</td>
+<td>谁承担维护责任</td>
+</tr>
+<tr>
+<td>后续消费</td>
+<td>使用入口与来源</td>
+<td>读者能否正确理解</td>
+</tr>
+<tr>
+<td>修订或撤回</td>
+<td>原因与替代版本</td>
+<td>旧内容如何停止误导</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>作者分析：公共知识需要维护者，而不只是贡献者。</strong> 大量候选可以由自动化产生，但正式知识需要持续处理过时、冲突和错误。如果没有维护能力，采纳门槛应更谨慎，先共享原始成果与候选状态，避免制造无人负责的“标准答案”。</p>
+<p>AbleWork 当前 commons 路径已确认只读消费与候选汇聚，正式采纳实例仍需补齐。本情境可直接用作下一项端到端验收：选择少量真实、可公开的方法，完成从候选到发布再到他人使用的全过程，并保留回执与纠错方式。<a class="cite" href="#source-A3" aria-label="来源 A3：作者运行核查 · commons 读面与候选上行">[A3]</a></p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>52 / 60</span></footer></section><section class="folio " id="p53" aria-labelledby="title-53"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">53</div><h2 id="title-53">未来判断一：入口会更自然，责任对象会更明确</h2><p>从五个案例可以提出一个有条件的判断：用户入口可能继续趋向自然语言与就地委托，底层工作对象却会更明确。原因很直接，用户不愿学习复杂配置，但持续系统必须记住目标、范围、状态和结果。自然交互与结构化责任并不矛盾。</p>
+<p>这个判断并不意味着聊天将替代所有界面。审批需要展示具体对象与后果，计划需要显示依赖，研究报告需要完整阅读，知识更新需要比较新旧。不同内容需要合适载体。自然语言适合表达意图，稳定界面适合检查和操作明确对象。</p>
+<p><strong>作者推断：未来 Agent 产品的重要设计能力，是在对话与对象之间转换。</strong> 用户说“继续关注”，系统应让关注对象、期限和停止方式变得可见；用户说“采用这个结论”，系统应知道采用的是哪一版、适用于什么范围。无法完成这种转换，长期任务就容易停留在含糊承诺中。</p>
+<p>反例也存在。短暂问答、创意探索或低后果个人工作，未必需要正式任务对象。强行结构化会增加负担。因此产品应按工作长度、影响范围和复用需求逐步增加结构，而不是把每一句话都变成管理记录。</p>
+<p>验证这一判断，可以观察用户是否愿意在关键节点确认对象，而不需要理解内部技术。例如看一张清楚的“持续关注”卡片，就能知道系统接下来会做什么。若为了完成简单委托必须填写大量字段，说明结构暴露过多；若用户无法解释系统承诺了什么，则结构不足。</p>
+<p>AbleWork 的机会在于已有研究对象。报告、主题和指标天然提供上下文与稳定入口，可以减少用户描述成本。下一步应让任务与成果版本更容易回看，同时保持用户围绕研究问题工作，而非围绕系统内部流程工作。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>53 / 60</span></footer></section><section class="folio " id="p54" aria-labelledby="title-54"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">54</div><h2 id="title-54">未来判断二：Agent 身份会成为应用设计的一部分</h2><p>当 Agent 只给建议时，身份问题不太显眼；当它读取多个账户、修改系统并代表团队发言时，身份就直接影响责任。前文产品已经以不同方式处理个人连接、服务账号、授权任务和发布主体。未来应用很可能需要把这些关系作为常规产品对象。</p>
+<p><strong>作者推断：组织将更重视“这个 Agent 以谁的身份做了什么”，而不是只问它用了什么模型。</strong> 相同模型在不同权限下具有完全不同的实际能力。一个可以读取共享文档的 Agent，与一个可以修改生产配置的 Agent，不应只靠角色名称区分。</p>
+<p>这会影响采购、审计和日常体验。管理员需要知道哪些连接仍在使用，用户需要知道任务会以什么身份行动，结果接收者需要知道来源与责任。身份记录应服务于这些具体问题，避免成为只有管理员看得懂的庞大权限表。</p>
+<p>角色与身份可能形成多对多关系。同一个角色可以在私人任务中使用个人权限，在团队任务中使用服务账号；同一个任务也可能经过多个执行者。系统应保留任务授权，而不是让执行者替换时丢失约束。角色是交流方式，身份是行动依据。</p>
+<p>这一判断成立的条件，是 Agent 持续扩大真实工具使用。如果大量应用仍停留在低后果内容生成，复杂身份设计可能没有足够收益。因此建设者应从实际写入与共享场景开始，先解决最容易出错的归属，再逐步扩展。</p>
+<p>AbleWork 的优势不是宣称比别人更安全，而是可以在明确研究场景中把作者、执行者、发布者和读者分开。通过真实跨作者复用和撤回案例验证这些关系，比增加抽象治理口号更能说明平台价值。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>54 / 60</span></footer></section><section class="folio " id="p55" aria-labelledby="title-55"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">55</div><h2 id="title-55">未来判断三：可携带成果比无限对话更耐久</h2><p>长期 Agent 会积累大量对话，但用户真正需要带走的，通常是目标、成果、方法和可靠知识。完整聊天历史可以帮助追查，却不一定适合直接作为下一次工作的主要输入。随着任务变多，选择和组织上下文会比单纯保存全部历史更重要。</p>
+<figure id="figure-19"><div class="figure-kicker">FIG. 19 / 机制示意</div><h3>让成果离开一次对话仍可使用</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-19 fig-desc-19"><title id="fig-title-19">让成果离开一次对话仍可使用</title><desc id="fig-desc-19">稳定成果 → 作者与来源 → 明确版本 → 适用范围 → 其他人或 Agent。可携带对象不等于公开对象；迁移与复用仍受授权约束。作者推断。</desc><defs><marker id="arrow-19" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="47" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">稳定成果</text><path d="M133.2,68 L153.2,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-19)"/><rect x="154.2" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="47" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">作者与来源</text><path d="M277.4,68 L297.4,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-19)"/><rect x="298.4" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="47" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">明确版本</text><path d="M421.59999999999997,68 L441.59999999999997,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-19)"/><rect x="442.59999999999997" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="47" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="76.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">适用范围</text><path d="M565.8,68 L585.8,68" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-19)"/><rect x="586.8" y="28" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="47" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="68.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">其他人或 Age</text><text x="648.4" y="90.0" text-anchor="middle" font-size="14" fill="#20352e">nt</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>稳定成果</li><li>作者与来源</li><li>明确版本</li><li>适用范围</li><li>其他人或 Agent</li></ol><figcaption>可携带对象不等于公开对象；迁移与复用仍受授权约束。作者推断。</figcaption></figure>
+
+<p><strong>作者推断：成果的稳定身份、来源与版本，会逐渐成为跨 Agent 协作的重要接口。</strong> 不同执行者能够围绕同一份研究结果继续工作，用户就不必把全部经验绑定在某个对话或角色中。这里说的是发展方向，并非已有统一行业标准。</p>
+<p>可携带不等于无条件公开。一个成果可以在用户自己的工具之间迁移，仍然保留私人范围；团队成果可以被授权系统读取，而不必暴露底层凭据。交换的对象应包含用途与边界，不能只把正文复制出去。</p>
+<p>知识编译在这种形态中有明确作用：把重复使用的内容整理成可更新对象，让新证据能够改变旧结论。检索仍然重要，它帮助发现相关材料；编译帮助维护被反复依赖的知识。两者可以配合，不需要用互相否定来证明价值。</p>
+<p>AbleWork 可以把这一方向落实到具体交付：稳定的报告入口、可核对版本、来源与更新关系，以及对不同执行者清楚的读写接口。只要这些对象保持可用，未来更换模型、执行框架或交互界面，就不必重新建立全部研究积累。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>55 / 60</span></footer></section><section class="folio " id="p56" aria-labelledby="title-56"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">56</div><h2 id="title-56">未来判断四：多个形态会并存，运营能力成为分水岭</h2><p>五种形态不太可能简单排成一条从低到高的替代路线。个人事务、团队讨论、工程任务和领域研究具有不同工作节奏与责任关系。能力会相互吸收，但产品仍可能保留不同入口和组织中心。一个适合家庭事务的代理，不必同时成为组织知识的正式发布者。</p>
+<p><strong>作者推断：产品差异将更多体现为长期运营能力。</strong> 连接失效后怎样处理，任务卡住后怎样恢复，资料更新后怎样纠正，用户离开后怎样停止，预算不足时怎样降级。这些问题在演示中不醒目，却决定系统能否持续被使用。</p>
+<p>这种能力可以由平台、执行框架和组织流程共同承担。应用不必自己实现每个组件，但必须对用户交付整体结果。若一个任务跨越多个服务，用户不应被迫自己判断究竟是哪一层失败，至少应该获得清楚的当前状态与可行下一步。</p>
+<p>反例是高度标准化、短周期工作。如果输入输出固定、错误容易发现，轻量自动化可能长期足够。建设持续 Agent 应有真实需求依据，避免把简单规则系统能做的工作包装成复杂协作。更强的模型不意味着每个流程都需要更多自主性。</p>
+<p>评价未来形态时，可持续观察几个信号：用户是否反复回来，是否愿意扩大委托范围，错误后是否还能继续使用，以及成果是否被不同人和不同任务采用。它们比一次华丽演示更慢，但更接近产品实际价值。</p>
+<p>AbleWork 的下一阶段不需要证明自己会取代所有 Agent。只要能让研究成果在权限范围内持续进入后续工作，并降低维护这些关系的成本，就有清楚的应用位置。其他执行产品越强，可靠成果托管与知识更新的需求也可能越明确；这一推断仍需真实采用数据检验。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>56 / 60</span></footer></section><section class="folio " id="p57" aria-labelledby="title-57"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">57</div><h2 id="title-57">怎样做一轮公平、可复核的比较</h2><p>如果要把本报告进一步用于产品选择，应补做同任务验证。先选择各候选都适用的一小组真实工作，固定输入版本、允许工具、预算和验收条件。超出某产品范围的任务应单列，不宜直接记为能力差。比较的对象是配置后的完整工作方式。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>应记录的证据</th>
+<th>不应替代它的指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>结果可用性</td>
+<td>盲审或业务验收及理由</td>
+<td>输出长度、语气自信</td>
+</tr>
+<tr>
+<td>接续能力</td>
+<td>中断、恢复、追加要求的记录</td>
+<td>单次运行时长</td>
+</tr>
+<tr>
+<td>权限正确性</td>
+<td>越界尝试、撤回与拒绝路径</td>
+<td>提示词写了“安全”</td>
+</tr>
+<tr>
+<td>人工负担</td>
+<td>准备、纠正、审批与追踪</td>
+<td>模型耗时单项</td>
+</tr>
+<tr>
+<td>复用质量</td>
+<td>后续任务引用与更新正确性</td>
+<td>存储页数、召回次数</td>
+</tr>
+<tr>
+<td>总成本</td>
+<td>资源、人工与失败恢复</td>
+<td>单次调用价格</td>
+</tr>
+</tbody>
+</table></div>
+<p>任务集应包含正常案例和变化案例。来源缺失、输入更新、授权撤回、执行中断、相互矛盾的要求，都应在可控环境中出现。否则测试容易只证明系统沿着预先准备的顺利路径运行。</p>
+<p><strong>作者建议：让使用者评价结果，同时让独立检查者核对过程。</strong> 使用者能判断是否有帮助，过程记录能说明结果怎样形成。两者出现分歧时应保留：用户满意不代表来源正确，检查全部通过也不代表解决了真实问题。</p>
+<p>报告没有执行这轮跨产品实测，因此不提供总分或排名。这里给出的是下一步方法。对于 AbleWork，可以先选已经有运行证据的跨作者复用任务，再补上用户采用、来源更新和撤回路径，形成更强的应用证明。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>57 / 60</span></footer></section><section class="folio " id="p58" aria-labelledby="title-58"><header class="folio-top"><span>场景与未来</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">58</div><h2 id="title-58">建设路线：从一个可靠案例，走向持续职责</h2><p>建设者可以按证据逐步扩大责任，而非按功能清单推进。第一步选择一个高频问题，明确用户最终要拿到什么。第二步把一次工作做成可检查结果。第三步验证中断、纠正与权限变化。第四步才考虑例行化和多角色协作。每一步都应留下真实案例。</p>
+<figure id="figure-20"><div class="figure-kicker">FIG. 20 / 机制示意</div><h3>按证据扩大责任</h3><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 168" role="img" aria-labelledby="fig-title-20 fig-desc-20"><title id="fig-title-20">按证据扩大责任</title><desc id="fig-desc-20">完成真实任务 → 能纠正和恢复 → 可重复的方法 → 持续职责 → 跨人知识复用。建议建设顺序，无日期承诺；每一步以真实结果和异常路径验证后再扩大范围。</desc><defs><marker id="arrow-20" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="none" stroke="#b95129"/></marker></defs><rect x="10.0" y="18" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="22.0" y="37" font-size="10" fill="#b95129" font-family="sans-serif">01</text><text x="71.6" y="66.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">完成真实任务</text><path d="M133.2,58 L153.2,67" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-20)"/><rect x="154.2" y="27" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="166.2" y="46" font-size="10" fill="#b95129" font-family="sans-serif">02</text><text x="215.79999999999998" y="75.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">能纠正和恢复</text><path d="M277.4,67 L297.4,76" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-20)"/><rect x="298.4" y="36" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="310.4" y="55" font-size="10" fill="#b95129" font-family="sans-serif">03</text><text x="360.0" y="84.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">可重复的方法</text><path d="M421.59999999999997,76 L441.59999999999997,85" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-20)"/><rect x="442.59999999999997" y="45" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="454.59999999999997" y="64" font-size="10" fill="#b95129" font-family="sans-serif">04</text><text x="504.2" y="93.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">持续职责</text><path d="M565.8,85 L585.8,94" fill="none" stroke="#b95129" stroke-width="1.5"  marker-end="url(#arrow-20)"/><rect x="586.8" y="54" width="123.2" height="80" rx="5" fill="#f2eee6" stroke="#c8cbbf" /><text x="598.8" y="73" font-size="10" fill="#b95129" font-family="sans-serif">05</text><text x="648.4" y="102.0" text-anchor="middle" font-size="14" font-weight="600" fill="#20352e">跨人知识复用</text><text x="12" y="151" font-size="11" fill="#75609b">机制示意 · 箭头表示工作关系，不表示耗时或性能</text></svg><ol class="figure-mobile"><li>完成真实任务</li><li>能纠正和恢复</li><li>可重复的方法</li><li>持续职责</li><li>跨人知识复用</li></ol><figcaption>建议建设顺序，无日期承诺；每一步以真实结果和异常路径验证后再扩大范围。</figcaption></figure>
+
+<p>对 AbleWork，优先工作可以分为四项。补足回答到原文的可见追溯；选择少量候选完成正式采纳与回执；验证来源更新或撤回后的影响；为真正跨天的研究任务提供清楚等待状态。这些动作都能增强已有应用，不必等待一个全新的 Agent 架构。</p>
+<p>验收条件应具体到用户行为。读者能否找到正确版本，作者能否知道候选是否采用，任务中断后能否继续而不重复发布，权限变化后是否停止不再允许的读取。每项都可以通过有限样本得到明确结果。</p>
+<p><strong>作者建议：自动化范围随着证据扩大。</strong> 一个流程在正常样本中有效，只足以进入有限试用；经历不同输入、异常和纠正以后，才适合承担更稳定职责。失败记录应参与下一次方法修订，不能仅被清理成成功状态。</p>
+<p>研究平台最终需要守住的，是工作与知识之间的责任链：有人提出问题，系统在允许范围内推进，成果由明确主体确认，后来者知道依据和版本。模型、角色和入口可以不断变化，这条责任链应能持续解释系统正在做什么。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>58 / 60</span></footer></section><section class="folio references" id="p59" aria-labelledby="title-59"><header class="folio-top"><span>来源与口径</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">59</div><h2 id="title-59">公开来源：外部产品与研究原型</h2><p>以下为本报告使用的主要一手资料，读取截止 2026 年 11 月 1 日。页面可能继续更新，正文描述对应本次读取范围。产品机制采用官方说明，比较与建议由作者提出；未将官方介绍视作独立性能测试。</p>
+<ol class="bibliography"><li id="source-M1"><span class="source-id">M1</span><div><a href="https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/">Meta · Introducing Muse</a><small>2026-09；个人代理定位、执行环境、权限与产品计划。</small></div></li><li id="source-M2"><span class="source-id">M2</span><div><a href="https://introducing.muse.ai/">Meta · How We Designed Muse</a><small>2026-09；目标、持续对话、活动记录与成果体验。</small></div></li><li id="source-M3"><span class="source-id">M3</span><div><a href="https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse">Meta · How We Built Safety Into Muse</a><small>2026-09-08；执行隔离、Sentinel、凭据与计划中的 Confidential VM。</small></div></li><li id="source-G1"><span class="source-id">G1</span><div><a href="https://docs.x.ai/grok-bot/overview">Grok Bot · Overview</a><small>页面标注更新 2026-10-28；角色、共享电脑、协作与 X 入口。</small></div></li><li id="source-G2"><span class="source-id">G2</span><div><a href="https://docs.x.ai/grok-bot/skills-routines-and-automations">Grok Bot · Skills and routines</a><small>方法复用、示范、例行触发与边界。</small></div></li><li id="source-G3"><span class="source-id">G3</span><div><a href="https://docs.x.ai/grok-bot/approvals-security-and-privacy">Grok Bot · Approvals, security, and privacy</a><small>行动前检查、用户审批与外部内容的区别。</small></div></li><li id="source-C1"><span class="source-id">C1</span><div><a href="https://www.anthropic.com/news/introducing-claude-tag">Anthropic · Introducing Claude Tag</a><small>2026-06-23；团队协作、异步交付与可选主动行为。</small></div></li><li id="source-C2"><span class="source-id">C2</span><div><a href="https://claude.com/docs/claude-tag/overview">Claude Tag · Overview</a><small>频道使用、临时执行环境与原线程交付。</small></div></li><li id="source-C3"><span class="source-id">C3</span><div><a href="https://claude.com/docs/claude-tag/concepts/agent-identity">Claude Tag · How agent identity works</a><small>服务账号、频道范围、个人连接器与凭据代理。</small></div></li><li id="source-C4"><span class="source-id">C4</span><div><a href="https://claude.com/docs/claude-tag/users/memory">Claude Tag · What Claude Tag remembers</a><small>共享上下文及记忆范围；与身份文档结合阅读。</small></div></li><li id="source-D1"><span class="source-id">D1</span><div><a href="https://github.com/deepseek-ai/dsh-superagent-prototype">DeepSeek · dsh-superagent-prototype README</a><small>公开研究原型；非官方生产产品，与内部版本及文章范围有别。</small></div></li><li id="source-D2"><span class="source-id">D2</span><div><a href="https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/001-domain.md">Super-agent · Domain model / Authorization</a> · <a href="https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/002-authorization.md">Authorization</a><small>事件、任务、授权、派工及上下文订阅。</small></div></li><li id="source-D3"><span class="source-id">D3</span><div><a href="https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/003-execution.md">Super-agent · Execution</a><small>状态、执行目录、等待、失败与恢复。</small></div></li><li id="source-D4"><span class="source-id">D4</span><div><a href="https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/000-philosophy.md">Super-agent · Philosophy</a><small>注意力、规则授权与发言原则。</small></div></li><li id="source-D5"><span class="source-id">D5</span><div><a href="https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md">Super-agent · Deployment</a><small>部署前提与执行隔离边界。</small></div></li></ol>
+
+<p>来源使用原则：同一产品的介绍页用于确认定位，使用文档用于确认工作方式，安全或身份文档用于确认特定边界。研究原型以其明确公开的实现范围为准，不把设计愿景自动写成已交付功能。本文未复制产品界面；所有配图均为作者绘制的机制示意。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>59 / 60</span></footer></section><section class="folio references" id="p60" aria-labelledby="title-60"><header class="folio-top"><span>来源与口径</span><span>智能体的演进 / 2026.11</span></header><div class="folio-content"><div class="section-number">60</div><h2 id="title-60">AbleWork 依据、统计口径与研究限制</h2><ol class="bibliography"><li id="source-A0"><span class="source-id">A0</span><div><a href="https://lihanlin.com/projects/ablework/">AbleWork · 公开项目介绍</a><small>产品定位、两条知识处理路径与持续委托。</small></div></li><li id="source-A1"><span class="source-id">A1</span><div>作者运行核查 · AbleWork 实际运行与产品成果<small>2026-10-31 23:37:37 CST 截止；本文使用脱敏汇总，底稿不公开。近期使用与历史完整批次分别统计。</small></div></li><li id="source-A2"><span class="source-id">A2</span><div>作者运行补核 · Able 主动准备路径<small>2026-11-01 00:17:35 CST 截止；调度、事实水位、卡片保存与现役代码的只读核查，底稿不公开。</small></div></li><li id="source-A3"><span class="source-id">A3</span><div>作者运行核查 · commons 读面与候选上行<small>2026-11-01 21:05—21:25 CST；只读挂载、召回、候选汇聚与正式采纳回执检查，底稿不公开。</small></div></li><li id="source-A4"><span class="source-id">A4</span><div><a href="https://github.com/hanlinlibham/auto-wiki">AutoWiki · 公开项目与方法说明</a><small>知识比较、编译、查询与治理；具体宿主版本及运行状态另据 A1。</small></div></li></ol>
+
+<p>作者运行核查为自有项目的一手观察，非第三方独立审计。公开汇总省略内部业务材料、用户标识、服务地址与原始日志。读者可核对公开项目定位；内部运行数字只能按本文披露的口径理解，不能视为已公开可复算的数据集。</p>
+<p>近期窗口为北京时间 2026 年 10 月 1 日 23:37:37 至 10 月 31 日 23:37:37。使用者按可识别个人主体去重，代人 Agent 不另计用户，排除测试与后台活动。成果按作者与成果标识去重，多版本不重复计数。来源调用证明进入任务输入，不证明答案正确或用户采纳。</p>
+<p>历史完整批次任务创建于 9 月 30 日，正式发布跨至 10 月 1 日；152 单中 151 单发布、1 单失败，1,717 页为正式快照记录。它与近期梗概任务属于不同集合，不能相加作为月度产出。commons 核查截止 11 月 1 日晚，候选正式采纳仍缺实例证据。</p>
+<p>本报告没有测量跨产品准确率、效率提升、投入产出比或安全强弱。后续若补充实测，应保留任务、输入版本、工具范围、预算、人工干预和验收记录，再修订相应判断。报告编成于 2026 年 11 月 2 日，所属研究时间线为 2026 年 11 月。</p></div><footer class="folio-foot"><span>Hanlin Li · 研究专刊</span><a href="#contents">目录</a><span>60 / 60</span></footer></section><div class="screen-end"><p>本文资料截至 2026 年 11 月 1 日。未来判断与情境推演均已在正文标注。</p><a href="#top">回到封面 ↑</a> · <a href="https://lihanlin.com/research/agent-evolution/">返回研究主页</a></div></main></body></html>

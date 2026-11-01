@@ -1,0 +1,307 @@
+{
+  "folios": 60,
+  "mechanism_figures": 20,
+  "han_chars": 32382,
+  "sections": [
+    {
+      "folio": 1,
+      "title": "从一次回答，到一份持续责任",
+      "han_chars": 636
+    },
+    {
+      "folio": 2,
+      "title": "这份材料写给谁，应该怎样使用",
+      "han_chars": 653
+    },
+    {
+      "folio": 3,
+      "title": "先把容易混淆的词说清楚",
+      "han_chars": 664
+    },
+    {
+      "folio": 4,
+      "title": "五种出发点，五种工作中心",
+      "han_chars": 534
+    },
+    {
+      "folio": 5,
+      "title": "证据分层：产品承诺、运行事实与作者推断",
+      "han_chars": 677
+    },
+    {
+      "folio": 6,
+      "title": "Muse：从一个人的生活连续性出发",
+      "han_chars": 644
+    },
+    {
+      "folio": 7,
+      "title": "Muse 的委托链：目标、计划、行动、回看",
+      "han_chars": 532
+    },
+    {
+      "folio": 8,
+      "title": "Muse 的信任基础：记住偏好，也允许纠正",
+      "han_chars": 622
+    },
+    {
+      "folio": 9,
+      "title": "Muse 的权限：执行能力之外需要独立裁定",
+      "han_chars": 594
+    },
+    {
+      "folio": 10,
+      "title": "Muse 的目标与代价：减少生活管理负担",
+      "han_chars": 632
+    },
+    {
+      "folio": 11,
+      "title": "Grok Bot：把反复的工作交给长期角色",
+      "han_chars": 626
+    },
+    {
+      "folio": 12,
+      "title": "共享电脑：协作方便，也改变边界假设",
+      "han_chars": 519
+    },
+    {
+      "folio": 13,
+      "title": "从一次操作，到 Skill 与 Routine",
+      "han_chars": 605
+    },
+    {
+      "folio": 14,
+      "title": "多 Bot 协作：谁交接，谁承担完成责任",
+      "han_chars": 599
+    },
+    {
+      "folio": 15,
+      "title": "Grok Bot 的目标与代价：可委托的重复工作",
+      "han_chars": 618
+    },
+    {
+      "folio": 16,
+      "title": "Claude Tag：工作已经发生在团队讨论里",
+      "han_chars": 585
+    },
+    {
+      "folio": 17,
+      "title": "原线程交付，让异步工作仍然可理解",
+      "han_chars": 503
+    },
+    {
+      "folio": 18,
+      "title": "团队记忆：共享上下文仍需要范围",
+      "han_chars": 568
+    },
+    {
+      "folio": 19,
+      "title": "Agent 身份：谁的工具，谁的行动",
+      "han_chars": 595
+    },
+    {
+      "folio": 20,
+      "title": "Claude Tag 的目标与代价：团队少搬运一次上下文",
+      "han_chars": 592
+    },
+    {
+      "folio": 21,
+      "title": "Super-agent：从事件不断到来的工程工作出发",
+      "han_chars": 544
+    },
+    {
+      "folio": 22,
+      "title": "从事件到任务：看见变化，不等于可以行动",
+      "han_chars": 449
+    },
+    {
+      "folio": 23,
+      "title": "等待、失败与恢复：让人知道为什么停在这里",
+      "han_chars": 559
+    },
+    {
+      "folio": 24,
+      "title": "低打扰与执行边界：原型的启发也有适用范围",
+      "han_chars": 532
+    },
+    {
+      "folio": 25,
+      "title": "Super-agent 的目标与代价：减少人维持任务的工作",
+      "han_chars": 561
+    },
+    {
+      "folio": 26,
+      "title": "横向比较一：谁是工作的中心",
+      "han_chars": 606
+    },
+    {
+      "folio": 27,
+      "title": "横向比较二：触发、准备、通知、行动",
+      "han_chars": 485
+    },
+    {
+      "folio": 28,
+      "title": "横向比较三：持续的是任务，还是机器",
+      "han_chars": 571
+    },
+    {
+      "folio": 29,
+      "title": "横向比较四：记忆、流程与知识分别更新",
+      "han_chars": 479
+    },
+    {
+      "folio": 30,
+      "title": "横向比较五：目录、工单与向量检索可以共存",
+      "han_chars": 583
+    },
+    {
+      "folio": 31,
+      "title": "横向比较六：权限沿着什么传递",
+      "han_chars": 479
+    },
+    {
+      "folio": 32,
+      "title": "横向比较七：结果究竟留在哪里",
+      "han_chars": 572
+    },
+    {
+      "folio": 33,
+      "title": "横向比较八：成本与注意力要一起计算",
+      "han_chars": 584
+    },
+    {
+      "folio": 34,
+      "title": "横向比较九：质量应该在哪些地方被检查",
+      "han_chars": 486
+    },
+    {
+      "folio": 35,
+      "title": "五种形态怎样组合，而不让责任丢失",
+      "han_chars": 477
+    },
+    {
+      "folio": 36,
+      "title": "AbleWork：研究工作的知识托管与边界治理",
+      "han_chars": 573
+    },
+    {
+      "folio": 37,
+      "title": "主路径：从研究成果，到后续问题的输入",
+      "han_chars": 472
+    },
+    {
+      "folio": 38,
+      "title": "运行规模：说明有人使用，也保留统计边界",
+      "han_chars": 546
+    },
+    {
+      "folio": 39,
+      "title": "脱敏案例：一人的新版研究进入另一人的问题",
+      "han_chars": 472
+    },
+    {
+      "folio": 40,
+      "title": "历史完整编译：实际完成了什么",
+      "han_chars": 430
+    },
+    {
+      "folio": 41,
+      "title": "为什么日常采用梗概，完整编译另行选择",
+      "han_chars": 538
+    },
+    {
+      "folio": 42,
+      "title": "AutoWiki 与 AbleWork：语义编译和宿主责任",
+      "han_chars": 466
+    },
+    {
+      "folio": 43,
+      "title": "主动准备：明确关注以后，后台继续检查",
+      "han_chars": 447
+    },
+    {
+      "folio": 44,
+      "title": "只读公共面与候选池：分享不等于直接改写",
+      "han_chars": 482
+    },
+    {
+      "folio": 45,
+      "title": "报告、社区知识与 commons 不是同一块公共层",
+      "han_chars": 587
+    },
+    {
+      "folio": 46,
+      "title": "失败与反馈：把运行问题变成产品改动",
+      "han_chars": 575
+    },
+    {
+      "folio": 47,
+      "title": "当前完整度：已运行、历史验证、待补证据",
+      "han_chars": 535
+    },
+    {
+      "folio": 48,
+      "title": "AbleWork 的结合路线：先增强已有工作",
+      "han_chars": 595
+    },
+    {
+      "folio": 49,
+      "title": "情境推演：一份持续研究委托怎样分工",
+      "han_chars": 475
+    },
+    {
+      "folio": 50,
+      "title": "情境推演：多人接力修复一个问题",
+      "han_chars": 561
+    },
+    {
+      "folio": 51,
+      "title": "情境推演：来源更新或撤回之后怎么办",
+      "han_chars": 466
+    },
+    {
+      "folio": 52,
+      "title": "情境推演：个人发现怎样成为公共知识",
+      "han_chars": 486
+    },
+    {
+      "folio": 53,
+      "title": "未来判断一：入口会更自然，责任对象会更明确",
+      "han_chars": 585
+    },
+    {
+      "folio": 54,
+      "title": "未来判断二：Agent 身份会成为应用设计的一部分",
+      "han_chars": 553
+    },
+    {
+      "folio": 55,
+      "title": "未来判断三：可携带成果比无限对话更耐久",
+      "han_chars": 462
+    },
+    {
+      "folio": 56,
+      "title": "未来判断四：多个形态会并存，运营能力成为分水岭",
+      "han_chars": 589
+    },
+    {
+      "folio": 57,
+      "title": "怎样做一轮公平、可复核的比较",
+      "han_chars": 497
+    },
+    {
+      "folio": 58,
+      "title": "建设路线：从一个可靠案例，走向持续职责",
+      "han_chars": 469
+    },
+    {
+      "folio": 59,
+      "title": "公开来源：外部产品与研究原型",
+      "han_chars": 197
+    },
+    {
+      "folio": 60,
+      "title": "AbleWork 依据、统计口径与研究限制",
+      "han_chars": 359
+    }
+  ]
+}

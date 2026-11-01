@@ -36,6 +36,13 @@ const research = defineCollection({
     status: z.string(),
     audience: z.string(),
     subjects: z.array(z.string()),
+    report: z.object({
+      html: z.string(),
+      pdf: z.string(),
+      cover: z.string(),
+      pages: z.number().int().positive(),
+      figures: z.number().int().nonnegative(),
+    }).optional(),
   }),
 });
 

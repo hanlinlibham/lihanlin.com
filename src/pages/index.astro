@@ -99,13 +99,13 @@ const excerpt = (md = "") =>
           <Badge tone="accent">{research.data.status}</Badge>
         </div>
         <article class="card card-reveal">
-          <h3 class="research-title"><a href={`/research/${research.id}/`}>从持续工作到协作与知识积累 <span aria-hidden="true">↗</span></a></h3>
+          <h3 class="research-title"><a href={`/research/${research.id}/`}>从一次委托，到持续责任与知识复用 <span aria-hidden="true">↗</span></a></h3>
           <p>{research.data.summary}</p>
           <div class="badges" style="margin-top:18px">
             {research.data.subjects.map((subject) => <Badge>{subject}</Badge>)}
           </div>
           <p class="note">面向 {research.data.audience}。</p>
-          <p class="note"><a class="research-link" href={`/research/${research.id}/`}>阅读系列提纲与比较框架 →</a></p>
+          <p class="note"><a class="research-link" href={`/research/${research.id}/`}>阅读长篇报告与配图 →</a>{research.data.report && <span>　{research.data.report.pages} 页 PDF · {research.data.report.figures} 幅机制图</span>}</p>
         </article>
       </div>
     </div>

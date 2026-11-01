@@ -24,9 +24,25 @@ const [year, month] = entry.data.month.split("-");
       <p class="lead">{entry.data.summary}</p>
       <p class="audience">面向 {entry.data.audience}。</p>
       <div class="badges subjects">{entry.data.subjects.map((subject) => <Badge>{subject}</Badge>)}</div>
+      {entry.data.report && <div class="report-feature">
+        <a class="report-cover" href={entry.data.report.html} aria-label="打开智能体的演进完整报告">
+          <img src={entry.data.report.cover} alt="智能体的演进：五种工作中心与持续责任，2026 年 11 月研究专刊封面" width="620" height="830" fetchpriority="high" />
+        </a>
+        <div class="report-intro">
+          <p class="report-kicker">RESEARCH JOURNAL / 2026.11</p>
+          <h2>智能体开始持续工作以后，<br />责任怎样接续？</h2>
+          <p>从五种形态的出发点，比较任务、记忆、权限和交付，再用 AbleWork 的运行证据检验研究成果如何进入下一次工作。</p>
+          <p class="report-spec">{entry.data.report.pages} 页 PDF <span>·</span> {entry.data.report.figures} 幅机制图 <span>·</span> 完整来源与口径</p>
+          <div class="report-buttons">
+            <a class="primary" href={entry.data.report.html}>阅读全文 →</a>
+            <a href={entry.data.report.pdf} download>下载 PDF ↓</a>
+          </div>
+          <p class="report-small">网页全文可离线保存，手机配有图示文字版。资料截至 2026 年 11 月 1 日。</p>
+        </div>
+      </div>}
       <div class="reading-grid">
-        <nav class="outline" aria-label="研究提纲目录">
-          <p class="outline-label">研究路线</p>
+        <nav class="outline" aria-label="研究导读目录">
+          <p class="outline-label">报告导读</p>
           <ol>{chapters.map((chapter) => <li><a href={`#${chapter.slug}`}>{chapter.text.replace(/^\d+\s*[·/]\s*/, "")}</a></li>)}</ol>
         </nav>
         <article class="research-body"><Content /></article>
@@ -45,6 +61,20 @@ const [year, month] = entry.data.month.split("-");
   .lead { max-width: 44em; margin-top: 20px; color: var(--c-text-2); font-size: var(--fs-lead); }
   .audience { color: var(--c-muted); margin-top: 16px; font-size: 14px; }
   .subjects { margin-top: 20px; }
+  .report-feature { display: grid; grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr); gap: 48px; align-items: center; margin-top: 40px; padding: 36px; border: 1px solid var(--c-line); background: linear-gradient(125deg, #17261f, var(--c-bg-2) 70%); }
+  .report-cover { display: block; max-width: 340px; box-shadow: 12px 16px 35px #0006; transition: transform .2s; }
+  .report-cover:hover { transform: translateY(-4px); }
+  .report-cover img { display: block; width: 100%; height: auto; }
+  .report-kicker { color: #e9b293; font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; }
+  .report-intro h2 { font-family: var(--font-sans); font-size: clamp(23px, 2.7vw, 34px); line-height: 1.5; margin: 18px 0; }
+  .report-intro > p { color: var(--c-text-2); line-height: 1.9; }
+  .report-intro .report-kicker { color: #e9b293; }
+  .report-spec { margin-top: 25px; font-size: 13px; }
+  .report-spec span { padding: 0 6px; color: var(--c-muted); }
+  .report-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .report-buttons a { padding: 12px 20px; border: 1px solid #657365; color: #eee9df; font-size: 14px; }
+  .report-buttons .primary { background: #e9b293; border-color: #e9b293; color: #17261f; font-weight: 600; }
+  .report-intro .report-small { font-size: 12px; color: var(--c-muted); margin-top: 20px; }
   .reading-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 48px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--c-line); }
   .outline { position: sticky; top: 88px; align-self: start; font-size: 14px; }
   .outline-label { color: var(--c-accent); font-family: var(--font-mono); margin-bottom: 14px; }
@@ -61,7 +91,13 @@ const [year, month] = entry.data.month.split("-");
   .research-body :global(blockquote p:last-child) { margin-bottom: 0; }
   .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; border-top: 1px solid var(--c-line); padding-top: 24px; margin-top: 48px; }
   @media (max-width: 900px) {
+    .report-feature { gap: 28px; padding: 24px; }
     .reading-grid { grid-template-columns: 1fr; gap: 28px; }
     .outline { position: static; border-bottom: 1px solid var(--c-line); padding-bottom: 24px; }
+  }
+  @media (max-width: 620px) {
+    .report-feature { grid-template-columns: 1fr; padding: 22px; }
+    .report-cover { max-width: 230px; margin: 0 auto; }
+    .report-intro h2 br { display: none; }
   }
 </style>

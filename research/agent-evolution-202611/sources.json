@@ -1,0 +1,22 @@
+[
+  {"id":"M1","group":"external","title":"Meta · Introducing Muse","url":"https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/","note":"2026-09；个人代理定位、执行环境、权限与产品计划。"},
+  {"id":"M2","group":"external","title":"Meta · How We Designed Muse","url":"https://introducing.muse.ai/","note":"2026-09；目标、持续对话、活动记录与成果体验。"},
+  {"id":"M3","group":"external","title":"Meta · How We Built Safety Into Muse","url":"https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse","note":"2026-09-08；执行隔离、Sentinel、凭据与计划中的 Confidential VM。"},
+  {"id":"G1","group":"external","title":"Grok Bot · Overview","url":"https://docs.x.ai/grok-bot/overview","note":"页面标注更新 2026-10-28；角色、共享电脑、协作与 X 入口。"},
+  {"id":"G2","group":"external","title":"Grok Bot · Skills and routines","url":"https://docs.x.ai/grok-bot/skills-routines-and-automations","note":"方法复用、示范、例行触发与边界。"},
+  {"id":"G3","group":"external","title":"Grok Bot · Approvals, security, and privacy","url":"https://docs.x.ai/grok-bot/approvals-security-and-privacy","note":"行动前检查、用户审批与外部内容的区别。"},
+  {"id":"C1","group":"external","title":"Anthropic · Introducing Claude Tag","url":"https://www.anthropic.com/news/introducing-claude-tag","note":"2026-06-23；团队协作、异步交付与可选主动行为。"},
+  {"id":"C2","group":"external","title":"Claude Tag · Overview","url":"https://claude.com/docs/claude-tag/overview","note":"频道使用、临时执行环境与原线程交付。"},
+  {"id":"C3","group":"external","title":"Claude Tag · How agent identity works","url":"https://claude.com/docs/claude-tag/concepts/agent-identity","note":"服务账号、频道范围、个人连接器与凭据代理。"},
+  {"id":"C4","group":"external","title":"Claude Tag · What Claude Tag remembers","url":"https://claude.com/docs/claude-tag/users/memory","note":"共享上下文及记忆范围；与身份文档结合阅读。"},
+  {"id":"D1","group":"external","title":"DeepSeek · dsh-superagent-prototype README","url":"https://github.com/deepseek-ai/dsh-superagent-prototype","note":"公开研究原型；非官方生产产品，与内部版本及文章范围有别。"},
+  {"id":"D2","group":"external","title":"Super-agent · Domain model / Authorization","url":"https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/001-domain.md","extra":"https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/002-authorization.md","note":"事件、任务、授权、派工及上下文订阅。"},
+  {"id":"D3","group":"external","title":"Super-agent · Execution","url":"https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/003-execution.md","note":"状态、执行目录、等待、失败与恢复。"},
+  {"id":"D4","group":"external","title":"Super-agent · Philosophy","url":"https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/000-philosophy.md","note":"注意力、规则授权与发言原则。"},
+  {"id":"D5","group":"external","title":"Super-agent · Deployment","url":"https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/006-deployment.md","note":"部署前提与执行隔离边界。"},
+  {"id":"A0","group":"able","title":"AbleWork · 公开项目介绍","url":"https://lihanlin.com/projects/ablework/","note":"产品定位、两条知识处理路径与持续委托。"},
+  {"id":"A1","group":"able","title":"作者运行核查 · AbleWork 实际运行与产品成果","note":"2026-10-31 23:37:37 CST 截止；本文使用脱敏汇总，底稿不公开。近期使用与历史完整批次分别统计。"},
+  {"id":"A2","group":"able","title":"作者运行补核 · Able 主动准备路径","note":"2026-11-01 00:17:35 CST 截止；调度、事实水位、卡片保存与现役代码的只读核查，底稿不公开。"},
+  {"id":"A3","group":"able","title":"作者运行核查 · commons 读面与候选上行","note":"2026-11-01 21:05—21:25 CST；只读挂载、召回、候选汇聚与正式采纳回执检查，底稿不公开。"},
+  {"id":"A4","group":"able","title":"AutoWiki · 公开项目与方法说明","url":"https://github.com/hanlinlibham/auto-wiki","note":"知识比较、编译、查询与治理；具体宿主版本及运行状态另据 A1。"}
+]
