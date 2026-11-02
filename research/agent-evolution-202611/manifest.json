@@ -213,13 +213,78 @@
       ],
       "status": "reviewed"
     },
-    "reproducible_export": "Maintained export script executed: 63 pages, 83 outline entries; section/page matching passed."
+    "reproducible_export": "Maintained export script executed: 63 pages, 83 outline entries; section/page matching passed.",
+    "no_download_revision": {
+      "date": "2026-11-02",
+      "change": "Removed PDF download links from homepage, research landing page and full HTML report. Core text and figures unchanged.",
+      "html_lint": "PASS doc/flexible",
+      "reading": {
+        "checks": [
+          {
+            "path": "/",
+            "width": 390,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "path": "/research/agent-evolution/",
+            "width": 390,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "path": "/research/agent-evolution/report/",
+            "width": 390,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "path": "/",
+            "width": 1440,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "path": "/research/agent-evolution/",
+            "width": 1440,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "path": "/research/agent-evolution/report/",
+            "width": 1440,
+            "no_download_links": true,
+            "overflow": false
+          },
+          {
+            "environment": "opaque sandbox, scripts disabled",
+            "width": 390,
+            "sections": 60,
+            "figures": 20,
+            "anchors": "pass",
+            "no_download_links": true
+          },
+          {
+            "environment": "opaque sandbox, scripts disabled",
+            "width": 1440,
+            "sections": 60,
+            "figures": 20,
+            "anchors": "pass",
+            "no_download_links": true
+          }
+        ],
+        "html_bytes": 248435,
+        "html_sha256": "400027436a84be181d87c84bc9889a6696541a10bbaf0fae596f3522b49367dc"
+      },
+      "visual_review": "Desktop and mobile affected navigation and reading section reviewed in opaque-origin iframe. Native TOC works with scripts disabled.",
+      "pdf_reexported": false
+    }
   },
   "artifacts": [
     {
       "path": "public/research/agent-evolution/report/index.html",
-      "bytes": 248545,
-      "sha256": "ed9d691127b0c2e43aa37a61b74e0ff68445637698c156a29a485548a0e7016c"
+      "bytes": 248435,
+      "sha256": "400027436a84be181d87c84bc9889a6696541a10bbaf0fae596f3522b49367dc"
     },
     {
       "path": "public/research/agent-evolution/agent-evolution-202611.pdf",

@@ -105,7 +105,7 @@ const excerpt = (md = "") =>
             {research.data.subjects.map((subject) => <Badge>{subject}</Badge>)}
           </div>
           <p class="note">面向 {research.data.audience}。</p>
-          <p class="note"><a class="research-link" href={`/research/${research.id}/`}>阅读长篇报告与配图 →</a>{research.data.report && <span>　{research.data.report.pages} 页 PDF · {research.data.report.figures} 幅机制图</span>}</p>
+          <p class="note"><a class="research-link" href={`/research/${research.id}/`}>阅读长篇报告与配图 →</a>{research.data.report && <span>　长篇研究 · {research.data.report.figures} 幅机制图</span>}</p>
         </article>
       </div>
     </div>

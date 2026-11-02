@@ -12,7 +12,6 @@ subjects:
   - "AbleWork"
 report:
   html: "/research/agent-evolution/report/"
-  pdf: "/research/agent-evolution/agent-evolution-202611.pdf"
   cover: "/research/agent-evolution/cover.svg"
   pages: 63
   figures: 20
@@ -53,4 +52,4 @@ report:
 
 外部产品机制主要依据官方资料；AbleWork 部分包含作者自有运行核查的脱敏汇总。官方能力说明、运行事实、作者分析和情境推演分别标记。报告没有进行五个产品的同条件性能测试，也未据此宣称效率提升或安全排名。
 
-[阅读全文与来源 →](/research/agent-evolution/report/) · [下载完整 PDF](/research/agent-evolution/agent-evolution-202611.pdf)
+[阅读全文与来源 →](/research/agent-evolution/report/)
